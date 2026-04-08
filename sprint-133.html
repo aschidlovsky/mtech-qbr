@@ -790,61 +790,103 @@
   </div>
 
   <div class="scroll-inner">
+    <!-- Dual donuts -->
     <div class="two-col fade-in">
-      <div>
-        <div class="chart-container" style="max-width:100%; height:260px;">
+      <div style="text-align:center;">
+        <h4 style="margin-bottom:4px; color:#A09890; font-size:0.8rem; letter-spacing:1px;">BY ITEM COUNT</h4>
+        <div class="chart-container" style="max-width:100%; height:200px;">
           <canvas id="categoryDonutChart"></canvas>
         </div>
       </div>
-      <div>
-        <table class="data-table">
-          <thead>
-            <tr><th>Category</th><th>Items</th><th>%</th><th>Done</th><th>Done %</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong style="color:#BE2024;">Platform</strong></td>
-              <td>233</td><td>77.9%</td><td>197</td>
-              <td style="color:#22c55e; font-weight:700;">84.5%</td>
-            </tr>
-            <tr>
-              <td><strong style="color:#D4A006;">Business</strong></td>
-              <td>54</td><td>18.1%</td><td>47</td>
-              <td style="color:#22c55e; font-weight:700;">87.0%</td>
-            </tr>
-            <tr>
-              <td><strong style="color:#A09890;">Legacy AX 2009</strong></td>
-              <td>12</td><td>4.0%</td><td>7</td>
-              <td style="color:#D4A006; font-weight:700;">58.3%</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="metric-row" style="margin-top:14px;">
-          <div class="metric-card" style="text-align:center; padding:12px;">
-            <div class="big-number" style="font-size:1.6rem; color:#BE2024;">77.9%</div>
-            <div class="label">Platform</div>
-          </div>
-          <div class="metric-card" style="text-align:center; padding:12px;">
-            <div class="big-number" style="font-size:1.6rem; color:#D4A006;">18.1%</div>
-            <div class="label">Business</div>
-          </div>
-          <div class="metric-card" style="text-align:center; padding:12px;">
-            <div class="big-number" style="font-size:1.6rem; color:#A09890;">4.0%</div>
-            <div class="label">Legacy AX</div>
-          </div>
+      <div style="text-align:center;">
+        <h4 style="margin-bottom:4px; color:#A09890; font-size:0.8rem; letter-spacing:1px;">BY TASK HOURS</h4>
+        <div class="chart-container" style="max-width:100%; height:200px;">
+          <canvas id="categoryHoursDonutChart"></canvas>
         </div>
       </div>
     </div>
 
-    <div class="insight-box amber fade-in" style="margin-top:16px;">
-      <span class="insight-label">Key Insight</span>
-      <strong>Sprint 133 was 78% Platform work</strong> &mdash; the highest platform concentration this quarter, driven by Preview Environment deployments (Grzegorz, Jacek, Mateusz), Dynamic Lookup framework (Marcin), GitHub migration completion (Adam, Dariusz), and EventFlow end-to-end testing (Thomas). Business features accounted for 18% with strong 87% completion. Legacy AX at only 4% (12 items) with 58.3% completion &mdash; AX work continues to lag.
+    <!-- Combined table -->
+    <table class="data-table fade-in" style="margin-top:12px;">
+      <thead>
+        <tr>
+          <th rowspan="2" style="vertical-align:bottom;">Category</th>
+          <th colspan="3" style="text-align:center; border-bottom:1px solid #3B3B52;">By Items</th>
+          <th colspan="4" style="text-align:center; border-left:2px solid #52526A; border-bottom:1px solid #3B3B52;">By Task Hours</th>
+        </tr>
+        <tr>
+          <th>Items</th><th>%</th><th>Done %</th>
+          <th style="border-left:2px solid #52526A;">Est Hours</th><th>%</th><th>Done Hours</th><th>Burn %</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color:#BE2024;">Platform</strong></td>
+          <td>233</td><td>77.9%</td>
+          <td style="color:#22c55e; font-weight:700;">84.5%</td>
+          <td style="border-left:2px solid #52526A; font-weight:700;">738h</td>
+          <td style="font-weight:700; color:#BE2024;">79.7%</td>
+          <td>626h</td>
+          <td style="color:#22c55e; font-weight:700;">84.8%</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#D4A006;">Business</strong></td>
+          <td>54</td><td>18.1%</td>
+          <td style="color:#22c55e; font-weight:700;">87.0%</td>
+          <td style="border-left:2px solid #52526A; font-weight:700;">158h</td>
+          <td style="font-weight:700; color:#D4A006;">17.1%</td>
+          <td>138h</td>
+          <td style="color:#22c55e; font-weight:700;">87.3%</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#A09890;">Legacy AX 2009</strong></td>
+          <td>12</td><td>4.0%</td>
+          <td style="color:#D4A006; font-weight:700;">58.3%</td>
+          <td style="border-left:2px solid #52526A; font-weight:700;">30h</td>
+          <td style="font-weight:700; color:#A09890;">3.2%</td>
+          <td>22h</td>
+          <td style="color:#D4A006; font-weight:700;">73.3%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Side-by-side metric cards -->
+    <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
+      <div class="metric-card" style="text-align:center; padding:10px; flex:1; min-width:100px;">
+        <div style="font-size:0.6rem; color:#787068; text-transform:uppercase; letter-spacing:1px;">Items</div>
+        <div class="big-number" style="font-size:1.4rem; color:#BE2024;">77.9%</div>
+        <div class="label">Platform</div>
+      </div>
+      <div class="metric-card" style="text-align:center; padding:10px; flex:1; min-width:100px;">
+        <div style="font-size:0.6rem; color:#787068; text-transform:uppercase; letter-spacing:1px;">Hours</div>
+        <div class="big-number" style="font-size:1.4rem; color:#BE2024;">79.7%</div>
+        <div class="label">Platform</div>
+      </div>
+      <div class="metric-card" style="text-align:center; padding:10px; flex:1; min-width:100px;">
+        <div style="font-size:0.6rem; color:#787068; text-transform:uppercase; letter-spacing:1px;">Items</div>
+        <div class="big-number" style="font-size:1.4rem; color:#D4A006;">18.1%</div>
+        <div class="label">Business</div>
+      </div>
+      <div class="metric-card" style="text-align:center; padding:10px; flex:1; min-width:100px;">
+        <div style="font-size:0.6rem; color:#787068; text-transform:uppercase; letter-spacing:1px;">Hours</div>
+        <div class="big-number" style="font-size:1.4rem; color:#D4A006;">17.1%</div>
+        <div class="label">Business</div>
+      </div>
+      <div class="metric-card" style="text-align:center; padding:10px; flex:1; min-width:100px;">
+        <div style="font-size:0.6rem; color:#787068; text-transform:uppercase; letter-spacing:1px;">Total Hours</div>
+        <div class="big-number" style="font-size:1.4rem; color:#22c55e;">926h</div>
+        <div class="label">All Categories</div>
+      </div>
+    </div>
+
+    <div class="insight-box red fade-in" style="margin-top:14px;">
+      <span class="insight-label">Hours vs Items Comparison</span>
+      <strong>Sprint 133's category split is consistent between items and hours</strong> &mdash; Platform is ~80% by both measures. The notable difference: Business hour burn (87.3%) outperforms Platform hour burn (84.8%), confirming business tasks are smaller but completed more reliably. Legacy AX is only 30h (3.2% of hours) &mdash; minimal investment this sprint but still underperforming at 73.3% burn.
     </div>
 
     <div class="insight-box green fade-in">
       <span class="insight-label">Platform Highlights This Sprint</span>
-      <strong>Platform delivered at 84.5%</strong> across 233 items. Key completions: Preview Environment pipelines &amp; Kustomize overlays (Grzegorz), Dynamic Lookup &amp; Validation framework (Marcin, 5 PBIs), GitHub monorepo migration (Adam), LocalDependencies updates across 8 services (Dariusz), 18 EventFlow bugs fixed (Thomas), Landing Page Builder stabilization (13 bugs by Tymoteusz, 10 by Marcin).
+      <strong>Platform burned 626h of 738h estimated (84.8%).</strong> Key completions: Preview Environment pipelines &amp; Kustomize overlays (Grzegorz, 52h), Dynamic Lookup &amp; Validation framework (Marcin, 73h), GitHub monorepo migration (Adam, 60h), LocalDependencies across 8 services (Dariusz, 80h), 18 EventFlow bugs fixed (Thomas, 80h), Landing Page Builder stabilization (Tymoteusz 88h + Marcin).
     </div>
   </div>
   <div class="slide-footer">Sprint 133 Recap &nbsp;|&nbsp; MTech Platform Team &nbsp;|&nbsp; Confidential</div>
@@ -1507,24 +1549,42 @@ new Chart(document.getElementById('scopeBreakdownChart'), {
   }
 });
 
-// ===== WORK CATEGORY DONUT (Section 7) =====
+// ===== WORK CATEGORY DONUT - Items (Section 7) =====
 new Chart(document.getElementById('categoryDonutChart'), {
   type: 'doughnut',
   data: {
-    labels: ['Platform (77.9%)', 'Business (18.1%)', 'Legacy AX 2009 (4.0%)'],
+    labels: ['Platform 77.9%', 'Business 18.1%', 'Legacy AX 4.0%'],
     datasets: [{
       data: [233, 54, 12],
       backgroundColor: ['#BE2024', '#D4A006', '#787068'],
-      borderColor: '#1A1A2E',
-      borderWidth: 3,
-      hoverOffset: 8
+      borderColor: '#1A1A2E', borderWidth: 3, hoverOffset: 8
     }]
   },
   options: {
-    responsive: true, maintainAspectRatio: false,
-    cutout: '55%',
+    responsive: true, maintainAspectRatio: false, cutout: '55%',
     plugins: {
-      legend: { position: 'bottom', labels: { color: '#A09890', padding: 12, font: { size: 11 } } }
+      legend: { position: 'bottom', labels: { color: '#A09890', padding: 10, font: { size: 10 } } },
+      title: { display: true, text: '299 Items', color: '#787068', font: { size: 11 } }
+    }
+  }
+});
+
+// ===== WORK CATEGORY DONUT - Hours (Section 7) =====
+new Chart(document.getElementById('categoryHoursDonutChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Platform 79.7%', 'Business 17.1%', 'Legacy AX 3.2%'],
+    datasets: [{
+      data: [738, 158, 30],
+      backgroundColor: ['#BE2024', '#D4A006', '#787068'],
+      borderColor: '#1A1A2E', borderWidth: 3, hoverOffset: 8
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false, cutout: '55%',
+    plugins: {
+      legend: { position: 'bottom', labels: { color: '#A09890', padding: 10, font: { size: 10 } } },
+      title: { display: true, text: '926 Task Hours', color: '#787068', font: { size: 11 } }
     }
   }
 });
