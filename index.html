@@ -322,7 +322,7 @@
       </div>
       <div class="insight-box amber" style="flex:1; min-width:240px;">
         <span class="insight-label">Concerns</span>
-        Bug ratio trending up (66.7% peak). Sprint 134 at 38.8% mid-flight. Mid-sprint bug discovery rate doubling (33 bugs in S133, 32 in S134).
+        Bug ratio trending up (66.7% peak). Sprint 134 at 38.8% mid-flight. Mid-sprint bug discovery rate doubling (33 bugs in S133, 32 in S134). Platform consumes 78% of estimated hours. Mateusz Janiszewski at 34.7% hour burn rate across 6 sprints.
       </div>
     </div>
   </div>
@@ -357,7 +357,7 @@
 
   <div class="insight-box fade-in">
     <span class="insight-label">Key Insight</span>
-    <strong>Sprint 132 had the lowest volume (185 items) but the highest efficiency (74.3% burn rate).</strong> Hour burn rate improved steadily from 58% to 84% over Sprints 129&ndash;133. More importantly, <strong>task-level hour burn</strong> (based on properly estimated Tasks only, 97-100% coverage) tells a stronger story: 80.9% &rarr; 87.1% &rarr; 82.9% &rarr; 87.8% &rarr; <strong style="color:#22c55e;">96.5%</strong>, showing the team's estimation maturity is converging toward near-perfect delivery. Sprint 134 is still in progress.
+    <strong>Sprint 132 had the lowest volume (185 items) but the highest efficiency (74.3% burn rate).</strong> Hour burn rate improved steadily from 58% to 84% over Sprints 129&ndash;133. More importantly, <strong>task-level hour burn</strong> (based on properly estimated Tasks only, 97-100% coverage) tells a stronger story: 80.9% &rarr; 87.1% &rarr; 82.9% &rarr; 87.8% &rarr; <strong style="color:#22c55e;">96.5%</strong>, showing the team's estimation maturity is converging toward near-perfect delivery. Sprint 134 is still in progress. Task-level hour burn improved from 80.9% (S129) to 96.5% (S133) before dropping to 35.2% in S134 (still in progress). Hours tell a stronger story than item counts &mdash; Sprint 133 burned 714h of 746h estimated.
   </div>
 
   <table class="data-table fade-in" style="margin-top:10px;">
@@ -747,7 +747,7 @@
 
     <div class="insight-box amber fade-in" style="margin-top:16px;">
       <span class="insight-label">Key Insight</span>
-      <strong>Two-thirds of all engineering effort is Platform work.</strong> 10 of 13 team members spend 70%+ on platform infrastructure (EventFlow, GitHub Migration, Metadata, Preview Environments, Landing Page Builder, CRUD Library). Only 3 members &mdash; Joshua Hise, Clint Wilkes, and Justin Barreira &mdash; are primarily delivering business features and forms. Business work has the highest completion rate (79.0%) but the worst bug ratio (68.8%). Legacy AX 2009 at 48.3% completion is the weakest area &mdash; items linger in Coding/Testing states with Justin Barreira carrying most of that load.
+      <strong>Two-thirds of all engineering effort is Platform work &mdash; and by hours, it's even more dominant at 78.3%</strong> (vs 67.5% by items). 10 of 13 team members spend 70%+ on platform infrastructure (EventFlow, GitHub Migration, Metadata, Preview Environments, Landing Page Builder, CRUD Library). Only 3 members &mdash; Joshua Hise, Clint Wilkes, and Justin Barreira &mdash; are primarily delivering business features and forms. Business items are smaller than they appear: 14.6% of hours vs 24.1% of items, meaning business work skews toward low-effort tasks. Business work has the highest completion rate (79.0%) but the worst bug ratio (68.8%). Legacy AX 2009 at 48.3% completion is the weakest area &mdash; items linger in Coding/Testing states with Justin Barreira carrying most of that load.
     </div>
 
     <div class="insight-box green fade-in">
@@ -789,7 +789,7 @@
         </div>
         <div class="mini-chart-container"><canvas id="miniTH"></canvas></div>
         <div class="person-narrative">
-          <strong>Key:</strong> EventFlow platform owner. Delivered Segmentation solo (20 items in 2 sprints). BatchJobs, Change Feed, Core &mdash; he IS the EventFlow platform.<br>
+          <strong>Key:</strong> EventFlow platform owner. Delivered Segmentation solo (20 items in 2 sprints). BatchJobs, Change Feed, Core &mdash; he IS the EventFlow platform. Highest utilization on the team at 81h/sprint average &mdash; 97.5% hour burn across 488h estimated.<br>
           <strong style="color:#D4A006;">Risk:</strong> Single point of failure for EventFlow. 5 items still in QA.
         </div>
       </div>
@@ -855,7 +855,7 @@
         </div>
         <div class="mini-chart-container"><canvas id="miniJB"></canvas></div>
         <div class="person-narrative">
-          <strong>Key:</strong> AX development, OneSource Tax, Forms. Heavy AX work is harder to measure in items.<br>
+          <strong>Key:</strong> AX development, OneSource Tax, Forms. Heavy AX work is harder to measure in items. Hour burn rate (72.8%) confirms items aren't just stuck &mdash; significant estimated work is going unburned (227h of 312h).<br>
           <strong style="color:#FF6B6B;">Concern:</strong> S134 is nearly stalled (1/17 done, 37h remaining). OneSource barely started after 3 sprints.
         </div>
       </div>
@@ -918,7 +918,7 @@
         </div>
         <div class="mini-chart-container"><canvas id="miniMM"></canvas></div>
         <div class="person-narrative">
-          <strong>Key:</strong> Landing Page Builder primary owner. Also GitHub Migration, Entity Change Requests.<br>
+          <strong>Key:</strong> Landing Page Builder primary owner. Also GitHub Migration, Entity Change Requests. Highest utilization on Team B at 74h/sprint. 76.2% hour burn &mdash; the Landing Page Builder bugs consume significant effort.<br>
           <strong style="color:#D4A006;">Concern:</strong> S134 only 8/38 done with 106h remaining. Landing Page Builder bugs are overwhelming.
         </div>
       </div>
@@ -985,7 +985,7 @@
         <div class="mini-chart-container"><canvas id="miniMJ"></canvas></div>
         <div class="person-narrative">
           <strong>Key:</strong> Preview environments, Monorepo, Environment Cleanup. Infrastructure-focused.<br>
-          Consistent but low volume &mdash; likely reflects complexity of infrastructure work.
+          <strong style="color:#FF6B6B;">Concern:</strong> Hours expose a deeper issue: 34.7% burn rate (113h of 326h) &mdash; the lowest on the team. Sprint-by-sprint: S131 24%, S132 8%, S134 2%. He's completing small items but leaving large-hour items unfinished. Estimated 54h/sprint but averaging only 19h burned.
         </div>
       </div>
 
@@ -1006,7 +1006,7 @@
         </div>
         <div class="mini-chart-container"><canvas id="miniGG"></canvas></div>
         <div class="person-narrative">
-          <strong>Key:</strong> Testing focus + GitHub Migration + Preview environments.<br>
+          <strong>Key:</strong> Testing focus + GitHub Migration + Preview environments. 97.7% hour burn (258h of 264h) &mdash; the most efficient team member by hours, even above Thomas Holland.<br>
           S131 spike was migration. Steady contributor. S132 had zero completed items &mdash; possible PTO or blocked.
         </div>
       </div>
@@ -1069,7 +1069,7 @@
         </div>
         <div class="mini-chart-container"><canvas id="miniTT"></canvas></div>
         <div class="person-narrative">
-          <strong>Key:</strong> EventFlow FE, Landing Page Builder bugs, Forms. The FE counterpart to Thomas Holland's BE work.<br>
+          <strong>Key:</strong> EventFlow FE, Landing Page Builder bugs, Forms. The FE counterpart to Thomas Holland's BE work. Second-highest utilization at 77h/sprint. 85.3% hour burn (395h of 463h).<br>
           <strong>Note:</strong> S134 has 39 items (highest ever) with 17 bugs. Landing Page Builder is consuming his bandwidth.
         </div>
       </div>
@@ -1091,7 +1091,7 @@
         </div>
         <div class="mini-chart-container"><canvas id="miniAS"></canvas></div>
         <div class="person-narrative">
-          Low volume &mdash; management/oversight role. Items are UX/Design/Testing, not development tasks. Throughput reflects coordination and review responsibilities rather than hands-on delivery.
+          Low volume &mdash; management/oversight role. Hours confirm management/oversight role &mdash; 11.8% task-hour burn (15h of 127h estimated). Most estimated hours are in UX/Design items that remain New. Throughput reflects coordination and review responsibilities rather than hands-on delivery.
         </div>
       </div>
 
@@ -1151,15 +1151,15 @@
 
       <div class="finding-card warning">
         <div class="finding-number">06</div>
-        <h4>Notification System Needs a Dedicated Push</h4>
-        <p>6 sprints at 46.7% done. It has been simmering without focus &mdash; no sprint had it as a primary objective. At the current pace, it will take another full quarter.</p>
-        <div class="rec">Recommend: Make it a primary initiative for 2 sprints with a dedicated owner and clear exit criteria.</div>
+        <h4>Hours Expose Hidden Utilization Gaps</h4>
+        <p>Mateusz Janiszewski has burned only 34.7% of estimated hours across 6 sprints (113h of 326h) &mdash; the worst on the team. Item counts masked this because he completes small items while large ones carry over. Three sprints had &lt;25% burn: S131 (24%), S132 (8%), S134 (2%).</p>
+        <div class="rec">Recommend: Investigate why large items are persistently incomplete. Consider breaking down work into smaller deliverables or pairing with a senior engineer.</div>
       </div>
 
       <div class="finding-card critical">
         <div class="finding-number">07</div>
         <h4>Sprint 134 Shows Overcommitment Patterns</h4>
-        <p>327 items with several team members below 10% completion mid-sprint: Justin Barreira (5.9%), Adam Wojciechowski (7.1%). The sprint was loaded beyond capacity.</p>
+        <p>327 items with several team members below 10% completion mid-sprint: Justin Barreira (5.9%), Adam Wojciechowski (7.1%). The sprint was loaded beyond capacity. By hours, the gap is even wider &mdash; Marcin Miazga at 11% burn (13h/119h), Kamil Trescinski at 7% (4h/56h), Adam Wojciechowski at 0% (0h/62h).</p>
         <div class="rec">Recommend: Review capacity planning assumptions. Use trailing 3-sprint velocity as commitment ceiling.</div>
       </div>
 
