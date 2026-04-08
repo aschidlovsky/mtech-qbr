@@ -310,17 +310,18 @@
   <button class="nav-dot" onclick="goTo(3)"><span class="tooltip">Ready for Testing</span></button>
   <button class="nav-dot" onclick="goTo(4)"><span class="tooltip">Incomplete Work</span></button>
   <button class="nav-dot" onclick="goTo(5)"><span class="tooltip">Mid-Sprint Discovery</span></button>
-  <button class="nav-dot" onclick="goTo(6)"><span class="tooltip">Team A Performance</span></button>
-  <button class="nav-dot" onclick="goTo(7)"><span class="tooltip">Team B Performance</span></button>
-  <button class="nav-dot" onclick="goTo(8)"><span class="tooltip">Shared Members</span></button>
-  <button class="nav-dot" onclick="goTo(9)"><span class="tooltip">Key Findings</span></button>
+  <button class="nav-dot" onclick="goTo(6)"><span class="tooltip">Work Categories</span></button>
+  <button class="nav-dot" onclick="goTo(7)"><span class="tooltip">Team A Performance</span></button>
+  <button class="nav-dot" onclick="goTo(8)"><span class="tooltip">Team B Performance</span></button>
+  <button class="nav-dot" onclick="goTo(9)"><span class="tooltip">Shared Members</span></button>
+  <button class="nav-dot" onclick="goTo(10)"><span class="tooltip">Key Findings</span></button>
 </nav>
 
 <!-- ============================================================== -->
 <!-- SECTION 1: SPRINT HEADLINE -->
 <!-- ============================================================== -->
 <section class="slide title-slide" id="slide-0">
-  <div class="slide-number">01 / 10</div>
+  <div class="slide-number">01 / 11</div>
   <div class="fade-in">
     <div class="title-logo">MT</div>
     <h1>Sprint 133 Recap</h1>
@@ -371,7 +372,7 @@
 <!-- SECTION 2: SPRINT 132 → 133 COMPARISON -->
 <!-- ============================================================== -->
 <section class="slide" id="slide-1">
-  <div class="slide-number">02 / 10</div>
+  <div class="slide-number">02 / 11</div>
   <div class="section-header fade-in">
     <h3>Sprint-over-Sprint</h3>
     <h2>Sprint 132 &rarr; 133 Comparison</h2>
@@ -435,7 +436,7 @@
 <!-- SECTION 3: WHAT SHIPPED — KEY DELIVERABLES -->
 <!-- ============================================================== -->
 <section class="slide" id="slide-2">
-  <div class="slide-number">03 / 10</div>
+  <div class="slide-number">03 / 11</div>
   <div class="section-header fade-in">
     <h3>What Shipped</h3>
     <h2>Key Deliverables &mdash; Sprint 133</h2>
@@ -552,7 +553,7 @@
 <!-- SECTION 4: READY FOR TESTING / DEV COMPLETE -->
 <!-- ============================================================== -->
 <section class="slide" id="slide-3">
-  <div class="slide-number">04 / 10</div>
+  <div class="slide-number">04 / 11</div>
   <div class="section-header fade-in">
     <h3>Ready for Testing</h3>
     <h2>Dev Complete / In QA at Sprint End</h2>
@@ -597,7 +598,7 @@
 <!-- SECTION 5: INCOMPLETE WORK & IMPACT -->
 <!-- ============================================================== -->
 <section class="slide" id="slide-4">
-  <div class="slide-number">05 / 10</div>
+  <div class="slide-number">05 / 11</div>
   <div class="section-header fade-in">
     <h3>Incomplete Work</h3>
     <h2>What Didn't Finish &mdash; Impact Assessment</h2>
@@ -694,7 +695,7 @@
 <!-- SECTION 6: MID-SPRINT DISCOVERY -->
 <!-- ============================================================== -->
 <section class="slide" id="slide-5">
-  <div class="slide-number">06 / 10</div>
+  <div class="slide-number">06 / 11</div>
   <div class="section-header fade-in">
     <h3>Mid-Sprint Discovery</h3>
     <h2>What Was Added After Sprint Start?</h2>
@@ -766,10 +767,82 @@
 </section>
 
 <!-- ============================================================== -->
-<!-- SECTION 7: TEAM A PERFORMANCE -->
+<!-- SECTION 7: WORK CATEGORY ANALYSIS -->
 <!-- ============================================================== -->
 <section class="slide" id="slide-6">
-  <div class="slide-number">07 / 10</div>
+  <div class="slide-number">07 / 11</div>
+  <div class="section-header fade-in">
+    <h3>Work Category Analysis</h3>
+    <h2>Platform vs. Business vs. Legacy AX 2009</h2>
+    <p class="subtitle">Sprint 133 effort allocation by work category</p>
+  </div>
+
+  <div class="scroll-inner">
+    <div class="two-col fade-in">
+      <div>
+        <div class="chart-container" style="max-width:100%; height:260px;">
+          <canvas id="categoryDonutChart"></canvas>
+        </div>
+      </div>
+      <div>
+        <table class="data-table">
+          <thead>
+            <tr><th>Category</th><th>Items</th><th>%</th><th>Done</th><th>Done %</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color:#BE2024;">Platform</strong></td>
+              <td>233</td><td>77.9%</td><td>197</td>
+              <td style="color:#22c55e; font-weight:700;">84.5%</td>
+            </tr>
+            <tr>
+              <td><strong style="color:#D4A006;">Business</strong></td>
+              <td>54</td><td>18.1%</td><td>47</td>
+              <td style="color:#22c55e; font-weight:700;">87.0%</td>
+            </tr>
+            <tr>
+              <td><strong style="color:#A09890;">Legacy AX 2009</strong></td>
+              <td>12</td><td>4.0%</td><td>7</td>
+              <td style="color:#D4A006; font-weight:700;">58.3%</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="metric-row" style="margin-top:14px;">
+          <div class="metric-card" style="text-align:center; padding:12px;">
+            <div class="big-number" style="font-size:1.6rem; color:#BE2024;">77.9%</div>
+            <div class="label">Platform</div>
+          </div>
+          <div class="metric-card" style="text-align:center; padding:12px;">
+            <div class="big-number" style="font-size:1.6rem; color:#D4A006;">18.1%</div>
+            <div class="label">Business</div>
+          </div>
+          <div class="metric-card" style="text-align:center; padding:12px;">
+            <div class="big-number" style="font-size:1.6rem; color:#A09890;">4.0%</div>
+            <div class="label">Legacy AX</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight-box amber fade-in" style="margin-top:16px;">
+      <span class="insight-label">Key Insight</span>
+      <strong>Sprint 133 was 78% Platform work</strong> &mdash; the highest platform concentration this quarter, driven by Preview Environment deployments (Grzegorz, Jacek, Mateusz), Dynamic Lookup framework (Marcin), GitHub migration completion (Adam, Dariusz), and EventFlow end-to-end testing (Thomas). Business features accounted for 18% with strong 87% completion. Legacy AX at only 4% (12 items) with 58.3% completion &mdash; AX work continues to lag.
+    </div>
+
+    <div class="insight-box green fade-in">
+      <span class="insight-label">Platform Highlights This Sprint</span>
+      <strong>Platform delivered at 84.5%</strong> across 233 items. Key completions: Preview Environment pipelines &amp; Kustomize overlays (Grzegorz), Dynamic Lookup &amp; Validation framework (Marcin, 5 PBIs), GitHub monorepo migration (Adam), LocalDependencies updates across 8 services (Dariusz), 18 EventFlow bugs fixed (Thomas), Landing Page Builder stabilization (13 bugs by Tymoteusz, 10 by Marcin).
+    </div>
+  </div>
+  <div class="slide-footer">Sprint 133 Recap &nbsp;|&nbsp; MTech Platform Team &nbsp;|&nbsp; Confidential</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- SECTION 8: TEAM A PERFORMANCE -->
+<!-- ============================================================== -->
+<section class="slide" id="slide-7">
+  <div class="slide-number">08 / 11</div>
   <div class="section-header fade-in">
     <h3>Delivery Team A</h3>
     <h2>Individual Performance &mdash; Team A</h2>
@@ -868,10 +941,10 @@
 </section>
 
 <!-- ============================================================== -->
-<!-- SECTION 8: TEAM B PERFORMANCE -->
+<!-- SECTION 9: TEAM B PERFORMANCE -->
 <!-- ============================================================== -->
-<section class="slide" id="slide-7">
-  <div class="slide-number">08 / 10</div>
+<section class="slide" id="slide-8">
+  <div class="slide-number">09 / 11</div>
   <div class="section-header fade-in">
     <h3>Delivery Team B</h3>
     <h2>Individual Performance &mdash; Team B</h2>
@@ -1007,10 +1080,10 @@
 </section>
 
 <!-- ============================================================== -->
-<!-- SECTION 9: SHARED MEMBERS -->
+<!-- SECTION 10: SHARED MEMBERS -->
 <!-- ============================================================== -->
-<section class="slide" id="slide-8">
-  <div class="slide-number">09 / 10</div>
+<section class="slide" id="slide-9">
+  <div class="slide-number">10 / 11</div>
   <div class="section-header fade-in">
     <h3>Shared Members</h3>
     <h2>Cross-Team Contributors</h2>
@@ -1089,10 +1162,10 @@
 </section>
 
 <!-- ============================================================== -->
-<!-- SECTION 10: KEY FINDINGS & NEXT SPRINT -->
+<!-- SECTION 11: KEY FINDINGS & NEXT SPRINT -->
 <!-- ============================================================== -->
-<section class="slide" id="slide-9">
-  <div class="slide-number">10 / 10</div>
+<section class="slide" id="slide-10">
+  <div class="slide-number">11 / 11</div>
   <div class="section-header fade-in">
     <h3>Key Findings &amp; Next Sprint</h3>
     <h2>What Matters Most &mdash; Sprint 134 Outlook</h2>
@@ -1409,6 +1482,28 @@ new Chart(document.getElementById('scopeBreakdownChart'), {
     plugins: {
       legend: { position: 'right', labels: { font: { size: 11 }, padding: 12 } },
       title: { display: false }
+    }
+  }
+});
+
+// ===== WORK CATEGORY DONUT (Section 7) =====
+new Chart(document.getElementById('categoryDonutChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Platform (77.9%)', 'Business (18.1%)', 'Legacy AX 2009 (4.0%)'],
+    datasets: [{
+      data: [233, 54, 12],
+      backgroundColor: ['#BE2024', '#D4A006', '#787068'],
+      borderColor: '#1A1A2E',
+      borderWidth: 3,
+      hoverOffset: 8
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    cutout: '55%',
+    plugins: {
+      legend: { position: 'bottom', labels: { color: '#A09890', padding: 12, font: { size: 11 } } }
     }
   }
 });

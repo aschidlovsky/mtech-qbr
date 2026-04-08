@@ -271,18 +271,19 @@
   <button class="nav-dot" onclick="goTo(3)"><span class="tooltip">Initiative Tracker</span></button>
   <button class="nav-dot" onclick="goTo(4)"><span class="tooltip">Bug Hotspots</span></button>
   <button class="nav-dot" onclick="goTo(5)"><span class="tooltip">Scope Creep</span></button>
-  <button class="nav-dot" onclick="goTo(6)"><span class="tooltip">Team A Performance</span></button>
-  <button class="nav-dot" onclick="goTo(7)"><span class="tooltip">Team B Performance</span></button>
-  <button class="nav-dot" onclick="goTo(8)"><span class="tooltip">Shared Members</span></button>
-  <button class="nav-dot" onclick="goTo(9)"><span class="tooltip">Key Findings</span></button>
-  <button class="nav-dot" onclick="goTo(10)"><span class="tooltip">Next Quarter</span></button>
+  <button class="nav-dot" onclick="goTo(6)"><span class="tooltip">Work Categories</span></button>
+  <button class="nav-dot" onclick="goTo(7)"><span class="tooltip">Team A Performance</span></button>
+  <button class="nav-dot" onclick="goTo(8)"><span class="tooltip">Team B Performance</span></button>
+  <button class="nav-dot" onclick="goTo(9)"><span class="tooltip">Shared Members</span></button>
+  <button class="nav-dot" onclick="goTo(10)"><span class="tooltip">Key Findings</span></button>
+  <button class="nav-dot" onclick="goTo(11)"><span class="tooltip">Next Quarter</span></button>
 </nav>
 
 <!-- ============================================================== -->
 <!-- SECTION 1: EXECUTIVE SUMMARY -->
 <!-- ============================================================== -->
 <section class="slide title-slide" id="slide-0">
-  <div class="slide-number">01 / 11</div>
+  <div class="slide-number">01 / 12</div>
   <div class="fade-in">
     <div class="title-logo">MT</div>
     <h1>MTech Platform Team</h1>
@@ -332,7 +333,7 @@
 <!-- SECTION 2: THROUGHPUT & VELOCITY -->
 <!-- ============================================================== -->
 <section class="slide" id="slide-1">
-  <div class="slide-number">02 / 11</div>
+  <div class="slide-number">02 / 12</div>
   <div class="section-header fade-in">
     <h3>Throughput & Velocity</h3>
     <h2>Sprint-over-Sprint Delivery Trend</h2>
@@ -379,7 +380,7 @@
 <!-- SECTION 3: EFFORT ALLOCATION -->
 <!-- ============================================================== -->
 <section class="slide" id="slide-2">
-  <div class="slide-number">03 / 11</div>
+  <div class="slide-number">03 / 12</div>
   <div class="section-header fade-in">
     <h3>Effort Allocation</h3>
     <h2>Where Is the Team's Time Going?</h2>
@@ -432,7 +433,7 @@
 <!-- SECTION 4: INITIATIVE TRACKER -->
 <!-- ============================================================== -->
 <section class="slide" id="slide-3">
-  <div class="slide-number">04 / 11</div>
+  <div class="slide-number">04 / 12</div>
   <div class="section-header fade-in">
     <h3>Initiative Tracker</h3>
     <h2>What Did We Build This Quarter?</h2>
@@ -551,7 +552,7 @@
 <!-- SECTION 5: BUG HOTSPOT ANALYSIS -->
 <!-- ============================================================== -->
 <section class="slide" id="slide-4">
-  <div class="slide-number">05 / 11</div>
+  <div class="slide-number">05 / 12</div>
   <div class="section-header fade-in">
     <h3>Bug Hotspot Analysis</h3>
     <h2>Where Are Defects Concentrated?</h2>
@@ -595,7 +596,7 @@
 <!-- SECTION 6: SCOPE CREEP ANALYSIS -->
 <!-- ============================================================== -->
 <section class="slide" id="slide-5">
-  <div class="slide-number">06 / 11</div>
+  <div class="slide-number">06 / 12</div>
   <div class="section-header fade-in">
     <h3>Scope Creep &amp; Mid-Sprint Discovery</h3>
     <h2>What's Really Being Added Mid-Sprint?</h2>
@@ -649,10 +650,113 @@
 </section>
 
 <!-- ============================================================== -->
-<!-- SECTION 7: TEAM A PERFORMANCE -->
+<!-- SECTION 7: WORK CATEGORY ANALYSIS -->
 <!-- ============================================================== -->
 <section class="slide" id="slide-6">
-  <div class="slide-number">07 / 11</div>
+  <div class="slide-number">07 / 12</div>
+  <div class="section-header fade-in">
+    <h3>Work Category Analysis</h3>
+    <h2>Platform vs. Business vs. Legacy AX 2009</h2>
+    <p class="subtitle">Where engineering effort is going across all 6 sprints</p>
+  </div>
+
+  <div class="scroll-inner">
+    <div class="two-col fade-in">
+      <div>
+        <div class="chart-container" style="max-width:100%; height:280px;">
+          <canvas id="categoryDonutChart"></canvas>
+        </div>
+      </div>
+      <div>
+        <table class="data-table">
+          <thead>
+            <tr><th>Category</th><th>Items</th><th>% Total</th><th>Done</th><th>Done %</th><th>Bug Ratio</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color:#BE2024;">Platform</strong></td>
+              <td>1,201</td><td>67.5%</td><td>894</td>
+              <td style="color:#22c55e; font-weight:700;">74.4%</td>
+              <td>47.2%</td>
+            </tr>
+            <tr>
+              <td><strong style="color:#D4A006;">Business</strong></td>
+              <td>428</td><td>24.1%</td><td>338</td>
+              <td style="color:#22c55e; font-weight:700;">79.0%</td>
+              <td style="color:#FF6B6B; font-weight:700;">68.8%</td>
+            </tr>
+            <tr>
+              <td><strong style="color:#A09890;">Legacy AX 2009</strong></td>
+              <td>149</td><td>8.4%</td><td>72</td>
+              <td style="color:#FF6B6B; font-weight:700;">48.3%</td>
+              <td>36.8%</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="metric-row" style="margin-top:16px;">
+          <div class="metric-card" style="text-align:center; padding:14px;">
+            <div class="big-number" style="font-size:1.8rem; color:#BE2024;">67.5%</div>
+            <div class="label">Platform Work</div>
+          </div>
+          <div class="metric-card" style="text-align:center; padding:14px;">
+            <div class="big-number" style="font-size:1.8rem; color:#D4A006;">24.1%</div>
+            <div class="label">Business Work</div>
+          </div>
+          <div class="metric-card" style="text-align:center; padding:14px;">
+            <div class="big-number" style="font-size:1.8rem; color:#A09890;">8.4%</div>
+            <div class="label">Legacy AX</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Per-sprint stacked bar -->
+    <div class="chart-container wide fade-in" style="height:250px; margin-top:20px;">
+      <canvas id="categorySprintChart"></canvas>
+    </div>
+
+    <!-- Person allocation table -->
+    <h4 style="margin-top:24px; margin-bottom:8px;">Team Member Allocation</h4>
+    <table class="data-table fade-in">
+      <thead>
+        <tr><th>Name</th><th>Platform</th><th>Business</th><th>Legacy AX</th><th>Primary Focus</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Thomas Holland</td><td>196/216 (96%)</td><td>4/4 (2%)</td><td>2/4 (2%)</td><td><span class="rag rag-red" style="background:rgba(190,32,36,0.15); color:#BE2024; border-color:rgba(190,32,36,0.3);">Platform</span></td></tr>
+        <tr><td>Dariusz Uchman</td><td>87/89 (100%)</td><td>&mdash;</td><td>&mdash;</td><td><span class="rag rag-red" style="background:rgba(190,32,36,0.15); color:#BE2024; border-color:rgba(190,32,36,0.3);">Platform</span></td></tr>
+        <tr><td>Adam Wojciechowski</td><td>58/68 (97%)</td><td>0/2 (3%)</td><td>&mdash;</td><td><span class="rag rag-red" style="background:rgba(190,32,36,0.15); color:#BE2024; border-color:rgba(190,32,36,0.3);">Platform</span></td></tr>
+        <tr><td>Jacek Smigiel</td><td>68/85 (96%)</td><td>2/4 (4%)</td><td>&mdash;</td><td><span class="rag rag-red" style="background:rgba(190,32,36,0.15); color:#BE2024; border-color:rgba(190,32,36,0.3);">Platform</span></td></tr>
+        <tr><td>Marcin Miazga</td><td>116/144 (94%)</td><td>5/7 (5%)</td><td>1/2 (1%)</td><td><span class="rag rag-red" style="background:rgba(190,32,36,0.15); color:#BE2024; border-color:rgba(190,32,36,0.3);">Platform</span></td></tr>
+        <tr><td>Grzegorz Giera</td><td>42/43 (88%)</td><td>4/4 (8%)</td><td>0/2 (4%)</td><td><span class="rag rag-red" style="background:rgba(190,32,36,0.15); color:#BE2024; border-color:rgba(190,32,36,0.3);">Platform</span></td></tr>
+        <tr><td>Tymoteusz Tracz</td><td>108/133 (82%)</td><td>29/30 (18%)</td><td>&mdash;</td><td><span class="rag rag-red" style="background:rgba(190,32,36,0.15); color:#BE2024; border-color:rgba(190,32,36,0.3);">Platform</span></td></tr>
+        <tr><td>Kamil Trescinski</td><td>80/89 (72%)</td><td>34/34 (28%)</td><td>&mdash;</td><td><span class="rag rag-red" style="background:rgba(190,32,36,0.15); color:#BE2024; border-color:rgba(190,32,36,0.3);">Platform</span></td></tr>
+        <tr><td>Mateusz Janiszewski</td><td>21/32 (70%)</td><td>11/14 (30%)</td><td>&mdash;</td><td><span class="rag rag-red" style="background:rgba(190,32,36,0.15); color:#BE2024; border-color:rgba(190,32,36,0.3);">Platform</span></td></tr>
+        <tr><td>Joshua Hise</td><td>4/4 (3%)</td><td>76/109 (82%)</td><td>20/20 (15%)</td><td><span class="rag rag-amber">Business</span></td></tr>
+        <tr><td>Clint Wilkes</td><td>14/20 (13%)</td><td>93/102 (68%)</td><td>18/27 (18%)</td><td><span class="rag rag-amber">Business</span></td></tr>
+        <tr><td>Justin Barreira</td><td>5/5 (5%)</td><td>68/74 (67%)</td><td>11/31 (28%)</td><td><span class="rag rag-amber">Business</span></td></tr>
+        <tr><td>Alec Schidlovsky</td><td>10/26 (90%)</td><td>1/3 (10%)</td><td>&mdash;</td><td><span class="rag rag-red" style="background:rgba(190,32,36,0.15); color:#BE2024; border-color:rgba(190,32,36,0.3);">Platform</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="insight-box amber fade-in" style="margin-top:16px;">
+      <span class="insight-label">Key Insight</span>
+      <strong>Two-thirds of all engineering effort is Platform work.</strong> 10 of 13 team members spend 70%+ on platform infrastructure (EventFlow, GitHub Migration, Metadata, Preview Environments, Landing Page Builder, CRUD Library). Only 3 members &mdash; Joshua Hise, Clint Wilkes, and Justin Barreira &mdash; are primarily delivering business features and forms. Business work has the highest completion rate (79.0%) but the worst bug ratio (68.8%). Legacy AX 2009 at 48.3% completion is the weakest area &mdash; items linger in Coding/Testing states with Justin Barreira carrying most of that load.
+    </div>
+
+    <div class="insight-box green fade-in">
+      <span class="insight-label">Platform Highlights</span>
+      <strong>Top platform sub-areas:</strong> GitHub/Dev Experience (98.3% done, 222 items) led the quarter. EventFlow ecosystem (386 items across Batch Jobs, Core, Change Feed, Segmentation) is at 73.4%. Landing Page Builder (141 items, 59.6% done) is the platform area with the most quality debt &mdash; 73 bugs with zero PBIs.
+    </div>
+  </div>
+  <div class="slide-footer">MTech QBR &nbsp;|&nbsp; Q1 2026 &nbsp;|&nbsp; Confidential</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- SECTION 8: TEAM A PERFORMANCE -->
+<!-- ============================================================== -->
+<section class="slide" id="slide-7">
+  <div class="slide-number">08 / 12</div>
   <div class="section-header fade-in">
     <h3>Delivery Team A</h3>
     <h2>Individual Performance &mdash; Team A</h2>
@@ -752,10 +856,10 @@
 </section>
 
 <!-- ============================================================== -->
-<!-- SECTION 8: TEAM B PERFORMANCE -->
+<!-- SECTION 9: TEAM B PERFORMANCE -->
 <!-- ============================================================== -->
-<section class="slide" id="slide-7">
-  <div class="slide-number">08 / 11</div>
+<section class="slide" id="slide-8">
+  <div class="slide-number">09 / 12</div>
   <div class="section-header fade-in">
     <h3>Delivery Team B</h3>
     <h2>Individual Performance &mdash; Team B</h2>
@@ -899,8 +1003,8 @@
 <!-- ============================================================== -->
 <!-- SECTION 9: SHARED MEMBERS -->
 <!-- ============================================================== -->
-<section class="slide" id="slide-8">
-  <div class="slide-number">09 / 11</div>
+<section class="slide" id="slide-9">
+  <div class="slide-number">10 / 12</div>
   <div class="section-header fade-in">
     <h3>Shared Members</h3>
     <h2>Cross-Team Contributors</h2>
@@ -980,8 +1084,8 @@
 <!-- ============================================================== -->
 <!-- SECTION 10: KEY FINDINGS & RECOMMENDATIONS -->
 <!-- ============================================================== -->
-<section class="slide" id="slide-9">
-  <div class="slide-number">10 / 11</div>
+<section class="slide" id="slide-10">
+  <div class="slide-number">11 / 12</div>
   <div class="section-header fade-in">
     <h3>Key Findings & Recommendations</h3>
     <h2>The 8 Things That Matter Most</h2>
@@ -1053,10 +1157,10 @@
 </section>
 
 <!-- ============================================================== -->
-<!-- SECTION 11: NEXT QUARTER PRIORITIES -->
+<!-- SECTION 12: NEXT QUARTER PRIORITIES -->
 <!-- ============================================================== -->
-<section class="slide" id="slide-10">
-  <div class="slide-number">11 / 11</div>
+<section class="slide" id="slide-11">
+  <div class="slide-number">12 / 12</div>
   <div class="section-header fade-in">
     <h3>Looking Ahead</h3>
     <h2>Recommended Q2 2026 Priorities</h2>
@@ -1287,6 +1391,49 @@ new Chart(document.getElementById('scopeCreepChart'), {
       x: { stacked: true, grid: { color: gridColor } },
       y: { stacked: true, grid: { color: gridColor }, title: { display: true, text: 'Items Added Mid-Sprint' } },
       pct: { position: 'right', grid: { display: false }, min: 0, max: 50, ticks: { callback: v => v + '%' }, title: { display: true, text: 'Scope Creep %' } }
+    }
+  }
+});
+
+// ===== WORK CATEGORY DONUT =====
+new Chart(document.getElementById('categoryDonutChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Platform (67.5%)', 'Business (24.1%)', 'Legacy AX 2009 (8.4%)'],
+    datasets: [{
+      data: [1201, 428, 149],
+      backgroundColor: ['#BE2024', '#D4A006', '#787068'],
+      borderColor: '#1A1A2E',
+      borderWidth: 3,
+      hoverOffset: 8
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    cutout: '55%',
+    plugins: {
+      legend: { position: 'bottom', labels: { color: '#A09890', padding: 12, font: { size: 11 } } }
+    }
+  }
+});
+
+// ===== WORK CATEGORY PER SPRINT STACKED BAR =====
+new Chart(document.getElementById('categorySprintChart'), {
+  type: 'bar',
+  data: {
+    labels: sprintLabels,
+    datasets: [
+      { label: 'Platform', data: [190,177,243,143,233,215], backgroundColor: 'rgba(190,32,36,0.6)', borderColor: '#BE2024', borderWidth: 1, borderRadius: 3 },
+      { label: 'Business', data: [150,93,40,32,54,59], backgroundColor: 'rgba(212,160,6,0.6)', borderColor: '#D4A006', borderWidth: 1, borderRadius: 3 },
+      { label: 'Legacy AX 2009', data: [19,26,29,10,12,53], backgroundColor: 'rgba(120,112,104,0.6)', borderColor: '#787068', borderWidth: 1, borderRadius: 3 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'bottom', labels: { color: '#A09890' } }, title: { display: true, text: 'Work Items by Category per Sprint', color: '#A09890' } },
+    scales: {
+      x: { stacked: true, grid: { color: 'rgba(59,59,82,0.5)' } },
+      y: { stacked: true, grid: { color: 'rgba(59,59,82,0.5)' }, title: { display: true, text: 'Items', color: '#A09890' } }
     }
   }
 });
