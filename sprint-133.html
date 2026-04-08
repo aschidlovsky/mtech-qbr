@@ -11,9 +11,9 @@
   html { scroll-snap-type: y mandatory; scroll-behavior: smooth; font-size: 16px; }
   body {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-    background: #0f172a; color: #e2e8f0; line-height: 1.5; overflow-x: hidden;
+    background: #121212; color: #E8E4E0; line-height: 1.5; overflow-x: hidden;
   }
-  a { color: #06b6d4; text-decoration: none; }
+  a { color: #BE2024; text-decoration: none; }
 
   /* ===== SECTIONS / SLIDES ===== */
   .slide {
@@ -23,11 +23,11 @@
   }
   .slide-number {
     position: absolute; top: 24px; left: 30px; font-size: 0.75rem;
-    color: #475569; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: #4A4A4A; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
   }
   .slide-footer {
     position: absolute; bottom: 18px; left: 0; right: 0; text-align: center;
-    font-size: 0.7rem; color: #334155; letter-spacing: 1.5px; text-transform: uppercase;
+    font-size: 0.7rem; color: #333333; letter-spacing: 1.5px; text-transform: uppercase;
   }
 
   /* ===== NAV DOTS ===== */
@@ -36,25 +36,25 @@
     display: flex; flex-direction: column; gap: 10px; z-index: 1000;
   }
   .nav-dot {
-    width: 10px; height: 10px; border-radius: 50%; background: #334155;
+    width: 10px; height: 10px; border-radius: 50%; background: #333333;
     cursor: pointer; transition: all 0.3s; border: none; outline: none;
     position: relative;
   }
-  .nav-dot:hover, .nav-dot.active { background: #06b6d4; transform: scale(1.4); }
+  .nav-dot:hover, .nav-dot.active { background: #BE2024; transform: scale(1.4); }
   .nav-dot .tooltip {
     position: absolute; right: 22px; top: 50%; transform: translateY(-50%);
-    background: #1e293b; color: #e2e8f0; padding: 4px 10px; border-radius: 4px;
+    background: #1E1E1E; color: #E8E4E0; padding: 4px 10px; border-radius: 4px;
     font-size: 0.7rem; white-space: nowrap; opacity: 0; pointer-events: none;
-    transition: opacity 0.2s; border: 1px solid #334155;
+    transition: opacity 0.2s; border: 1px solid #333333;
   }
   .nav-dot:hover .tooltip { opacity: 1; }
 
   /* ===== TYPOGRAPHY ===== */
-  h1 { font-size: 2.8rem; font-weight: 700; color: #f8fafc; line-height: 1.15; }
-  h2 { font-size: 1.9rem; font-weight: 700; color: #f8fafc; margin-bottom: 8px; }
-  h3 { font-size: 1.2rem; font-weight: 600; color: #06b6d4; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
-  h4 { font-size: 1rem; font-weight: 600; color: #f59e0b; margin-bottom: 4px; }
-  .subtitle { font-size: 1.15rem; color: #94a3b8; font-weight: 400; }
+  h1 { font-size: 2.8rem; font-weight: 700; color: #F5F2EF; line-height: 1.15; }
+  h2 { font-size: 1.9rem; font-weight: 700; color: #F5F2EF; margin-bottom: 8px; }
+  h3 { font-size: 1.2rem; font-weight: 600; color: #BE2024; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+  h4 { font-size: 1rem; font-weight: 600; color: #D4A006; margin-bottom: 4px; }
+  .subtitle { font-size: 1.15rem; color: #A09890; font-weight: 400; }
   .section-header { margin-bottom: 28px; }
   .section-header h2 { margin-bottom: 4px; }
   .section-header .subtitle { font-size: 0.95rem; }
@@ -62,46 +62,46 @@
   /* ===== METRIC CARDS ===== */
   .metric-row { display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0; }
   .metric-card {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-    border: 1px solid #334155; border-radius: 12px; padding: 24px 28px;
+    background: linear-gradient(135deg, #1E1E1E 0%, #121212 100%);
+    border: 1px solid #333333; border-radius: 12px; padding: 24px 28px;
     flex: 1; min-width: 200px; position: relative; overflow: hidden;
     transition: transform 0.2s, border-color 0.2s;
   }
-  .metric-card:hover { transform: translateY(-2px); border-color: #475569; }
-  .metric-card .big-number { font-size: 2.6rem; font-weight: 800; color: #f8fafc; line-height: 1.1; }
-  .metric-card .label { font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
-  .metric-card.teal .big-number { color: #06b6d4; }
-  .metric-card.amber .big-number { color: #f59e0b; }
+  .metric-card:hover { transform: translateY(-2px); border-color: #4A4A4A; }
+  .metric-card .big-number { font-size: 2.6rem; font-weight: 800; color: #F5F2EF; line-height: 1.1; }
+  .metric-card .label { font-size: 0.8rem; color: #A09890; text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+  .metric-card.teal .big-number { color: #BE2024; }
+  .metric-card.amber .big-number { color: #D4A006; }
   .metric-card.green .big-number { color: #22c55e; }
-  .metric-card.red .big-number { color: #ef4444; }
+  .metric-card.red .big-number { color: #FF6B6B; }
   .metric-card::after {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, #06b6d4, #f59e0b); opacity: 0.6;
+    background: linear-gradient(90deg, #BE2024, #D4A006); opacity: 0.6;
   }
 
   /* ===== INSIGHT BOXES ===== */
   .insight-box {
-    background: rgba(6,182,212,0.06); border-left: 4px solid #06b6d4;
+    background: rgba(190,32,36,0.06); border-left: 4px solid #BE2024;
     padding: 18px 22px; border-radius: 0 8px 8px 0; margin: 18px 0;
-    font-size: 0.9rem; color: #cbd5e1; line-height: 1.65;
+    font-size: 0.9rem; color: #D0C8C0; line-height: 1.65;
   }
-  .insight-box.amber { background: rgba(245,158,11,0.06); border-left-color: #f59e0b; }
-  .insight-box.red { background: rgba(239,68,68,0.06); border-left-color: #ef4444; }
+  .insight-box.amber { background: rgba(212,160,6,0.06); border-left-color: #D4A006; }
+  .insight-box.red { background: rgba(255,107,107,0.06); border-left-color: #FF6B6B; }
   .insight-box.green { background: rgba(34,197,94,0.06); border-left-color: #22c55e; }
-  .insight-box strong { color: #f8fafc; }
+  .insight-box strong { color: #F5F2EF; }
   .insight-box .insight-label {
     font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px;
-    color: #06b6d4; font-weight: 700; margin-bottom: 6px; display: block;
+    color: #BE2024; font-weight: 700; margin-bottom: 6px; display: block;
   }
-  .insight-box.amber .insight-label { color: #f59e0b; }
-  .insight-box.red .insight-label { color: #ef4444; }
+  .insight-box.amber .insight-label { color: #D4A006; }
+  .insight-box.red .insight-label { color: #FF6B6B; }
   .insight-box.green .insight-label { color: #22c55e; }
 
   /* ===== RAG BADGES ===== */
   .rag { display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
   .rag-green { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
-  .rag-amber { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
-  .rag-red { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+  .rag-amber { background: rgba(212,160,6,0.15); color: #D4A006; border: 1px solid rgba(212,160,6,0.3); }
+  .rag-red { background: rgba(255,107,107,0.15); color: #FF6B6B; border: 1px solid rgba(255,107,107,0.3); }
 
   /* ===== HEALTH BADGE ===== */
   .health-badge {
@@ -112,30 +112,30 @@
     background: rgba(34,197,94,0.1); border: 2px solid #22c55e; color: #22c55e;
   }
   .health-badge.amber-health {
-    background: rgba(245,158,11,0.1); border: 2px solid #f59e0b; color: #f59e0b;
+    background: rgba(212,160,6,0.1); border: 2px solid #D4A006; color: #D4A006;
   }
   .health-dot { width: 14px; height: 14px; border-radius: 50%; animation: pulse 2s infinite; }
   .health-dot.green { background: #22c55e; }
-  .health-dot.amber { background: #f59e0b; }
+  .health-dot.amber { background: #D4A006; }
   @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
 
   /* ===== TABLES ===== */
   .data-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin: 12px 0; }
   .data-table th {
-    text-align: left; padding: 10px 14px; background: #1e293b; color: #94a3b8;
+    text-align: left; padding: 10px 14px; background: #1E1E1E; color: #A09890;
     font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.72rem;
-    border-bottom: 2px solid #334155;
+    border-bottom: 2px solid #333333;
   }
-  .data-table td { padding: 10px 14px; border-bottom: 1px solid #1e293b; }
+  .data-table td { padding: 10px 14px; border-bottom: 1px solid #1E1E1E; }
   .data-table tbody tr:nth-child(even) { background: rgba(30,41,59,0.4); }
-  .data-table tbody tr:hover { background: rgba(6,182,212,0.05); }
+  .data-table tbody tr:hover { background: rgba(190,32,36,0.05); }
 
   /* ===== PROGRESS BAR ===== */
-  .progress-bar { background: #1e293b; border-radius: 6px; height: 8px; overflow: hidden; width: 100%; min-width: 80px; }
+  .progress-bar { background: #1E1E1E; border-radius: 6px; height: 8px; overflow: hidden; width: 100%; min-width: 80px; }
   .progress-fill { height: 100%; border-radius: 6px; transition: width 1s ease; }
   .progress-fill.green { background: linear-gradient(90deg, #22c55e, #16a34a); }
-  .progress-fill.amber { background: linear-gradient(90deg, #f59e0b, #d97706); }
-  .progress-fill.red { background: linear-gradient(90deg, #ef4444, #dc2626); }
+  .progress-fill.amber { background: linear-gradient(90deg, #D4A006, #B8890A); }
+  .progress-fill.red { background: linear-gradient(90deg, #FF6B6B, #E85454); }
 
   /* ===== CHART CONTAINERS ===== */
   .chart-container { position: relative; width: 100%; max-width: 900px; margin: 10px auto; }
@@ -146,102 +146,102 @@
   /* ===== PERSON CARDS ===== */
   .person-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 18px; }
   .person-card {
-    background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 20px;
+    background: #1E1E1E; border: 1px solid #333333; border-radius: 10px; padding: 20px;
     transition: border-color 0.2s;
   }
-  .person-card:hover { border-color: #475569; }
+  .person-card:hover { border-color: #4A4A4A; }
   .person-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
   .avatar {
     width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center;
-    justify-content: center; font-weight: 700; font-size: 0.85rem; color: #0f172a; flex-shrink: 0;
+    justify-content: center; font-weight: 700; font-size: 0.85rem; color: #121212; flex-shrink: 0;
   }
-  .avatar.teal { background: #06b6d4; }
-  .avatar.amber { background: #f59e0b; }
+  .avatar.teal { background: #BE2024; }
+  .avatar.amber { background: #D4A006; }
   .avatar.green { background: #22c55e; }
-  .avatar.slate { background: #64748b; }
-  .person-name { font-weight: 700; color: #f8fafc; font-size: 1rem; }
-  .person-role { font-size: 0.75rem; color: #94a3b8; }
+  .avatar.slate { background: #787068; }
+  .person-name { font-weight: 700; color: #F5F2EF; font-size: 1rem; }
+  .person-role { font-size: 0.75rem; color: #A09890; }
   .person-stats { display: flex; gap: 16px; margin: 10px 0; flex-wrap: wrap; }
   .person-stat { text-align: center; }
-  .person-stat .val { font-size: 1.3rem; font-weight: 800; color: #f8fafc; }
-  .person-stat .lbl { font-size: 0.65rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
-  .person-narrative { font-size: 0.8rem; color: #94a3b8; line-height: 1.55; margin-top: 8px; }
-  .person-narrative strong { color: #cbd5e1; }
+  .person-stat .val { font-size: 1.3rem; font-weight: 800; color: #F5F2EF; }
+  .person-stat .lbl { font-size: 0.65rem; color: #787068; text-transform: uppercase; letter-spacing: 0.5px; }
+  .person-narrative { font-size: 0.8rem; color: #A09890; line-height: 1.55; margin-top: 8px; }
+  .person-narrative strong { color: #D0C8C0; }
   .mini-chart-container { height: 90px; margin: 8px 0; }
   .person-tag { display: inline-block; font-size: 0.65rem; padding: 1px 8px; border-radius: 3px; margin-right: 4px; margin-top: 4px; }
   .tag-up { background: rgba(34,197,94,0.15); color: #22c55e; }
-  .tag-down { background: rgba(239,68,68,0.15); color: #ef4444; }
-  .tag-stable { background: rgba(6,182,212,0.15); color: #06b6d4; }
-  .tag-star { background: rgba(245,158,11,0.15); color: #f59e0b; }
+  .tag-down { background: rgba(255,107,107,0.15); color: #FF6B6B; }
+  .tag-stable { background: rgba(190,32,36,0.15); color: #BE2024; }
+  .tag-star { background: rgba(212,160,6,0.15); color: #D4A006; }
   .tag-perfect { background: rgba(34,197,94,0.2); color: #22c55e; }
 
   /* ===== FINDINGS CARDS ===== */
   .finding-card {
-    background: #1e293b; border-radius: 10px; padding: 22px 26px; margin-bottom: 14px;
-    border-left: 4px solid #06b6d4; position: relative;
+    background: #1E1E1E; border-radius: 10px; padding: 22px 26px; margin-bottom: 14px;
+    border-left: 4px solid #BE2024; position: relative;
   }
-  .finding-card.critical { border-left-color: #ef4444; }
-  .finding-card.warning { border-left-color: #f59e0b; }
+  .finding-card.critical { border-left-color: #FF6B6B; }
+  .finding-card.warning { border-left-color: #D4A006; }
   .finding-card.success { border-left-color: #22c55e; }
-  .finding-card.observation { border-left-color: #06b6d4; }
+  .finding-card.observation { border-left-color: #BE2024; }
   .finding-number {
     position: absolute; top: 14px; right: 18px; font-size: 2rem;
     font-weight: 900; color: rgba(100,116,139,0.15);
   }
-  .finding-card h4 { font-size: 1rem; color: #f8fafc; margin-bottom: 6px; }
-  .finding-card p { font-size: 0.85rem; color: #94a3b8; line-height: 1.6; }
-  .finding-card .rec { font-size: 0.8rem; color: #06b6d4; margin-top: 8px; font-weight: 600; }
-  .finding-card.critical .rec { color: #ef4444; }
-  .finding-card.warning .rec { color: #f59e0b; }
+  .finding-card h4 { font-size: 1rem; color: #F5F2EF; margin-bottom: 6px; }
+  .finding-card p { font-size: 0.85rem; color: #A09890; line-height: 1.6; }
+  .finding-card .rec { font-size: 0.8rem; color: #BE2024; margin-top: 8px; font-weight: 600; }
+  .finding-card.critical .rec { color: #FF6B6B; }
+  .finding-card.warning .rec { color: #D4A006; }
   .finding-card.success .rec { color: #22c55e; }
 
   /* ===== PRIORITIES LIST ===== */
   .priority-list { list-style: none; counter-reset: priority; }
   .priority-item {
     counter-increment: priority; display: flex; align-items: flex-start; gap: 16px;
-    padding: 16px 20px; background: #1e293b; border-radius: 8px; margin-bottom: 10px;
-    border: 1px solid #334155;
+    padding: 16px 20px; background: #1E1E1E; border-radius: 8px; margin-bottom: 10px;
+    border: 1px solid #333333;
   }
   .priority-item::before {
     content: counter(priority); min-width: 36px; height: 36px; border-radius: 50%;
-    background: linear-gradient(135deg, #06b6d4, #0891b2); color: #0f172a;
+    background: linear-gradient(135deg, #BE2024, #9A1A1E); color: #121212;
     display: flex; align-items: center; justify-content: center;
     font-weight: 800; font-size: 0.9rem; flex-shrink: 0;
   }
   .priority-item .pri-text { flex: 1; }
-  .priority-item .pri-text strong { color: #f8fafc; }
-  .priority-item .pri-text p { font-size: 0.85rem; color: #94a3b8; margin-top: 2px; }
+  .priority-item .pri-text strong { color: #F5F2EF; }
+  .priority-item .pri-text p { font-size: 0.85rem; color: #A09890; margin-top: 2px; }
 
   /* ===== INITIATIVE CARDS ===== */
   .initiative-card {
-    background: #1e293b; border-radius: 10px; padding: 20px 24px; margin-bottom: 14px;
+    background: #1E1E1E; border-radius: 10px; padding: 20px 24px; margin-bottom: 14px;
     border-left: 4px solid #22c55e; position: relative;
   }
-  .initiative-card.partial { border-left-color: #f59e0b; }
-  .initiative-card h4 { font-size: 0.95rem; color: #f8fafc; margin-bottom: 6px; }
-  .initiative-card .init-meta { font-size: 0.75rem; color: #64748b; margin-bottom: 8px; }
+  .initiative-card.partial { border-left-color: #D4A006; }
+  .initiative-card h4 { font-size: 0.95rem; color: #F5F2EF; margin-bottom: 6px; }
+  .initiative-card .init-meta { font-size: 0.75rem; color: #787068; margin-bottom: 8px; }
   .initiative-card ul { list-style: none; padding: 0; margin: 0; }
-  .initiative-card li { font-size: 0.82rem; color: #94a3b8; padding: 3px 0; padding-left: 16px; position: relative; }
+  .initiative-card li { font-size: 0.82rem; color: #A09890; padding: 3px 0; padding-left: 16px; position: relative; }
   .initiative-card li::before { content: '\2713'; position: absolute; left: 0; color: #22c55e; font-weight: 700; font-size: 0.75rem; }
 
   /* ===== IMPACT GROUP ===== */
   .impact-group { margin-bottom: 20px; }
   .impact-group h4 { font-size: 0.9rem; margin-bottom: 10px; }
   .impact-item {
-    background: #1e293b; border-radius: 8px; padding: 12px 18px; margin-bottom: 8px;
-    border: 1px solid #334155; font-size: 0.82rem; color: #94a3b8;
+    background: #1E1E1E; border-radius: 8px; padding: 12px 18px; margin-bottom: 8px;
+    border: 1px solid #333333; font-size: 0.82rem; color: #A09890;
   }
-  .impact-item strong { color: #f8fafc; }
+  .impact-item strong { color: #F5F2EF; }
   .impact-item .status-tag {
     display: inline-block; font-size: 0.65rem; padding: 1px 8px; border-radius: 3px;
     margin-left: 6px; font-weight: 600;
   }
-  .status-in-progress { background: rgba(6,182,212,0.15); color: #06b6d4; }
-  .status-needs-attention { background: rgba(239,68,68,0.15); color: #ef4444; }
-  .status-coding { background: rgba(245,158,11,0.15); color: #f59e0b; }
+  .status-in-progress { background: rgba(190,32,36,0.15); color: #BE2024; }
+  .status-needs-attention { background: rgba(255,107,107,0.15); color: #FF6B6B; }
+  .status-coding { background: rgba(212,160,6,0.15); color: #D4A006; }
   .status-testing { background: rgba(139,92,246,0.15); color: #a78bfa; }
-  .status-new { background: rgba(100,116,139,0.15); color: #94a3b8; }
-  .status-removed { background: rgba(100,116,139,0.1); color: #64748b; }
+  .status-new { background: rgba(100,116,139,0.15); color: #A09890; }
+  .status-removed { background: rgba(100,116,139,0.1); color: #787068; }
 
   /* ===== TITLE SLIDE SPECIAL ===== */
   .title-slide { justify-content: center; align-items: center; text-align: center; }
@@ -249,17 +249,17 @@
   .title-slide .subtitle { font-size: 1.25rem; margin-bottom: 30px; }
   .title-logo {
     width: 80px; height: 80px; border-radius: 16px; margin-bottom: 24px;
-    background: linear-gradient(135deg, #06b6d4, #0891b2);
+    background: linear-gradient(135deg, #BE2024, #9A1A1E);
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.8rem; font-weight: 900; color: #0f172a;
+    font-size: 1.8rem; font-weight: 900; color: #121212;
   }
-  .title-divider { width: 80px; height: 3px; background: linear-gradient(90deg, #06b6d4, #f59e0b); margin: 0 auto 24px; border-radius: 2px; }
+  .title-divider { width: 80px; height: 3px; background: linear-gradient(90deg, #BE2024, #D4A006); margin: 0 auto 24px; border-radius: 2px; }
 
   /* ===== SCROLLABLE INNER ===== */
   .scroll-inner { overflow-y: auto; flex: 1; padding-right: 10px; }
   .scroll-inner::-webkit-scrollbar { width: 5px; }
   .scroll-inner::-webkit-scrollbar-track { background: transparent; }
-  .scroll-inner::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+  .scroll-inner::-webkit-scrollbar-thumb { background: #333333; border-radius: 4px; }
 
   /* ===== TWO-COL LAYOUT ===== */
   .two-col { display: flex; gap: 30px; flex-wrap: wrap; }
@@ -267,9 +267,9 @@
 
   /* ===== SPRINT NOTE ===== */
   .sprint-note {
-    display: inline-flex; align-items: center; gap: 6px; background: rgba(245,158,11,0.1);
-    border: 1px solid rgba(245,158,11,0.3); border-radius: 6px; padding: 6px 14px;
-    font-size: 0.78rem; color: #f59e0b; margin: 10px 0;
+    display: inline-flex; align-items: center; gap: 6px; background: rgba(212,160,6,0.1);
+    border: 1px solid rgba(212,160,6,0.3); border-radius: 6px; padding: 6px 14px;
+    font-size: 0.78rem; color: #D4A006; margin: 10px 0;
   }
 
   /* ===== ANIMATIONS ===== */
@@ -279,15 +279,15 @@
   /* ===== PRINT ===== */
   @media print {
     html { scroll-snap-type: none; }
-    body { background: #fff; color: #1e293b; }
+    body { background: #fff; color: #1E1E1E; }
     .slide { min-height: auto; page-break-after: always; padding: 30px; }
     #nav-dots { display: none; }
     .metric-card, .person-card, .finding-card, .priority-item, .insight-box, .initiative-card, .impact-item { border: 1px solid #ddd; background: #f8f9fa; }
-    .metric-card .big-number, h1, h2, .person-name, .finding-card h4 { color: #1e293b; }
+    .metric-card .big-number, h1, h2, .person-name, .finding-card h4 { color: #1E1E1E; }
     .data-table th { background: #e5e7eb; color: #374151; }
     .slide-footer { color: #9ca3af; }
-    h3 { color: #0891b2; }
-    .rag-green { color: #16a34a; } .rag-amber { color: #d97706; } .rag-red { color: #dc2626; }
+    h3 { color: #9A1A1E; }
+    .rag-green { color: #16a34a; } .rag-amber { color: #B8890A; } .rag-red { color: #E85454; }
   }
 
   @media (max-width: 768px) {
@@ -326,7 +326,7 @@
     <h1>Sprint 133 Recap</h1>
     <div class="title-divider"></div>
     <p class="subtitle">MTech Platform Team</p>
-    <p style="color:#64748b; font-size:0.9rem; margin-bottom: 32px;">March 16&ndash;27, 2026 &nbsp;|&nbsp; Completed</p>
+    <p style="color:#787068; font-size:0.9rem; margin-bottom: 32px;">March 16&ndash;27, 2026 &nbsp;|&nbsp; Completed</p>
 
     <div class="metric-row" style="max-width:900px; margin: 0 auto 24px;">
       <div class="metric-card teal">
@@ -351,7 +351,7 @@
       <div class="health-dot green"></div>
       SPRINT HEALTH: GREEN
     </div>
-    <p style="color:#64748b; font-size:0.78rem; margin-top:8px;">83.9% completion &nbsp;|&nbsp; 84.2% burn rate &nbsp;|&nbsp; Volume up 61.6% from Sprint 132</p>
+    <p style="color:#787068; font-size:0.78rem; margin-top:8px;">83.9% completion &nbsp;|&nbsp; 84.2% burn rate &nbsp;|&nbsp; Volume up 61.6% from Sprint 132</p>
 
     <div style="display:flex; gap:16px; max-width:900px; margin:24px auto 0; text-align:left; flex-wrap:wrap;">
       <div class="insight-box green" style="flex:1; min-width:240px;">
@@ -400,7 +400,7 @@
           </tr>
           <tr>
             <td><strong>Original Hours</strong></td><td>686h</td><td>926h</td>
-            <td style="color:#06b6d4;">+35.0%</td>
+            <td style="color:#BE2024;">+35.0%</td>
           </tr>
           <tr>
             <td><strong>Remaining Hours</strong></td><td>176h</td><td>146h</td>
@@ -412,11 +412,11 @@
           </tr>
           <tr>
             <td><strong>Bugs</strong></td><td>43 (23%)</td><td>81 (27%)</td>
-            <td style="color:#ef4444; font-weight:700;">+88.4%</td>
+            <td style="color:#FF6B6B; font-weight:700;">+88.4%</td>
           </tr>
           <tr>
             <td><strong>Features</strong></td><td>39 (21%)</td><td>49 (16%)</td>
-            <td style="color:#06b6d4;">+25.6%</td>
+            <td style="color:#BE2024;">+25.6%</td>
           </tr>
         </tbody>
       </table>
@@ -527,7 +527,7 @@
           <li>10 bugs fixed by Marcin (restore, delete version, missing pages)</li>
           <li>13 bugs fixed by Tymoteusz (empty states, popups, status buttons)</li>
           <li>Breadcrumbs, Draft removal, Handle missing pages</li>
-          <li style="color:#f59e0b;">4 items carried &mdash; including checkbox defaults bug</li>
+          <li style="color:#D4A006;">4 items carried &mdash; including checkbox defaults bug</li>
         </ul>
       </div>
 
@@ -539,7 +539,7 @@
           <li>DEV end to end change feed testing</li>
           <li>18 bugs fixed by Thomas (pipeline, config, version, trigger, action history)</li>
           <li>Persistent Menu State for Form Refresh (Tymoteusz)</li>
-          <li style="color:#f59e0b;">2 items carried &mdash; Segmentation + KEDA</li>
+          <li style="color:#D4A006;">2 items carried &mdash; Segmentation + KEDA</li>
         </ul>
       </div>
 
@@ -573,7 +573,7 @@
 
     <div class="impact-item" style="margin-bottom:16px; border-left: 3px solid #a78bfa;">
       <strong>[AXDev Testing] AX Dev Item #89540:</strong> ACK POLine Cancellation Job Causing Incorrect NetAmount/Totals
-      <br><span style="font-size:0.75rem; color:#64748b; margin-top:4px; display:inline-block;">Sandra Brodowski &mdash; Green/AX 2009</span>
+      <br><span style="font-size:0.75rem; color:#787068; margin-top:4px; display:inline-block;">Sandra Brodowski &mdash; Green/AX 2009</span>
       <span class="status-tag status-testing">AXDEV TESTING</span>
     </div>
 
@@ -609,47 +609,47 @@
       <div>
         <!-- High Impact -->
         <div class="impact-group">
-          <h4 style="color:#ef4444;">High Impact &mdash; Carries Into Sprint 134</h4>
+          <h4 style="color:#FF6B6B;">High Impact &mdash; Carries Into Sprint 134</h4>
           <div class="impact-item">
             <strong>Feature Environment Management UI</strong> <span class="status-tag status-in-progress">IN PROGRESS</span>
-            <br><span style="font-size:0.75rem; color:#64748b;">Jacek Smigiel &mdash; Needed for Preview Features initiative</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Jacek Smigiel &mdash; Needed for Preview Features initiative</span>
           </div>
           <div class="impact-item">
             <strong>Entity Change Request - Scope Set Feature</strong> <span class="status-tag status-in-progress">IN PROGRESS</span>
-            <br><span style="font-size:0.75rem; color:#64748b;">Jacek Smigiel &mdash; Multi-sprint initiative, FE done by Marcin, BE done, Feature wrapper still In Progress</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Jacek Smigiel &mdash; Multi-sprint initiative, FE done by Marcin, BE done, Feature wrapper still In Progress</span>
           </div>
           <div class="impact-item">
             <strong>EventFlow InternalEvents Segmentation</strong> <span class="status-tag status-in-progress">IN PROGRESS</span>
-            <br><span style="font-size:0.75rem; color:#64748b;">Thomas Holland &mdash; Prerequisite for Sprint 134's full Segmentation push</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Thomas Holland &mdash; Prerequisite for Sprint 134's full Segmentation push</span>
           </div>
           <div class="impact-item">
             <strong>KEDA in AKS</strong> <span class="status-tag status-in-progress">IN PROGRESS</span>
-            <br><span style="font-size:0.75rem; color:#64748b;">Thomas Holland &mdash; Long-running infrastructure initiative</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Thomas Holland &mdash; Long-running infrastructure initiative</span>
           </div>
           <div class="impact-item">
             <strong>Maintain Search Terms bug</strong> <span class="status-tag status-needs-attention">NEEDS ATTENTION</span>
-            <br><span style="font-size:0.75rem; color:#64748b;">Justin Barreira &mdash; Flagged for review</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Justin Barreira &mdash; Flagged for review</span>
           </div>
         </div>
 
         <!-- Medium Impact -->
         <div class="impact-group">
-          <h4 style="color:#f59e0b;">Medium Impact</h4>
+          <h4 style="color:#D4A006;">Medium Impact</h4>
           <div class="impact-item">
             <strong>AX Dev: New Class to Post WMS Lines</strong> <span class="status-tag status-coding">CODING</span>
-            <br><span style="font-size:0.75rem; color:#64748b;">Justin Barreira &mdash; Nearly done</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Justin Barreira &mdash; Nearly done</span>
           </div>
           <div class="impact-item">
             <strong>AX Dev: ACK POLine Cancellation</strong> <span class="status-tag status-testing">AXDEV TESTING</span>
-            <br><span style="font-size:0.75rem; color:#64748b;">Sandra Brodowski &mdash; In testing</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Sandra Brodowski &mdash; In testing</span>
           </div>
           <div class="impact-item">
             <strong>Refactor Summary Invoice &rarr; EventFlow</strong> <span class="status-tag status-new">NEW</span>
-            <br><span style="font-size:0.75rem; color:#64748b;">Thomas Holland &mdash; Not started</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Thomas Holland &mdash; Not started</span>
           </div>
           <div class="impact-item">
             <strong>ChangeFeed End to End testing</strong> <span class="status-tag status-new">NEW</span>
-            <br><span style="font-size:0.75rem; color:#64748b;">Thomas Holland &mdash; Test effort</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Thomas Holland &mdash; Test effort</span>
           </div>
         </div>
       </div>
@@ -657,24 +657,24 @@
       <div>
         <!-- Low Impact -->
         <div class="impact-group">
-          <h4 style="color:#64748b;">Low Impact / Removed</h4>
+          <h4 style="color:#787068;">Low Impact / Removed</h4>
           <div class="impact-item">
             <strong>5 items in Removed state</strong> <span class="status-tag status-removed">DESCOPED</span>
-            <br><span style="font-size:0.75rem; color:#64748b;">Removed from sprint scope during execution</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Removed from sprint scope during execution</span>
           </div>
           <div class="impact-item">
             <strong>2 Cannot Reproduce bugs</strong> <span class="status-tag status-removed">CLOSED</span>
-            <br><span style="font-size:0.75rem; color:#64748b;">Investigated, unable to reproduce &mdash; closed</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Investigated, unable to reproduce &mdash; closed</span>
           </div>
           <div class="impact-item">
             <strong>GCRUD dependencies for NTF Deployment</strong> <span class="status-tag status-new">NEW</span>
-            <br><span style="font-size:0.75rem; color:#64748b;">Alec Schidlovsky &mdash; Not started</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Alec Schidlovsky &mdash; Not started</span>
           </div>
         </div>
 
         <!-- Impact Chart -->
         <div style="margin-top:20px;">
-          <h4 style="color:#06b6d4; margin-bottom:12px;">Incomplete Items by Impact</h4>
+          <h4 style="color:#BE2024; margin-bottom:12px;">Incomplete Items by Impact</h4>
           <div class="chart-container" style="max-width:100%; height:220px; margin:0;">
             <canvas id="incompleteChart"></canvas>
           </div>
@@ -725,8 +725,8 @@
           <tr><th>Person</th><th>Bugs Found</th><th>Area</th><th>Context</th></tr>
         </thead>
         <tbody>
-          <tr style="background:rgba(239,68,68,0.06);">
-            <td><strong>Thomas Holland</strong></td><td style="color:#ef4444; font-weight:700;">16</td>
+          <tr style="background:rgba(255,107,107,0.06);">
+            <td><strong>Thomas Holland</strong></td><td style="color:#FF6B6B; font-weight:700;">16</td>
             <td>EventFlow</td><td style="font-size:0.75rem;">Found &amp; fixed within sprint</td>
           </tr>
           <tr>
@@ -780,7 +780,7 @@
     <div class="person-grid fade-in">
 
       <!-- Thomas Holland -->
-      <div class="person-card" style="border-top: 3px solid #f59e0b;">
+      <div class="person-card" style="border-top: 3px solid #D4A006;">
         <div class="person-header">
           <div class="avatar amber">TH</div>
           <div>
@@ -796,7 +796,7 @@
         <div class="mini-chart-container"><canvas id="miniTH"></canvas></div>
         <div class="person-narrative">
           <strong>Top:</strong> 18 bugs fixed + 1 PBI. Massive EventFlow testing effort. Found/fixed critical version bugs, pipeline issues, config bugs.<br>
-          <strong style="color:#f59e0b;">Not Done:</strong> EventFlow InternalEvents segmentation (In Progress), KEDA in AKS (In Progress), ChangeFeed E2E testing (New), Summary Invoice refactor (New), Summary Invoice bug (Cannot Reproduce)
+          <strong style="color:#D4A006;">Not Done:</strong> EventFlow InternalEvents segmentation (In Progress), KEDA in AKS (In Progress), ChangeFeed E2E testing (New), Summary Invoice refactor (New), Summary Invoice bug (Cannot Reproduce)
         </div>
       </div>
 
@@ -837,7 +837,7 @@
         <div class="mini-chart-container"><canvas id="miniJB"></canvas></div>
         <div class="person-narrative">
           <strong>Strong:</strong> 9 bugs fixed (contract types, GSA fields, descriptions, sorting, labels).<br>
-          <strong style="color:#f59e0b;">Not Done:</strong> AX Dev WMS posting class (Coding), Maintain Search Terms bug (Needs Attention), 3 other items.
+          <strong style="color:#D4A006;">Not Done:</strong> AX Dev WMS posting class (Coding), Maintain Search Terms bug (Needs Attention), 3 other items.
         </div>
       </div>
 
@@ -858,7 +858,7 @@
         <div class="mini-chart-container"><canvas id="miniCW"></canvas></div>
         <div class="person-narrative">
           <strong>Key:</strong> Email Generation Endpoint shipped (Notification System).<br>
-          <strong style="color:#f59e0b;">Not Done:</strong> 1 item (NTF-related, blocked).
+          <strong style="color:#D4A006;">Not Done:</strong> 1 item (NTF-related, blocked).
         </div>
       </div>
 
@@ -975,7 +975,7 @@
         <div class="mini-chart-container"><canvas id="miniJS"></canvas></div>
         <div class="person-narrative">
           <strong>Key:</strong> Preview Environment Backend + Frontend deployment (Features), Maintenance Duty Rotation, pipeline bug fix.<br>
-          <strong style="color:#f59e0b;">Not Done:</strong> Feature Environment Management UI (In Progress), Entity Change Request Scope Set Feature (In Progress).
+          <strong style="color:#D4A006;">Not Done:</strong> Feature Environment Management UI (In Progress), Entity Change Request Scope Set Feature (In Progress).
         </div>
       </div>
 
@@ -997,7 +997,7 @@
         <div class="mini-chart-container"><canvas id="miniMJ"></canvas></div>
         <div class="person-narrative">
           <strong>Key:</strong> Preview Reverse Proxy + Frontend Integration shipped.<br>
-          <strong style="color:#f59e0b;">Not Done:</strong> 1 item (error 500 on API, likely carried).
+          <strong style="color:#D4A006;">Not Done:</strong> 1 item (error 500 on API, likely carried).
         </div>
       </div>
 
@@ -1021,7 +1021,7 @@
     <div class="person-grid fade-in">
 
       <!-- Tymoteusz Tracz -->
-      <div class="person-card" style="border-top: 3px solid #06b6d4;">
+      <div class="person-card" style="border-top: 3px solid #BE2024;">
         <div class="person-header">
           <div class="avatar teal">TT</div>
           <div>
@@ -1038,7 +1038,7 @@
         <div class="mini-chart-container"><canvas id="miniTT"></canvas></div>
         <div class="person-narrative">
           <strong>Key:</strong> Landing Page Builder: 13 bugs fixed (empty states, popups, status buttons, breadcrumbs). EventFlow UI: Persistent Menu State, action buttons, manual run scheduling fixes.<br>
-          <strong style="color:#f59e0b;">Not Done:</strong> 1 task (Checkboxes defaulting to True &mdash; Needs Attention).
+          <strong style="color:#D4A006;">Not Done:</strong> 1 task (Checkboxes defaulting to True &mdash; Needs Attention).
         </div>
       </div>
 
@@ -1059,7 +1059,7 @@
         <div class="mini-chart-container"><canvas id="miniKT"></canvas></div>
         <div class="person-narrative">
           <strong>Key:</strong> Approval History Tab FE, 4 Entity Change Request bugs fixed.<br>
-          <strong style="color:#f59e0b;">Not Done:</strong> 1 testing item.
+          <strong style="color:#D4A006;">Not Done:</strong> 1 testing item.
         </div>
       </div>
 
@@ -1079,7 +1079,7 @@
         <div class="mini-chart-container"><canvas id="miniAS"></canvas></div>
         <div class="person-narrative">
           Management/oversight role. Low volume reflects coordination and review responsibilities.<br>
-          <strong style="color:#f59e0b;">Not Done:</strong> GCRUD dependencies for NTF Deployment (New).
+          <strong style="color:#D4A006;">Not Done:</strong> GCRUD dependencies for NTF Deployment (New).
         </div>
       </div>
 
@@ -1203,9 +1203,9 @@
     </div>
 
     <div style="text-align:center; margin-top:30px; padding: 30px 0;" class="fade-in">
-      <div style="width:80px; height:3px; background:linear-gradient(90deg,#06b6d4,#f59e0b); margin:0 auto 16px; border-radius:2px;"></div>
-      <p style="color:#64748b; font-size:0.85rem;">Prepared for WB Mason &mdash; MTech Platform Team Leadership</p>
-      <p style="color:#475569; font-size:0.75rem; margin-top:4px;">Sprint 133 &nbsp;|&nbsp; March 16&ndash;27, 2026 &nbsp;|&nbsp; Completed</p>
+      <div style="width:80px; height:3px; background:linear-gradient(90deg,#BE2024,#D4A006); margin:0 auto 16px; border-radius:2px;"></div>
+      <p style="color:#787068; font-size:0.85rem;">Prepared for WB Mason &mdash; MTech Platform Team Leadership</p>
+      <p style="color:#4A4A4A; font-size:0.75rem; margin-top:4px;">Sprint 133 &nbsp;|&nbsp; March 16&ndash;27, 2026 &nbsp;|&nbsp; Completed</p>
     </div>
   </div>
   <div class="slide-footer">Sprint 133 Recap &nbsp;|&nbsp; MTech Platform Team &nbsp;|&nbsp; Confidential</div>
@@ -1239,13 +1239,13 @@ slides.forEach(s => observer.observe(s));
 document.querySelectorAll('#slide-0 .fade-in').forEach(el => el.classList.add('visible'));
 
 // ===== CHART DEFAULTS =====
-Chart.defaults.color = '#94a3b8';
+Chart.defaults.color = '#A09890';
 Chart.defaults.font.family = "'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif";
 Chart.defaults.font.size = 12;
 Chart.defaults.plugins.legend.labels.usePointStyle = true;
 Chart.defaults.plugins.legend.labels.pointStyleWidth = 10;
 
-const gridColor = 'rgba(51,65,85,0.5)';
+const gridColor = 'rgba(51,51,51,0.5)';
 
 // ===== COMPARISON CHART (S132 vs S133) =====
 new Chart(document.getElementById('comparisonChart'), {
@@ -1257,15 +1257,15 @@ new Chart(document.getElementById('comparisonChart'), {
         label: 'Sprint 132',
         data: [185, 148, 686, 176, 43, 39],
         backgroundColor: 'rgba(100,116,139,0.4)',
-        borderColor: '#64748b',
+        borderColor: '#787068',
         borderWidth: 1,
         borderRadius: 4
       },
       {
         label: 'Sprint 133',
         data: [299, 251, 926, 146, 81, 49],
-        backgroundColor: 'rgba(6,182,212,0.5)',
-        borderColor: '#06b6d4',
+        backgroundColor: 'rgba(190,32,36,0.5)',
+        borderColor: '#BE2024',
         borderWidth: 1,
         borderRadius: 4
       }
@@ -1274,7 +1274,7 @@ new Chart(document.getElementById('comparisonChart'), {
   options: {
     responsive: true, maintainAspectRatio: false,
     plugins: {
-      title: { display: true, text: 'Sprint 132 vs 133 — Side by Side', color: '#e2e8f0', font: { size: 14, weight: '600' } },
+      title: { display: true, text: 'Sprint 132 vs 133 — Side by Side', color: '#E8E4E0', font: { size: 14, weight: '600' } },
       legend: { position: 'bottom' }
     },
     scales: {
@@ -1293,13 +1293,13 @@ new Chart(document.getElementById('flowChart'), {
       data: [251, 5, 1, 4, 5, 33],
       backgroundColor: [
         'rgba(34,197,94,0.7)',
-        'rgba(6,182,212,0.7)',
+        'rgba(190,32,36,0.7)',
         'rgba(167,139,250,0.7)',
         'rgba(100,116,139,0.5)',
         'rgba(51,65,85,0.5)',
-        'rgba(245,158,11,0.5)'
+        'rgba(212,160,6,0.5)'
       ],
-      borderColor: '#0f172a',
+      borderColor: '#121212',
       borderWidth: 2
     }]
   },
@@ -1320,11 +1320,11 @@ new Chart(document.getElementById('incompleteChart'), {
       label: 'Items',
       data: [5, 4, 8],
       backgroundColor: [
-        'rgba(239,68,68,0.6)',
-        'rgba(245,158,11,0.6)',
+        'rgba(255,107,107,0.6)',
+        'rgba(212,160,6,0.6)',
         'rgba(100,116,139,0.4)'
       ],
-      borderColor: ['#ef4444', '#f59e0b', '#64748b'],
+      borderColor: ['#FF6B6B', '#D4A006', '#787068'],
       borderWidth: 1,
       borderRadius: 6
     }]
@@ -1348,16 +1348,16 @@ new Chart(document.getElementById('discoveryTimelineChart'), {
       {
         label: 'Thomas Holland',
         data: [0, 2, 3, 2, 1, 0, 2, 1, 2, 1, 1, 1],
-        backgroundColor: 'rgba(245,158,11,0.7)',
-        borderColor: '#f59e0b',
+        backgroundColor: 'rgba(212,160,6,0.7)',
+        borderColor: '#D4A006',
         borderWidth: 1,
         borderRadius: 2
       },
       {
         label: 'Tymoteusz Tracz',
         data: [0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0],
-        backgroundColor: 'rgba(6,182,212,0.7)',
-        borderColor: '#06b6d4',
+        backgroundColor: 'rgba(190,32,36,0.7)',
+        borderColor: '#BE2024',
         borderWidth: 1,
         borderRadius: 2
       },
@@ -1373,7 +1373,7 @@ new Chart(document.getElementById('discoveryTimelineChart'), {
         label: 'Others',
         data: [1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1],
         backgroundColor: 'rgba(100,116,139,0.5)',
-        borderColor: '#64748b',
+        borderColor: '#787068',
         borderWidth: 1,
         borderRadius: 2
       }
@@ -1382,7 +1382,7 @@ new Chart(document.getElementById('discoveryTimelineChart'), {
   options: {
     responsive: true, maintainAspectRatio: false,
     plugins: {
-      title: { display: true, text: 'Bugs Discovered by Day (Mar 16-27)', color: '#e2e8f0', font: { size: 13, weight: '600' } },
+      title: { display: true, text: 'Bugs Discovered by Day (Mar 16-27)', color: '#E8E4E0', font: { size: 13, weight: '600' } },
       legend: { position: 'bottom', labels: { font: { size: 10 } } }
     },
     scales: {
@@ -1399,8 +1399,8 @@ new Chart(document.getElementById('scopeBreakdownChart'), {
     labels: ['Bugs (33)', 'PBIs/Features (4)'],
     datasets: [{
       data: [33, 4],
-      backgroundColor: ['rgba(239,68,68,0.7)', 'rgba(6,182,212,0.7)'],
-      borderColor: '#0f172a',
+      backgroundColor: ['rgba(255,107,107,0.7)', 'rgba(190,32,36,0.7)'],
+      borderColor: '#121212',
       borderWidth: 2
     }]
   },
@@ -1428,7 +1428,7 @@ function miniLine(id, data, color) {
       responsive: true, maintainAspectRatio: false,
       plugins: { legend: { display: false } },
       scales: {
-        x: { display: true, grid: { display: false }, ticks: { font: { size: 10 }, color: '#475569' } },
+        x: { display: true, grid: { display: false }, ticks: { font: { size: 10 }, color: '#4A4A4A' } },
         y: { display: false, beginAtZero: true }
       }
     }
@@ -1436,23 +1436,23 @@ function miniLine(id, data, color) {
 }
 
 // Team A
-miniLine('miniTH', [20, 39], '#f59e0b');
+miniLine('miniTH', [20, 39], '#D4A006');
 miniLine('miniJH', [9, 20], '#22c55e');
-miniLine('miniJB', [10, 18], '#64748b');
-miniLine('miniCW', [7, 6], '#64748b');
+miniLine('miniJB', [10, 18], '#787068');
+miniLine('miniCW', [7, 6], '#787068');
 
 // Team B
 miniLine('miniMM', [22, 32], '#22c55e');
 miniLine('miniDU', [8, 38], '#22c55e');
 miniLine('miniAW', [14, 8], '#22c55e');
 miniLine('miniGG', [0, 8], '#22c55e');
-miniLine('miniJS', [5, 14], '#06b6d4');
-miniLine('miniMJ', [4, 5], '#64748b');
+miniLine('miniJS', [5, 14], '#BE2024');
+miniLine('miniMJ', [4, 5], '#787068');
 
 // Shared
-miniLine('miniTT', [17, 30], '#06b6d4');
-miniLine('miniKT', [16, 14], '#f59e0b');
-miniLine('miniAS', [2, 1], '#64748b');
+miniLine('miniTT', [17, 30], '#BE2024');
+miniLine('miniKT', [16, 14], '#D4A006');
+miniLine('miniAS', [2, 1], '#787068');
 
 // ===== KEYBOARD NAV =====
 document.addEventListener('keydown', (e) => {
