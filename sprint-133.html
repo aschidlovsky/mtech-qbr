@@ -11,7 +11,7 @@
   html { scroll-snap-type: y mandatory; scroll-behavior: smooth; font-size: 16px; }
   body {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-    background: #121212; color: #E8E4E0; line-height: 1.5; overflow-x: hidden;
+    background: #1A1A2E; color: #E8E4E0; line-height: 1.5; overflow-x: hidden;
   }
   a { color: #BE2024; text-decoration: none; }
 
@@ -23,11 +23,11 @@
   }
   .slide-number {
     position: absolute; top: 24px; left: 30px; font-size: 0.75rem;
-    color: #4A4A4A; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: #52526A; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
   }
   .slide-footer {
     position: absolute; bottom: 18px; left: 0; right: 0; text-align: center;
-    font-size: 0.7rem; color: #333333; letter-spacing: 1.5px; text-transform: uppercase;
+    font-size: 0.7rem; color: #3B3B52; letter-spacing: 1.5px; text-transform: uppercase;
   }
 
   /* ===== NAV DOTS ===== */
@@ -36,16 +36,16 @@
     display: flex; flex-direction: column; gap: 10px; z-index: 1000;
   }
   .nav-dot {
-    width: 10px; height: 10px; border-radius: 50%; background: #333333;
+    width: 10px; height: 10px; border-radius: 50%; background: #3B3B52;
     cursor: pointer; transition: all 0.3s; border: none; outline: none;
     position: relative;
   }
   .nav-dot:hover, .nav-dot.active { background: #BE2024; transform: scale(1.4); }
   .nav-dot .tooltip {
     position: absolute; right: 22px; top: 50%; transform: translateY(-50%);
-    background: #1E1E1E; color: #E8E4E0; padding: 4px 10px; border-radius: 4px;
+    background: #25253B; color: #E8E4E0; padding: 4px 10px; border-radius: 4px;
     font-size: 0.7rem; white-space: nowrap; opacity: 0; pointer-events: none;
-    transition: opacity 0.2s; border: 1px solid #333333;
+    transition: opacity 0.2s; border: 1px solid #3B3B52;
   }
   .nav-dot:hover .tooltip { opacity: 1; }
 
@@ -62,12 +62,12 @@
   /* ===== METRIC CARDS ===== */
   .metric-row { display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0; }
   .metric-card {
-    background: linear-gradient(135deg, #1E1E1E 0%, #121212 100%);
-    border: 1px solid #333333; border-radius: 12px; padding: 24px 28px;
+    background: linear-gradient(135deg, #25253B 0%, #1A1A2E 100%);
+    border: 1px solid #3B3B52; border-radius: 12px; padding: 24px 28px;
     flex: 1; min-width: 200px; position: relative; overflow: hidden;
     transition: transform 0.2s, border-color 0.2s;
   }
-  .metric-card:hover { transform: translateY(-2px); border-color: #4A4A4A; }
+  .metric-card:hover { transform: translateY(-2px); border-color: #52526A; }
   .metric-card .big-number { font-size: 2.6rem; font-weight: 800; color: #F5F2EF; line-height: 1.1; }
   .metric-card .label { font-size: 0.8rem; color: #A09890; text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
   .metric-card.teal .big-number { color: #BE2024; }
@@ -122,16 +122,16 @@
   /* ===== TABLES ===== */
   .data-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin: 12px 0; }
   .data-table th {
-    text-align: left; padding: 10px 14px; background: #1E1E1E; color: #A09890;
+    text-align: left; padding: 10px 14px; background: #25253B; color: #A09890;
     font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.72rem;
-    border-bottom: 2px solid #333333;
+    border-bottom: 2px solid #3B3B52;
   }
-  .data-table td { padding: 10px 14px; border-bottom: 1px solid #1E1E1E; }
+  .data-table td { padding: 10px 14px; border-bottom: 1px solid #25253B; }
   .data-table tbody tr:nth-child(even) { background: rgba(30,41,59,0.4); }
   .data-table tbody tr:hover { background: rgba(190,32,36,0.05); }
 
   /* ===== PROGRESS BAR ===== */
-  .progress-bar { background: #1E1E1E; border-radius: 6px; height: 8px; overflow: hidden; width: 100%; min-width: 80px; }
+  .progress-bar { background: #25253B; border-radius: 6px; height: 8px; overflow: hidden; width: 100%; min-width: 80px; }
   .progress-fill { height: 100%; border-radius: 6px; transition: width 1s ease; }
   .progress-fill.green { background: linear-gradient(90deg, #22c55e, #16a34a); }
   .progress-fill.amber { background: linear-gradient(90deg, #D4A006, #B8890A); }
@@ -146,14 +146,14 @@
   /* ===== PERSON CARDS ===== */
   .person-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 18px; }
   .person-card {
-    background: #1E1E1E; border: 1px solid #333333; border-radius: 10px; padding: 20px;
+    background: #25253B; border: 1px solid #3B3B52; border-radius: 10px; padding: 20px;
     transition: border-color 0.2s;
   }
-  .person-card:hover { border-color: #4A4A4A; }
+  .person-card:hover { border-color: #52526A; }
   .person-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
   .avatar {
     width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center;
-    justify-content: center; font-weight: 700; font-size: 0.85rem; color: #121212; flex-shrink: 0;
+    justify-content: center; font-weight: 700; font-size: 0.85rem; color: #1A1A2E; flex-shrink: 0;
   }
   .avatar.teal { background: #BE2024; }
   .avatar.amber { background: #D4A006; }
@@ -177,7 +177,7 @@
 
   /* ===== FINDINGS CARDS ===== */
   .finding-card {
-    background: #1E1E1E; border-radius: 10px; padding: 22px 26px; margin-bottom: 14px;
+    background: #25253B; border-radius: 10px; padding: 22px 26px; margin-bottom: 14px;
     border-left: 4px solid #BE2024; position: relative;
   }
   .finding-card.critical { border-left-color: #FF6B6B; }
@@ -199,12 +199,12 @@
   .priority-list { list-style: none; counter-reset: priority; }
   .priority-item {
     counter-increment: priority; display: flex; align-items: flex-start; gap: 16px;
-    padding: 16px 20px; background: #1E1E1E; border-radius: 8px; margin-bottom: 10px;
-    border: 1px solid #333333;
+    padding: 16px 20px; background: #25253B; border-radius: 8px; margin-bottom: 10px;
+    border: 1px solid #3B3B52;
   }
   .priority-item::before {
     content: counter(priority); min-width: 36px; height: 36px; border-radius: 50%;
-    background: linear-gradient(135deg, #BE2024, #9A1A1E); color: #121212;
+    background: linear-gradient(135deg, #BE2024, #9A1A1E); color: #1A1A2E;
     display: flex; align-items: center; justify-content: center;
     font-weight: 800; font-size: 0.9rem; flex-shrink: 0;
   }
@@ -214,7 +214,7 @@
 
   /* ===== INITIATIVE CARDS ===== */
   .initiative-card {
-    background: #1E1E1E; border-radius: 10px; padding: 20px 24px; margin-bottom: 14px;
+    background: #25253B; border-radius: 10px; padding: 20px 24px; margin-bottom: 14px;
     border-left: 4px solid #22c55e; position: relative;
   }
   .initiative-card.partial { border-left-color: #D4A006; }
@@ -228,8 +228,8 @@
   .impact-group { margin-bottom: 20px; }
   .impact-group h4 { font-size: 0.9rem; margin-bottom: 10px; }
   .impact-item {
-    background: #1E1E1E; border-radius: 8px; padding: 12px 18px; margin-bottom: 8px;
-    border: 1px solid #333333; font-size: 0.82rem; color: #A09890;
+    background: #25253B; border-radius: 8px; padding: 12px 18px; margin-bottom: 8px;
+    border: 1px solid #3B3B52; font-size: 0.82rem; color: #A09890;
   }
   .impact-item strong { color: #F5F2EF; }
   .impact-item .status-tag {
@@ -251,7 +251,7 @@
     width: 80px; height: 80px; border-radius: 16px; margin-bottom: 24px;
     background: linear-gradient(135deg, #BE2024, #9A1A1E);
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.8rem; font-weight: 900; color: #121212;
+    font-size: 1.8rem; font-weight: 900; color: #1A1A2E;
   }
   .title-divider { width: 80px; height: 3px; background: linear-gradient(90deg, #BE2024, #D4A006); margin: 0 auto 24px; border-radius: 2px; }
 
@@ -259,7 +259,7 @@
   .scroll-inner { overflow-y: auto; flex: 1; padding-right: 10px; }
   .scroll-inner::-webkit-scrollbar { width: 5px; }
   .scroll-inner::-webkit-scrollbar-track { background: transparent; }
-  .scroll-inner::-webkit-scrollbar-thumb { background: #333333; border-radius: 4px; }
+  .scroll-inner::-webkit-scrollbar-thumb { background: #3B3B52; border-radius: 4px; }
 
   /* ===== TWO-COL LAYOUT ===== */
   .two-col { display: flex; gap: 30px; flex-wrap: wrap; }
@@ -279,11 +279,11 @@
   /* ===== PRINT ===== */
   @media print {
     html { scroll-snap-type: none; }
-    body { background: #fff; color: #1E1E1E; }
+    body { background: #fff; color: #25253B; }
     .slide { min-height: auto; page-break-after: always; padding: 30px; }
     #nav-dots { display: none; }
     .metric-card, .person-card, .finding-card, .priority-item, .insight-box, .initiative-card, .impact-item { border: 1px solid #ddd; background: #f8f9fa; }
-    .metric-card .big-number, h1, h2, .person-name, .finding-card h4 { color: #1E1E1E; }
+    .metric-card .big-number, h1, h2, .person-name, .finding-card h4 { color: #25253B; }
     .data-table th { background: #e5e7eb; color: #374151; }
     .slide-footer { color: #9ca3af; }
     h3 { color: #9A1A1E; }
@@ -1205,7 +1205,7 @@
     <div style="text-align:center; margin-top:30px; padding: 30px 0;" class="fade-in">
       <div style="width:80px; height:3px; background:linear-gradient(90deg,#BE2024,#D4A006); margin:0 auto 16px; border-radius:2px;"></div>
       <p style="color:#787068; font-size:0.85rem;">Prepared for WB Mason &mdash; MTech Platform Team Leadership</p>
-      <p style="color:#4A4A4A; font-size:0.75rem; margin-top:4px;">Sprint 133 &nbsp;|&nbsp; March 16&ndash;27, 2026 &nbsp;|&nbsp; Completed</p>
+      <p style="color:#52526A; font-size:0.75rem; margin-top:4px;">Sprint 133 &nbsp;|&nbsp; March 16&ndash;27, 2026 &nbsp;|&nbsp; Completed</p>
     </div>
   </div>
   <div class="slide-footer">Sprint 133 Recap &nbsp;|&nbsp; MTech Platform Team &nbsp;|&nbsp; Confidential</div>
@@ -1245,7 +1245,7 @@ Chart.defaults.font.size = 12;
 Chart.defaults.plugins.legend.labels.usePointStyle = true;
 Chart.defaults.plugins.legend.labels.pointStyleWidth = 10;
 
-const gridColor = 'rgba(51,51,51,0.5)';
+const gridColor = 'rgba(59,59,82,0.5)';
 
 // ===== COMPARISON CHART (S132 vs S133) =====
 new Chart(document.getElementById('comparisonChart'), {
@@ -1299,7 +1299,7 @@ new Chart(document.getElementById('flowChart'), {
         'rgba(51,65,85,0.5)',
         'rgba(212,160,6,0.5)'
       ],
-      borderColor: '#121212',
+      borderColor: '#1A1A2E',
       borderWidth: 2
     }]
   },
@@ -1400,7 +1400,7 @@ new Chart(document.getElementById('scopeBreakdownChart'), {
     datasets: [{
       data: [33, 4],
       backgroundColor: ['rgba(255,107,107,0.7)', 'rgba(190,32,36,0.7)'],
-      borderColor: '#121212',
+      borderColor: '#1A1A2E',
       borderWidth: 2
     }]
   },
@@ -1428,7 +1428,7 @@ function miniLine(id, data, color) {
       responsive: true, maintainAspectRatio: false,
       plugins: { legend: { display: false } },
       scales: {
-        x: { display: true, grid: { display: false }, ticks: { font: { size: 10 }, color: '#4A4A4A' } },
+        x: { display: true, grid: { display: false }, ticks: { font: { size: 10 }, color: '#52526A' } },
         y: { display: false, beginAtZero: true }
       }
     }
