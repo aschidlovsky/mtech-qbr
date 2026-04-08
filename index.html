@@ -321,7 +321,7 @@
       </div>
       <div class="insight-box amber" style="flex:1; min-width:240px;">
         <span class="insight-label">Concerns</span>
-        Bug ratio trending up (66.7% peak). Sprint 134 at 38.8% mid-flight. Scope creep averaging 28.7%.
+        Bug ratio trending up (66.7% peak). Sprint 134 at 38.8% mid-flight. Mid-sprint bug discovery rate doubling (33 bugs in S133, 32 in S134).
       </div>
     </div>
   </div>
@@ -597,9 +597,9 @@
 <section class="slide" id="slide-5">
   <div class="slide-number">06 / 11</div>
   <div class="section-header fade-in">
-    <h3>Scope Creep Analysis</h3>
-    <h2>How Much Work Is Added Mid-Sprint?</h2>
-    <p class="subtitle">Items created after the sprint has already started</p>
+    <h3>Scope Creep &amp; Mid-Sprint Discovery</h3>
+    <h2>What's Really Being Added Mid-Sprint?</h2>
+    <p class="subtitle">Raw vs. adjusted scope creep &mdash; separating work decomposition from true unplanned additions</p>
   </div>
 
   <div class="two-col fade-in">
@@ -611,34 +611,39 @@
     <div>
       <div class="metric-row" style="margin-bottom:16px;">
         <div class="metric-card amber" style="text-align:center;">
-          <div class="big-number">28.7%</div>
-          <div class="label">Avg. Scope Creep</div>
+          <div class="big-number">10.9%</div>
+          <div class="label">Avg. True Scope Creep</div>
         </div>
         <div class="metric-card red" style="text-align:center;">
-          <div class="big-number">42.9%</div>
-          <div class="label">Worst Sprint (129)</div>
+          <div class="big-number">15.6%</div>
+          <div class="label">Worst Sprint (134)</div>
         </div>
       </div>
 
       <table class="data-table">
         <thead>
-          <tr><th>Sprint</th><th>Mid-Sprint Adds</th><th>Total</th><th>Scope Creep %</th></tr>
+          <tr><th>Sprint</th><th>Raw %</th><th>Adjusted %</th><th>Bugs Added</th><th>PBIs Added</th></tr>
         </thead>
         <tbody>
-          <tr><td>129</td><td>154</td><td>359</td><td style="color:#ef4444; font-weight:700;">42.9%</td></tr>
-          <tr><td>130</td><td>62</td><td>296</td><td>20.9%</td></tr>
-          <tr><td>131</td><td>84</td><td>312</td><td>26.9%</td></tr>
-          <tr><td>132</td><td>39</td><td>185</td><td>21.1%</td></tr>
-          <tr><td>133</td><td>83</td><td>299</td><td>27.8%</td></tr>
-          <tr><td>134*</td><td>106</td><td>327</td><td style="color:#f59e0b; font-weight:700;">32.4%</td></tr>
+          <tr><td>129</td><td style="text-decoration:line-through; color:#64748b;">42.9%</td><td>8.6%</td><td>23</td><td>8</td></tr>
+          <tr><td>130</td><td style="text-decoration:line-through; color:#64748b;">20.9%</td><td>8.8%</td><td>17</td><td>9</td></tr>
+          <tr><td>131</td><td style="text-decoration:line-through; color:#64748b;">26.9%</td><td>9.9%</td><td>16</td><td>12</td></tr>
+          <tr><td>132</td><td style="text-decoration:line-through; color:#64748b;">21.1%</td><td>10.3%</td><td>14</td><td>5</td></tr>
+          <tr><td>133</td><td style="text-decoration:line-through; color:#64748b;">27.8%</td><td style="color:#f59e0b; font-weight:700;">12.4%</td><td style="color:#ef4444; font-weight:700;">33</td><td>3</td></tr>
+          <tr><td>134*</td><td style="text-decoration:line-through; color:#64748b;">32.4%</td><td style="color:#ef4444; font-weight:700;">15.6%</td><td style="color:#ef4444; font-weight:700;">32</td><td>19</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
+  <div class="insight-box green fade-in" style="margin-bottom:12px;">
+    <span class="insight-label">Methodology Correction</span>
+    <strong>Raw scope creep numbers were inflated by normal work decomposition.</strong> The team creates Tasks, Technical Scoping, and Requirements items after sprint start as part of their planning workflow (e.g., Sprint 129: Clint Wilkes created 84 scoping items on day 2). These are child items for already-planned features, not unplanned work. The adjusted metric counts only PBIs, Bugs, Features, and Bug Fixes created mid-sprint.
+  </div>
+
   <div class="insight-box amber fade-in">
     <span class="insight-label">Key Insight</span>
-    <strong>Nearly 1 in 3 work items is being added AFTER the sprint starts.</strong> Sprint 129 was extreme at 42.9%. This makes sprint planning less meaningful and contributes to incomplete sprints. The team should aim for &lt;15% mid-sprint additions. Sprint 134's 32.4% is trending in the wrong direction. Scope creep is both a planning discipline issue and a reflection of unplanned production support demands.
+    <strong>The real problem isn't scope creep &mdash; it's mid-sprint bug discovery.</strong> True scope creep is a moderate 10.9% average, but it's trending up (8.6% &rarr; 15.6%). The driver is a doubling in bugs discovered mid-sprint: S133 had 33 and S134 had 32, overwhelmingly from the <strong>Landing Page Builder</strong> (Marcin Miazga, Tymoteusz Tracz). In Sprint 134, Thomas Holland also created 16 PBIs mid-sprint for EventFlow Segmentation &mdash; this was pre-planned work being decomposed, not scope creep.
   </div>
   <div class="slide-footer">MTech QBR &nbsp;|&nbsp; Q1 2026 &nbsp;|&nbsp; Confidential</div>
 </section>
@@ -995,9 +1000,9 @@
 
       <div class="finding-card warning">
         <div class="finding-number">02</div>
-        <h4>Scope Creep Is Undermining Sprint Predictability</h4>
-        <p>28.7% average mid-sprint additions. Sprint planning becomes less meaningful when nearly a third of work materializes after commitment.</p>
-        <div class="rec">Recommend: Enforce sprint commitment freeze after day 1. Route emergent work to a 10&ndash;15% "interrupt budget" reserved capacity.</div>
+        <h4>Mid-Sprint Bug Discovery Is Accelerating</h4>
+        <p>True scope creep is moderate (10.9% avg), but trending up &mdash; from 8.6% to 15.6%. The driver is <strong>bugs discovered mid-sprint doubling</strong> in S133&ndash;S134 (33 and 32 bugs), overwhelmingly from Landing Page Builder. Note: raw scope creep numbers (28.7%) were inflated by normal task decomposition practices.</p>
+        <div class="rec">Recommend: Improve pre-sprint testing &amp; acceptance criteria for Landing Page Builder. The bug inflow, not scope creep, is what's destabilizing sprints. Reserve 10&ndash;15% interrupt budget for emergent defects.</div>
       </div>
 
       <div class="finding-card critical">
@@ -1092,8 +1097,8 @@
       </li>
       <li class="priority-item">
         <div class="pri-text">
-          <strong>Reduce Scope Creep to &lt;15%</strong> <span class="rag rag-amber" style="margin-left:8px;">PROCESS</span>
-          <p>Enforce sprint freeze-after-day-1 policy. Reserve 10&ndash;15% interrupt budget. Track and report scope creep weekly.</p>
+          <strong>Reduce Mid-Sprint Bug Discovery Rate</strong> <span class="rag rag-amber" style="margin-left:8px;">PROCESS</span>
+          <p>True scope creep is 10.9% (not 28.7% as raw data suggests &mdash; task decomposition inflated it). Focus on pre-sprint QA for Landing Page Builder to reduce the 32&ndash;33 bugs/sprint being discovered mid-flight.</p>
         </div>
       </li>
       <li class="priority-item">
@@ -1269,9 +1274,10 @@ new Chart(document.getElementById('scopeCreepChart'), {
   data: {
     labels: sprintLabels,
     datasets: [
-      { label: 'Planned Items', data: [205,234,228,146,216,221], backgroundColor: 'rgba(6,182,212,0.3)', borderColor: '#06b6d4', borderWidth: 1, borderRadius: 4 },
-      { label: 'Mid-Sprint Adds', data: [154,62,84,39,83,106], backgroundColor: 'rgba(245,158,11,0.5)', borderColor: '#f59e0b', borderWidth: 1, borderRadius: 4 },
-      { label: 'Scope Creep %', data: [42.9,20.9,26.9,21.1,27.8,32.4], type: 'line', borderColor: '#ef4444', pointBackgroundColor: '#ef4444', pointRadius: 6, yAxisID: 'pct', tension: 0.3, borderWidth: 2.5, borderDash: [] }
+      { label: 'Bugs Discovered', data: [23,17,16,14,33,32], backgroundColor: 'rgba(239,68,68,0.5)', borderColor: '#ef4444', borderWidth: 1, borderRadius: 4 },
+      { label: 'PBIs/Features Added', data: [8,9,12,5,3,19], backgroundColor: 'rgba(245,158,11,0.5)', borderColor: '#f59e0b', borderWidth: 1, borderRadius: 4 },
+      { label: 'Adjusted Scope Creep %', data: [8.6,8.8,9.9,10.3,12.4,15.6], type: 'line', borderColor: '#06b6d4', pointBackgroundColor: '#06b6d4', pointRadius: 6, yAxisID: 'pct', tension: 0.3, borderWidth: 2.5, borderDash: [] },
+      { label: 'Raw % (inflated)', data: [42.9,20.9,26.9,21.1,27.8,32.4], type: 'line', borderColor: '#64748b', pointBackgroundColor: '#64748b', pointRadius: 4, yAxisID: 'pct', tension: 0.3, borderWidth: 1.5, borderDash: [6,4] }
     ]
   },
   options: {
@@ -1279,7 +1285,7 @@ new Chart(document.getElementById('scopeCreepChart'), {
     plugins: { legend: { position: 'bottom' } },
     scales: {
       x: { stacked: true, grid: { color: gridColor } },
-      y: { stacked: true, grid: { color: gridColor }, title: { display: true, text: 'Items' } },
+      y: { stacked: true, grid: { color: gridColor }, title: { display: true, text: 'Items Added Mid-Sprint' } },
       pct: { position: 'right', grid: { display: false }, min: 0, max: 50, ticks: { callback: v => v + '%' }, title: { display: true, text: 'Scope Creep %' } }
     }
   }
