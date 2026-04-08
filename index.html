@@ -357,20 +357,20 @@
 
   <div class="insight-box fade-in">
     <span class="insight-label">Key Insight</span>
-    <strong>Sprint 132 had the lowest volume (185 items) but the highest efficiency (74.3% burn rate).</strong> Hour burn rate improved steadily from 58% to 84% over Sprints 129&ndash;133, demonstrating a team learning curve. Sprint 134 is still in progress with 2 days remaining. The velocity trend suggests smaller, focused sprints outperform overloaded ones.
+    <strong>Sprint 132 had the lowest volume (185 items) but the highest efficiency (74.3% burn rate).</strong> Hour burn rate improved steadily from 58% to 84% over Sprints 129&ndash;133. More importantly, <strong>task-level hour burn</strong> (based on properly estimated Tasks only, 97-100% coverage) tells a stronger story: 80.9% &rarr; 87.1% &rarr; 82.9% &rarr; 87.8% &rarr; <strong style="color:#22c55e;">96.5%</strong>, showing the team's estimation maturity is converging toward near-perfect delivery. Sprint 134 is still in progress.
   </div>
 
   <table class="data-table fade-in" style="margin-top:10px;">
     <thead>
-      <tr><th>Sprint</th><th>Total</th><th>Done</th><th>Done %</th><th>Orig. Hours</th><th>Remaining</th><th>Burn %</th></tr>
+      <tr><th>Sprint</th><th>Total</th><th>Done</th><th>Done %</th><th>Orig. Hours</th><th>Remaining</th><th>Burn %</th><th style="border-left:2px solid #3B3B52;">Est Hours (Tasks)</th><th>Done Hours</th><th>Task Burn %</th></tr>
     </thead>
     <tbody>
-      <tr><td>129</td><td>359</td><td>296</td><td>82.5%</td><td>1,148h</td><td>479h</td><td>58.3%</td></tr>
-      <tr><td>130</td><td>296</td><td>211</td><td>71.3%</td><td>911h</td><td>373h</td><td>59.1%</td></tr>
-      <tr><td>131</td><td>312</td><td>271</td><td>86.9%</td><td>1,041h</td><td>350h</td><td>66.4%</td></tr>
-      <tr><td>132</td><td>185</td><td>148</td><td>80.0%</td><td>686h</td><td>176h</td><td>74.3%</td></tr>
-      <tr><td>133</td><td>299</td><td>251</td><td>83.9%</td><td>926h</td><td>146h</td><td>84.2%</td></tr>
-      <tr style="opacity:0.7;"><td>134*</td><td>327</td><td>127</td><td>38.8%</td><td>1,006h</td><td>650h</td><td>35.4%</td></tr>
+      <tr><td>129</td><td>359</td><td>296</td><td>82.5%</td><td>1,148h</td><td>479h</td><td>58.3%</td><td style="border-left:2px solid #25253B;">780h</td><td>638h</td><td style="color:#22c55e; font-weight:700;">80.9%</td></tr>
+      <tr><td>130</td><td>296</td><td>211</td><td>71.3%</td><td>911h</td><td>373h</td><td>59.1%</td><td style="border-left:2px solid #25253B;">599h</td><td>532h</td><td style="color:#22c55e; font-weight:700;">87.1%</td></tr>
+      <tr><td>131</td><td>312</td><td>271</td><td>86.9%</td><td>1,041h</td><td>350h</td><td>66.4%</td><td style="border-left:2px solid #25253B;">829h</td><td>729h</td><td style="color:#22c55e; font-weight:700;">82.9%</td></tr>
+      <tr><td>132</td><td>185</td><td>148</td><td>80.0%</td><td>686h</td><td>176h</td><td>74.3%</td><td style="border-left:2px solid #25253B;">558h</td><td>496h</td><td style="color:#22c55e; font-weight:700;">87.8%</td></tr>
+      <tr><td>133</td><td>299</td><td>251</td><td>83.9%</td><td>926h</td><td>146h</td><td>84.2%</td><td style="border-left:2px solid #25253B;">746h</td><td>714h</td><td style="color:#22c55e; font-weight:700;">96.5%</td></tr>
+      <tr style="opacity:0.7;"><td>134*</td><td>327</td><td>127</td><td>38.8%</td><td>1,006h</td><td>650h</td><td>35.4%</td><td style="border-left:2px solid #25253B;">843h</td><td>272h</td><td style="color:#FF6B6B; font-weight:700;">35.2%*</td></tr>
     </tbody>
   </table>
   <div class="slide-footer">MTech QBR &nbsp;|&nbsp; Q1 2026 &nbsp;|&nbsp; Confidential</div>
@@ -670,7 +670,7 @@
       <div>
         <table class="data-table">
           <thead>
-            <tr><th>Category</th><th>Items</th><th>% Total</th><th>Done</th><th>Done %</th><th>Bug Ratio</th></tr>
+            <tr><th>Category</th><th>Items</th><th>% Total</th><th>Done</th><th>Done %</th><th>Bug Ratio</th><th style="border-left:2px solid #3B3B52;">Est Hours</th><th>Burn %</th></tr>
           </thead>
           <tbody>
             <tr>
@@ -678,18 +678,24 @@
               <td>1,201</td><td>67.5%</td><td>894</td>
               <td style="color:#22c55e; font-weight:700;">74.4%</td>
               <td>47.2%</td>
+              <td style="border-left:2px solid #25253B;">3,692h</td>
+              <td style="color:#22c55e; font-weight:700;">~83%</td>
             </tr>
             <tr>
               <td><strong style="color:#D4A006;">Business</strong></td>
               <td>428</td><td>24.1%</td><td>338</td>
               <td style="color:#22c55e; font-weight:700;">79.0%</td>
               <td style="color:#FF6B6B; font-weight:700;">68.8%</td>
+              <td style="border-left:2px solid #25253B;">1,023h</td>
+              <td style="color:#22c55e; font-weight:700;">~85%</td>
             </tr>
             <tr>
               <td><strong style="color:#A09890;">Legacy AX 2009</strong></td>
               <td>149</td><td>8.4%</td><td>72</td>
               <td style="color:#FF6B6B; font-weight:700;">48.3%</td>
               <td>36.8%</td>
+              <td style="border-left:2px solid #25253B;">640h</td>
+              <td style="color:#D4A006; font-weight:700;">~62%</td>
             </tr>
           </tbody>
         </table>
@@ -779,6 +785,7 @@
           <div class="person-stat"><div class="val">202</div><div class="lbl">Total Done</div></div>
           <div class="person-stat"><div class="val">33.7</div><div class="lbl">Avg/Sprint</div></div>
           <div class="person-stat"><div class="val" style="color:#22c55e;">CONSISTENT</div><div class="lbl">Trend</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">476h</div><div class="lbl">Hours Burned (97.5%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniTH"></canvas></div>
         <div class="person-narrative">
@@ -800,6 +807,7 @@
           <div class="person-stat"><div class="val">100</div><div class="lbl">Total Done</div></div>
           <div class="person-stat"><div class="val">16.7</div><div class="lbl">Avg/Sprint</div></div>
           <div class="person-stat"><div class="val" style="color:#FF6B6B;">DOWN</div><div class="lbl">Trend</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">221h</div><div class="lbl">Hours Burned (80.9%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniJH"></canvas></div>
         <div class="person-narrative">
@@ -821,6 +829,7 @@
           <div class="person-stat"><div class="val">125</div><div class="lbl">Total Done</div></div>
           <div class="person-stat"><div class="val">20.8</div><div class="lbl">Avg/Sprint</div></div>
           <div class="person-stat"><div class="val" style="color:#FF6B6B;">DOWN</div><div class="lbl">Trend</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">286h</div><div class="lbl">Hours Burned (89.4%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniCW"></canvas></div>
         <div class="person-narrative">
@@ -842,6 +851,7 @@
           <div class="person-stat"><div class="val">84</div><div class="lbl">Total Done</div></div>
           <div class="person-stat"><div class="val">14.0</div><div class="lbl">Avg/Sprint</div></div>
           <div class="person-stat"><div class="val" style="color:#FF6B6B;">DOWN</div><div class="lbl">Trend</div></div>
+          <div class="person-stat"><div class="val" style="color:#D4A006;">227h</div><div class="lbl">Hours Burned (72.8%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniJB"></canvas></div>
         <div class="person-narrative">
@@ -882,6 +892,7 @@
           <div class="person-stat"><div class="val">70</div><div class="lbl">Total Done</div></div>
           <div class="person-stat"><div class="val">11.7</div><div class="lbl">Avg/Sprint</div></div>
           <div class="person-stat"><div class="val" style="color:#BE2024;">VARIABLE</div><div class="lbl">Trend</div></div>
+          <div class="person-stat"><div class="val" style="color:#D4A006;">213h</div><div class="lbl">Hours Burned (78.0%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniJS"></canvas></div>
         <div class="person-narrative">
@@ -903,6 +914,7 @@
           <div class="person-stat"><div class="val">122</div><div class="lbl">Total Done</div></div>
           <div class="person-stat"><div class="val">20.3</div><div class="lbl">Avg/Sprint</div></div>
           <div class="person-stat"><div class="val" style="color:#22c55e;">UP</div><div class="lbl">Trend</div></div>
+          <div class="person-stat"><div class="val" style="color:#D4A006;">340h</div><div class="lbl">Hours Burned (76.2%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniMM"></canvas></div>
         <div class="person-narrative">
@@ -924,6 +936,7 @@
           <div class="person-stat"><div class="val">87</div><div class="lbl">Total Done</div></div>
           <div class="person-stat"><div class="val">14.5</div><div class="lbl">Avg/Sprint</div></div>
           <div class="person-stat"><div class="val" style="color:#22c55e;">UP</div><div class="lbl">Trend</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">368h</div><div class="lbl">Hours Burned (86.0%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniDU"></canvas></div>
         <div class="person-narrative">
@@ -945,6 +958,7 @@
           <div class="person-stat"><div class="val">58</div><div class="lbl">Total Done</div></div>
           <div class="person-stat"><div class="val">9.7</div><div class="lbl">Avg/Sprint</div></div>
           <div class="person-stat"><div class="val" style="color:#FF6B6B;">DOWN</div><div class="lbl">Trend</div></div>
+          <div class="person-stat"><div class="val" style="color:#D4A006;">229h</div><div class="lbl">Hours Burned (78.7%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniAW"></canvas></div>
         <div class="person-narrative">
@@ -966,6 +980,7 @@
           <div class="person-stat"><div class="val">32</div><div class="lbl">Total Done</div></div>
           <div class="person-stat"><div class="val">5.3</div><div class="lbl">Avg/Sprint</div></div>
           <div class="person-stat"><div class="val" style="color:#BE2024;">STABLE</div><div class="lbl">Trend</div></div>
+          <div class="person-stat"><div class="val" style="color:#FF6B6B;">113h</div><div class="lbl">Hours Burned (34.7%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniMJ"></canvas></div>
         <div class="person-narrative">
@@ -987,6 +1002,7 @@
           <div class="person-stat"><div class="val">46</div><div class="lbl">Total Done</div></div>
           <div class="person-stat"><div class="val">7.7</div><div class="lbl">Avg/Sprint</div></div>
           <div class="person-stat"><div class="val" style="color:#BE2024;">VARIABLE</div><div class="lbl">Trend</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">258h</div><div class="lbl">Hours Burned (97.7%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniGG"></canvas></div>
         <div class="person-narrative">
@@ -1027,6 +1043,7 @@
           <div class="person-stat"><div class="val">114</div><div class="lbl">Total Done</div></div>
           <div class="person-stat"><div class="val">19.0</div><div class="lbl">Avg/Sprint</div></div>
           <div class="person-stat"><div class="val" style="color:#FF6B6B;">DOWN</div><div class="lbl">Trend</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">240h</div><div class="lbl">Hours Burned (80.0%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniKT"></canvas></div>
         <div class="person-narrative">
@@ -1048,6 +1065,7 @@
           <div class="person-stat"><div class="val">137</div><div class="lbl">Total Done</div></div>
           <div class="person-stat"><div class="val">22.8</div><div class="lbl">Avg/Sprint</div></div>
           <div class="person-stat"><div class="val" style="color:#22c55e;">STRONG</div><div class="lbl">Trend</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">395h</div><div class="lbl">Hours Burned (85.3%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniTT"></canvas></div>
         <div class="person-narrative">
@@ -1069,6 +1087,7 @@
           <div class="person-stat"><div class="val">11</div><div class="lbl">Total Done</div></div>
           <div class="person-stat"><div class="val">1.8</div><div class="lbl">Avg/Sprint</div></div>
           <div class="person-stat"><div class="val" style="color:#787068;">N/A</div><div class="lbl">Trend</div></div>
+          <div class="person-stat"><div class="val" style="color:#FF6B6B;">15h</div><div class="lbl">Hours Burned (11.8%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniAS"></canvas></div>
         <div class="person-narrative">
@@ -1144,11 +1163,11 @@
         <div class="rec">Recommend: Review capacity planning assumptions. Use trailing 3-sprint velocity as commitment ceiling.</div>
       </div>
 
-      <div class="finding-card">
+      <div class="finding-card success">
         <div class="finding-number">08</div>
-        <h4>Estimation Accuracy Was Improving</h4>
-        <p>Hour burn rate improved from 58% to 84% over S129&ndash;S133, showing growing estimation maturity. S134 at 35.4% may reflect in-flight work or over-commitment rather than regression.</p>
-        <div class="rec">Continue tracking burn rate as a health metric. Investigate S134 burn at sprint close to determine if trend holds.</div>
+        <h4>Task-Level Estimation Accuracy Is Excellent</h4>
+        <p>Task-level hour burn (based on properly estimated Tasks with 97-100% coverage) shows a strong story: 80.9% &rarr; 87.1% &rarr; 82.9% &rarr; 87.8% &rarr; <strong style="color:#22c55e;">96.5%</strong>. Sprint 133 burned 714h of 746h estimated &mdash; near-perfect delivery. The all-item burn rate (58% &rarr; 84%) was lower because PBIs/Bugs/Features lack OriginalEstimate fields. S134 at 35.2% reflects in-flight work.</p>
+        <div class="rec">Continue tracking task-level burn rate as the primary efficiency metric. The team's estimation maturity is converging toward near-perfect accuracy.</div>
       </div>
 
     </div>
@@ -1289,13 +1308,14 @@ new Chart(document.getElementById('burnChart'), {
   data: {
     labels: sprintLabels,
     datasets: [
-      { label: 'Hour Burn Rate %', data: [58.3,59.1,66.4,74.3,84.2,35.4], borderColor: '#BE2024', backgroundColor: 'rgba(190,32,36,0.1)', pointBackgroundColor: '#BE2024', pointRadius: 6, tension: 0.3, fill: true, borderWidth: 2.5 },
-      { label: 'Item Completion %', data: [82.5,71.3,86.9,80.0,83.9,38.8], borderColor: '#D4A006', backgroundColor: 'rgba(212,160,6,0.05)', pointBackgroundColor: '#D4A006', pointRadius: 5, tension: 0.3, borderDash: [5,5], borderWidth: 2 }
+      { label: 'Task Hour Burn %', data: [80.9,87.1,82.9,87.8,96.5,35.2], borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.1)', pointBackgroundColor: '#22c55e', pointRadius: 6, tension: 0.3, fill: true, borderWidth: 2.5 },
+      { label: 'All-Item Burn Rate %', data: [58.3,59.1,66.4,74.3,84.2,35.4], borderColor: '#BE2024', backgroundColor: 'rgba(190,32,36,0.05)', pointBackgroundColor: '#BE2024', pointRadius: 5, tension: 0.3, borderDash: [5,5], borderWidth: 2 },
+      { label: 'Item Completion %', data: [82.5,71.3,86.9,80.0,83.9,38.8], borderColor: '#D4A006', backgroundColor: 'rgba(212,160,6,0.03)', pointBackgroundColor: '#D4A006', pointRadius: 4, tension: 0.3, borderDash: [3,3], borderWidth: 1.5 }
     ]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
-    plugins: { title: { display: true, text: 'Efficiency Trend: Burn Rate vs Completion', color: '#E8E4E0', font: { size: 14, weight: '600' } } },
+    plugins: { title: { display: true, text: 'Efficiency Trend: Task Hours vs All-Item Burn vs Completion', color: '#E8E4E0', font: { size: 13, weight: '600' } } },
     scales: {
       x: { grid: { color: gridColor } },
       y: { grid: { color: gridColor }, min: 0, max: 100, ticks: { callback: v => v + '%' } }

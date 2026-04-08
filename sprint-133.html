@@ -338,9 +338,9 @@
         <div class="big-number">251</div>
         <div class="label">Completed (83.9%)</div>
       </div>
-      <div class="metric-card">
-        <div class="big-number" style="font-size:1.8rem;">926h / 146h</div>
-        <div class="label">Estimated / Remaining (84.2% Burn)</div>
+      <div class="metric-card green">
+        <div class="big-number" style="font-size:1.8rem;">746h / 26h</div>
+        <div class="label">Task Hours Est / Remaining (96.5% Burn)</div>
       </div>
       <div class="metric-card red">
         <div class="big-number">9</div>
@@ -352,7 +352,7 @@
       <div class="health-dot green"></div>
       SPRINT HEALTH: GREEN
     </div>
-    <p style="color:#787068; font-size:0.78rem; margin-top:8px;">83.9% completion &nbsp;|&nbsp; 84.2% burn rate &nbsp;|&nbsp; Volume up 61.6% from Sprint 132</p>
+    <p style="color:#787068; font-size:0.78rem; margin-top:8px;">83.9% completion &nbsp;|&nbsp; <strong style="color:#22c55e;">96.5% task-hour burn</strong> &nbsp;|&nbsp; Volume up 61.6% from Sprint 132</p>
 
     <div style="display:flex; gap:16px; max-width:900px; margin:24px auto 0; text-align:left; flex-wrap:wrap;">
       <div class="insight-box green" style="flex:1; min-width:240px;">
@@ -411,6 +411,18 @@
             <td><strong>Burn Rate</strong></td><td>74.3%</td><td>84.2%</td>
             <td style="color:#22c55e; font-weight:700;">+9.9pp</td>
           </tr>
+          <tr style="border-top:2px solid #3B3B52;">
+            <td><strong>Task Est Hours</strong></td><td>558h</td><td>746h</td>
+            <td style="color:#BE2024;">+33.7%</td>
+          </tr>
+          <tr>
+            <td><strong>Task Hours Burned</strong></td><td>496h</td><td>714h</td>
+            <td style="color:#22c55e; font-weight:700;">+43.9%</td>
+          </tr>
+          <tr>
+            <td><strong>Task Burn %</strong></td><td>87.8%</td><td style="color:#22c55e; font-weight:700;">96.5%</td>
+            <td style="color:#22c55e; font-weight:700;">+8.7pp</td>
+          </tr>
           <tr>
             <td><strong>Bugs</strong></td><td>43 (23%)</td><td>81 (27%)</td>
             <td style="color:#FF6B6B; font-weight:700;">+88.4%</td>
@@ -426,7 +438,7 @@
 
   <div class="insight-box fade-in">
     <span class="insight-label">Key Insight</span>
-    <strong>Volume surged 61.6% while completion IMPROVED</strong> &mdash; the team absorbed significantly more work and executed better. However, bug volume nearly doubled (+88.4%), driven by Landing Page Builder and EventFlow testing. The burn rate hit its best mark in 6 sprints at 84.2%.
+    <strong>Volume surged 61.6% while completion IMPROVED</strong> &mdash; the team absorbed significantly more work and executed better. However, bug volume nearly doubled (+88.4%), driven by Landing Page Builder and EventFlow testing. Task-level hour burn hit <strong style="color:#22c55e;">96.5%</strong> (714h of 746h estimated) &mdash; the strongest estimation accuracy in 6 sprints, up from 87.8% in S132. The team estimated 33.7% more hours and burned 43.9% more.
   </div>
 
   <div class="slide-footer">Sprint 133 Recap &nbsp;|&nbsp; MTech Platform Team &nbsp;|&nbsp; Confidential</div>
@@ -865,6 +877,7 @@
           <div class="person-stat"><div class="val">39/44</div><div class="lbl">Done</div></div>
           <div class="person-stat"><div class="val">88.6%</div><div class="lbl">Completion</div></div>
           <div class="person-stat"><div class="val">80h</div><div class="lbl">Estimated</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">80h</div><div class="lbl">Hours Burned (100%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniTH"></canvas></div>
         <div class="person-narrative">
@@ -885,6 +898,7 @@
         <div class="person-stats">
           <div class="person-stat"><div class="val">20/20</div><div class="lbl">Done</div></div>
           <div class="person-stat"><div class="val" style="color:#22c55e;">100%</div><div class="lbl">Completion</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">54h</div><div class="lbl">Hours Burned (100%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniJH"></canvas></div>
         <div class="person-narrative">
@@ -905,7 +919,7 @@
           <div class="person-stat"><div class="val">18/23</div><div class="lbl">Done</div></div>
           <div class="person-stat"><div class="val">78.3%</div><div class="lbl">Completion</div></div>
           <div class="person-stat"><div class="val">48h</div><div class="lbl">Estimated</div></div>
-          <div class="person-stat"><div class="val">6h</div><div class="lbl">Remaining</div></div>
+          <div class="person-stat"><div class="val" style="color:#D4A006;">36h</div><div class="lbl">Hours Burned (75%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniJB"></canvas></div>
         <div class="person-narrative">
@@ -927,6 +941,7 @@
           <div class="person-stat"><div class="val">6/7</div><div class="lbl">Done</div></div>
           <div class="person-stat"><div class="val">85.7%</div><div class="lbl">Completion</div></div>
           <div class="person-stat"><div class="val">50h</div><div class="lbl">Estimated</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">46h</div><div class="lbl">Hours Burned (92%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniCW"></canvas></div>
         <div class="person-narrative">
@@ -966,6 +981,7 @@
         <div class="person-stats">
           <div class="person-stat"><div class="val">32/32</div><div class="lbl">Done</div></div>
           <div class="person-stat"><div class="val" style="color:#22c55e;">100%</div><div class="lbl">Completion</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">73h</div><div class="lbl">Hours Burned (100%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniMM"></canvas></div>
         <div class="person-narrative">
@@ -985,6 +1001,7 @@
         <div class="person-stats">
           <div class="person-stat"><div class="val">38/38</div><div class="lbl">Done</div></div>
           <div class="person-stat"><div class="val" style="color:#22c55e;">100%</div><div class="lbl">Completion</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">80h</div><div class="lbl">Hours Burned (100%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniDU"></canvas></div>
         <div class="person-narrative">
@@ -1004,6 +1021,7 @@
         <div class="person-stats">
           <div class="person-stat"><div class="val">8/8</div><div class="lbl">Done</div></div>
           <div class="person-stat"><div class="val" style="color:#22c55e;">100%</div><div class="lbl">Completion</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">60h</div><div class="lbl">Hours Burned (100%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniAW"></canvas></div>
         <div class="person-narrative">
@@ -1023,6 +1041,7 @@
         <div class="person-stats">
           <div class="person-stat"><div class="val">8/8</div><div class="lbl">Done</div></div>
           <div class="person-stat"><div class="val" style="color:#22c55e;">100%</div><div class="lbl">Completion</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">52h</div><div class="lbl">Hours Burned (100%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniGG"></canvas></div>
         <div class="person-narrative">
@@ -1043,6 +1062,7 @@
           <div class="person-stat"><div class="val">14/18</div><div class="lbl">Done</div></div>
           <div class="person-stat"><div class="val">77.8%</div><div class="lbl">Completion</div></div>
           <div class="person-stat"><div class="val">58h</div><div class="lbl">Estimated</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">58h</div><div class="lbl">Hours Burned (100%)</div></div>
           <div class="person-stat"><div class="val">8h</div><div class="lbl">Remaining</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniJS"></canvas></div>
@@ -1065,7 +1085,7 @@
           <div class="person-stat"><div class="val">5/6</div><div class="lbl">Done</div></div>
           <div class="person-stat"><div class="val">83.3%</div><div class="lbl">Completion</div></div>
           <div class="person-stat"><div class="val">40h</div><div class="lbl">Estimated</div></div>
-          <div class="person-stat"><div class="val">8h</div><div class="lbl">Remaining</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">32h</div><div class="lbl">Hours Burned (80%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniMJ"></canvas></div>
         <div class="person-narrative">
@@ -1106,7 +1126,7 @@
           <div class="person-stat"><div class="val">30/31</div><div class="lbl">Done</div></div>
           <div class="person-stat"><div class="val">96.8%</div><div class="lbl">Completion</div></div>
           <div class="person-stat"><div class="val">92h</div><div class="lbl">Estimated</div></div>
-          <div class="person-stat"><div class="val">4h</div><div class="lbl">Remaining</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">88h</div><div class="lbl">Hours Burned (96%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniTT"></canvas></div>
         <div class="person-narrative">
@@ -1128,6 +1148,7 @@
           <div class="person-stat"><div class="val">14/15</div><div class="lbl">Done</div></div>
           <div class="person-stat"><div class="val">93.3%</div><div class="lbl">Completion</div></div>
           <div class="person-stat"><div class="val">59h</div><div class="lbl">Estimated</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">55h</div><div class="lbl">Hours Burned (93%)</div></div>
         </div>
         <div class="mini-chart-container"><canvas id="miniKT"></canvas></div>
         <div class="person-narrative">
@@ -1178,8 +1199,8 @@
       <div class="finding-card success">
         <div class="finding-number">01</div>
         <h4>Sprint 133 Was the Strongest Sprint This Quarter</h4>
-        <p>83.9% completion at 61.6% higher volume than S132. Burn rate peaked at 84.2%. Four team members hit 100%. The team absorbed significantly more work and executed better.</p>
-        <div class="rec">Best sprint health in 6 sprints.</div>
+        <p>83.9% completion at 61.6% higher volume than S132. Task-level burn rate peaked at <strong style="color:#22c55e;">96.5%</strong> (714h of 746h). Four team members hit 100%. The team absorbed significantly more work and executed better.</p>
+        <div class="rec">Best sprint health in 6 sprints. Task estimation accuracy at its highest point.</div>
       </div>
 
       <div class="finding-card warning">
@@ -1324,11 +1345,11 @@ const gridColor = 'rgba(59,59,82,0.5)';
 new Chart(document.getElementById('comparisonChart'), {
   type: 'bar',
   data: {
-    labels: ['Total Items', 'Done', 'Orig. Hours', 'Remaining Hours', 'Bugs', 'Features'],
+    labels: ['Total Items', 'Done', 'Orig. Hours', 'Remaining Hours', 'Task Est Hours', 'Task Burned', 'Bugs', 'Features'],
     datasets: [
       {
         label: 'Sprint 132',
-        data: [185, 148, 686, 176, 43, 39],
+        data: [185, 148, 686, 176, 558, 496, 43, 39],
         backgroundColor: 'rgba(100,116,139,0.4)',
         borderColor: '#787068',
         borderWidth: 1,
@@ -1336,7 +1357,7 @@ new Chart(document.getElementById('comparisonChart'), {
       },
       {
         label: 'Sprint 133',
-        data: [299, 251, 926, 146, 81, 49],
+        data: [299, 251, 926, 146, 746, 714, 81, 49],
         backgroundColor: 'rgba(190,32,36,0.5)',
         borderColor: '#BE2024',
         borderWidth: 1,
