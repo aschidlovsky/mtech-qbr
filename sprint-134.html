@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sprint 134 Recap — MTech Platform Team</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-snap-type: y mandatory; scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    background: #1A1A2E; color: #E8E4E0; line-height: 1.5; overflow-x: hidden;
+  }
+  a { color: #BE2024; text-decoration: none; }
+
+  /* ===== SECTIONS / SLIDES ===== */
+  .slide {
+    min-height: 100vh; scroll-snap-align: start; position: relative;
+    padding: 60px 80px 80px; display: flex; flex-direction: column; justify-content: flex-start;
+    overflow-y: auto;
+  }
+  .slide-number {
+    position: absolute; top: 24px; left: 30px; font-size: 0.75rem;
+    color: #52526A; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  }
+  .slide-footer {
+    position: absolute; bottom: 18px; left: 0; right: 0; text-align: center;
+    font-size: 0.7rem; color: #3B3B52; letter-spacing: 1.5px; text-transform: uppercase;
+  }
+
+  /* ===== NAV DOTS ===== */
+  #nav-dots {
+    position: fixed; right: 22px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 10px; z-index: 1000;
+  }
+  .nav-dot {
+    width: 10px; height: 10px; border-radius: 50%; background: #3B3B52;
+    cursor: pointer; transition: all 0.3s; border: none; outline: none;
+    position: relative;
+  }
+  .nav-dot:hover, .nav-dot.active { background: #BE2024; transform: scale(1.4); }
+  .nav-dot .tooltip {
+    position: absolute; right: 22px; top: 50%; transform: translateY(-50%);
+    background: #25253B; color: #E8E4E0; padding: 4px 10px; border-radius: 4px;
+    font-size: 0.7rem; white-space: nowrap; opacity: 0; pointer-events: none;
+    transition: opacity 0.2s; border: 1px solid #3B3B52;
+  }
+  .nav-dot:hover .tooltip { opacity: 1; }
+
+  /* ===== TYPOGRAPHY ===== */
+  h1 { font-size: 2.8rem; font-weight: 700; color: #F5F2EF; line-height: 1.15; }
+  h2 { font-size: 1.9rem; font-weight: 700; color: #F5F2EF; margin-bottom: 8px; }
+  h3 { font-size: 1.2rem; font-weight: 600; color: #BE2024; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+  h4 { font-size: 1rem; font-weight: 600; color: #D4A006; margin-bottom: 4px; }
+  .subtitle { font-size: 1.15rem; color: #A09890; font-weight: 400; }
+  .section-header { margin-bottom: 28px; }
+  .section-header h2 { margin-bottom: 4px; }
+  .section-header .subtitle { font-size: 0.95rem; }
+
+  /* ===== METRIC CARDS ===== */
+  .metric-row { display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0; }
+  .metric-card {
+    background: linear-gradient(135deg, #25253B 0%, #1A1A2E 100%);
+    border: 1px solid #3B3B52; border-radius: 12px; padding: 24px 28px;
+    flex: 1; min-width: 200px; position: relative; overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .metric-card:hover { transform: translateY(-2px); border-color: #52526A; }
+  .metric-card .big-number { font-size: 2.6rem; font-weight: 800; color: #F5F2EF; line-height: 1.1; }
+  .metric-card .label { font-size: 0.8rem; color: #A09890; text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+  .metric-card.teal .big-number { color: #BE2024; }
+  .metric-card.amber .big-number { color: #D4A006; }
+  .metric-card.green .big-number { color: #22c55e; }
+  .metric-card.red .big-number { color: #FF6B6B; }
+  .metric-card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #BE2024, #D4A006); opacity: 0.6;
+  }
+
+  /* ===== INSIGHT BOXES ===== */
+  .insight-box {
+    background: rgba(190,32,36,0.06); border-left: 4px solid #BE2024;
+    padding: 18px 22px; border-radius: 0 8px 8px 0; margin: 18px 0;
+    font-size: 0.9rem; color: #D0C8C0; line-height: 1.65;
+  }
+  .insight-box.amber { background: rgba(212,160,6,0.06); border-left-color: #D4A006; }
+  .insight-box.red { background: rgba(255,107,107,0.06); border-left-color: #FF6B6B; }
+  .insight-box.green { background: rgba(34,197,94,0.06); border-left-color: #22c55e; }
+  .insight-box strong { color: #F5F2EF; }
+  .insight-box .insight-label {
+    font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px;
+    color: #BE2024; font-weight: 700; margin-bottom: 6px; display: block;
+  }
+  .insight-box.amber .insight-label { color: #D4A006; }
+  .insight-box.red .insight-label { color: #FF6B6B; }
+  .insight-box.green .insight-label { color: #22c55e; }
+
+  /* ===== RAG BADGES ===== */
+  .rag { display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .rag-green { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+  .rag-amber { background: rgba(212,160,6,0.15); color: #D4A006; border: 1px solid rgba(212,160,6,0.3); }
+  .rag-red { background: rgba(255,107,107,0.15); color: #FF6B6B; border: 1px solid rgba(255,107,107,0.3); }
+
+  /* ===== HEALTH BADGE ===== */
+  .health-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    border-radius: 8px; padding: 10px 20px; font-size: 1rem; font-weight: 700;
+  }
+  .health-badge.green-health {
+    background: rgba(34,197,94,0.1); border: 2px solid #22c55e; color: #22c55e;
+  }
+  .health-badge.amber-health {
+    background: rgba(212,160,6,0.1); border: 2px solid #D4A006; color: #D4A006;
+  }
+  .health-dot { width: 14px; height: 14px; border-radius: 50%; animation: pulse 2s infinite; }
+  .health-dot.green { background: #22c55e; }
+  .health-dot.amber { background: #D4A006; }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+  /* ===== TABLES ===== */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin: 12px 0; }
+  .data-table th {
+    text-align: left; padding: 10px 14px; background: #25253B; color: #A09890;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.72rem;
+    border-bottom: 2px solid #3B3B52;
+  }
+  .data-table td { padding: 10px 14px; border-bottom: 1px solid #25253B; }
+  .data-table tbody tr:nth-child(even) { background: rgba(30,41,59,0.4); }
+  .data-table tbody tr:hover { background: rgba(190,32,36,0.05); }
+
+  /* ===== PROGRESS BAR ===== */
+  .progress-bar { background: #25253B; border-radius: 6px; height: 8px; overflow: hidden; width: 100%; min-width: 80px; }
+  .progress-fill { height: 100%; border-radius: 6px; transition: width 1s ease; }
+  .progress-fill.green { background: linear-gradient(90deg, #22c55e, #16a34a); }
+  .progress-fill.amber { background: linear-gradient(90deg, #D4A006, #B8890A); }
+  .progress-fill.red { background: linear-gradient(90deg, #FF6B6B, #E85454); }
+
+  /* ===== CHART CONTAINERS ===== */
+  .chart-container { position: relative; width: 100%; max-width: 900px; margin: 10px auto; }
+  .chart-container.wide { max-width: 100%; }
+  .chart-row { display: flex; gap: 24px; flex-wrap: wrap; }
+  .chart-half { flex: 1; min-width: 350px; }
+
+  /* ===== PERSON CARDS ===== */
+  .person-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 18px; }
+  .person-card {
+    background: #25253B; border: 1px solid #3B3B52; border-radius: 10px; padding: 20px;
+    transition: border-color 0.2s;
+  }
+  .person-card:hover { border-color: #52526A; }
+  .person-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+  .avatar {
+    width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-weight: 700; font-size: 0.85rem; color: #1A1A2E; flex-shrink: 0;
+  }
+  .avatar.teal { background: #BE2024; }
+  .avatar.amber { background: #D4A006; }
+  .avatar.green { background: #22c55e; }
+  .avatar.slate { background: #787068; }
+  .person-name { font-weight: 700; color: #F5F2EF; font-size: 1rem; }
+  .person-role { font-size: 0.75rem; color: #A09890; }
+  .person-stats { display: flex; gap: 16px; margin: 10px 0; flex-wrap: wrap; }
+  .person-stat { text-align: center; }
+  .person-stat .val { font-size: 1.3rem; font-weight: 800; color: #F5F2EF; }
+  .person-stat .lbl { font-size: 0.65rem; color: #787068; text-transform: uppercase; letter-spacing: 0.5px; }
+  .person-narrative { font-size: 0.8rem; color: #A09890; line-height: 1.55; margin-top: 8px; }
+  .person-narrative strong { color: #D0C8C0; }
+  .mini-chart-container { height: 90px; margin: 8px 0; }
+  .person-tag { display: inline-block; font-size: 0.65rem; padding: 1px 8px; border-radius: 3px; margin-right: 4px; margin-top: 4px; }
+  .tag-up { background: rgba(34,197,94,0.15); color: #22c55e; }
+  .tag-down { background: rgba(255,107,107,0.15); color: #FF6B6B; }
+  .tag-stable { background: rgba(190,32,36,0.15); color: #BE2024; }
+  .tag-star { background: rgba(212,160,6,0.15); color: #D4A006; }
+  .tag-perfect { background: rgba(34,197,94,0.2); color: #22c55e; }
+
+  /* ===== FINDINGS CARDS ===== */
+  .finding-card {
+    background: #25253B; border-radius: 10px; padding: 22px 26px; margin-bottom: 14px;
+    border-left: 4px solid #BE2024; position: relative;
+  }
+  .finding-card.critical { border-left-color: #FF6B6B; }
+  .finding-card.warning { border-left-color: #D4A006; }
+  .finding-card.success { border-left-color: #22c55e; }
+  .finding-card.observation { border-left-color: #BE2024; }
+  .finding-number {
+    position: absolute; top: 14px; right: 18px; font-size: 2rem;
+    font-weight: 900; color: rgba(100,116,139,0.15);
+  }
+  .finding-card h4 { font-size: 1rem; color: #F5F2EF; margin-bottom: 6px; }
+  .finding-card p { font-size: 0.85rem; color: #A09890; line-height: 1.6; }
+  .finding-card .rec { font-size: 0.8rem; color: #BE2024; margin-top: 8px; font-weight: 600; }
+  .finding-card.critical .rec { color: #FF6B6B; }
+  .finding-card.warning .rec { color: #D4A006; }
+  .finding-card.success .rec { color: #22c55e; }
+
+  /* ===== PRIORITIES LIST ===== */
+  .priority-list { list-style: none; counter-reset: priority; }
+  .priority-item {
+    counter-increment: priority; display: flex; align-items: flex-start; gap: 16px;
+    padding: 16px 20px; background: #25253B; border-radius: 8px; margin-bottom: 10px;
+    border: 1px solid #3B3B52;
+  }
+  .priority-item::before {
+    content: counter(priority); min-width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, #BE2024, #9A1A1E); color: #1A1A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 0.9rem; flex-shrink: 0;
+  }
+  .priority-item .pri-text { flex: 1; }
+  .priority-item .pri-text strong { color: #F5F2EF; }
+  .priority-item .pri-text p { font-size: 0.85rem; color: #A09890; margin-top: 2px; }
+
+  /* ===== INITIATIVE CARDS ===== */
+  .initiative-card {
+    background: #25253B; border-radius: 10px; padding: 20px 24px; margin-bottom: 14px;
+    border-left: 4px solid #22c55e; position: relative;
+  }
+  .initiative-card.partial { border-left-color: #D4A006; }
+  .initiative-card h4 { font-size: 0.95rem; color: #F5F2EF; margin-bottom: 6px; }
+  .initiative-card .init-meta { font-size: 0.75rem; color: #787068; margin-bottom: 8px; }
+  .initiative-card ul { list-style: none; padding: 0; margin: 0; }
+  .initiative-card li { font-size: 0.82rem; color: #A09890; padding: 3px 0; padding-left: 16px; position: relative; }
+  .initiative-card li::before { content: '\2713'; position: absolute; left: 0; color: #22c55e; font-weight: 700; font-size: 0.75rem; }
+
+  /* ===== IMPACT GROUP ===== */
+  .impact-group { margin-bottom: 20px; }
+  .impact-group h4 { font-size: 0.9rem; margin-bottom: 10px; }
+  .impact-item {
+    background: #25253B; border-radius: 8px; padding: 12px 18px; margin-bottom: 8px;
+    border: 1px solid #3B3B52; font-size: 0.82rem; color: #A09890;
+  }
+  .impact-item strong { color: #F5F2EF; }
+  .impact-item .status-tag {
+    display: inline-block; font-size: 0.65rem; padding: 1px 8px; border-radius: 3px;
+    margin-left: 6px; font-weight: 600;
+  }
+  .status-in-progress { background: rgba(190,32,36,0.15); color: #BE2024; }
+  .status-needs-attention { background: rgba(255,107,107,0.15); color: #FF6B6B; }
+  .status-coding { background: rgba(212,160,6,0.15); color: #D4A006; }
+  .status-testing { background: rgba(139,92,246,0.15); color: #a78bfa; }
+  .status-new { background: rgba(100,116,139,0.15); color: #A09890; }
+  .status-removed { background: rgba(100,116,139,0.1); color: #787068; }
+  .status-pr-waiting { background: rgba(59,130,246,0.15); color: #60a5fa; }
+
+  /* ===== TITLE SLIDE SPECIAL ===== */
+  .title-slide { justify-content: center; align-items: center; text-align: center; }
+  .title-slide h1 { font-size: 3.2rem; margin-bottom: 8px; }
+  .title-slide .subtitle { font-size: 1.25rem; margin-bottom: 30px; }
+  .title-logo {
+    width: 80px; height: 80px; border-radius: 16px; margin-bottom: 24px;
+    background: linear-gradient(135deg, #BE2024, #9A1A1E);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem; font-weight: 900; color: #1A1A2E;
+  }
+  .title-divider { width: 80px; height: 3px; background: linear-gradient(90deg, #BE2024, #D4A006); margin: 0 auto 24px; border-radius: 2px; }
+
+  /* ===== SCROLLABLE INNER ===== */
+  .scroll-inner { overflow-y: auto; flex: 1; padding-right: 10px; }
+  .scroll-inner::-webkit-scrollbar { width: 5px; }
+  .scroll-inner::-webkit-scrollbar-track { background: transparent; }
+  .scroll-inner::-webkit-scrollbar-thumb { background: #3B3B52; border-radius: 4px; }
+
+  /* ===== TWO-COL LAYOUT ===== */
+  .two-col { display: flex; gap: 30px; flex-wrap: wrap; }
+  .two-col > * { flex: 1; min-width: 300px; }
+
+  /* ===== SPRINT NOTE ===== */
+  .sprint-note {
+    display: inline-flex; align-items: center; gap: 6px; background: rgba(212,160,6,0.1);
+    border: 1px solid rgba(212,160,6,0.3); border-radius: 6px; padding: 6px 14px;
+    font-size: 0.78rem; color: #D4A006; margin: 10px 0;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== PRINT ===== */
+  @media print {
+    html { scroll-snap-type: none; }
+    body { background: #fff; color: #25253B; }
+    .slide { min-height: auto; page-break-after: always; padding: 30px; }
+    #nav-dots { display: none; }
+    .metric-card, .person-card, .finding-card, .priority-item, .insight-box, .initiative-card, .impact-item { border: 1px solid #ddd; background: #f8f9fa; }
+    .metric-card .big-number, h1, h2, .person-name, .finding-card h4 { color: #25253B; }
+    .data-table th { background: #e5e7eb; color: #374151; }
+    .slide-footer { color: #9ca3af; }
+    h3 { color: #9A1A1E; }
+    .rag-green { color: #16a34a; } .rag-amber { color: #B8890A; } .rag-red { color: #E85454; }
+  }
+
+  @media (max-width: 768px) {
+    .slide { padding: 40px 24px 60px; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    .person-grid { grid-template-columns: 1fr; }
+    .metric-row { flex-direction: column; }
+    #nav-dots { right: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV DOTS ===== -->
+<nav id="nav-dots">
+  <button class="nav-dot active" onclick="goTo(0)"><span class="tooltip">Sprint Headline</span></button>
+  <button class="nav-dot" onclick="goTo(1)"><span class="tooltip">S133 vs S134</span></button>
+  <button class="nav-dot" onclick="goTo(2)"><span class="tooltip">What Shipped</span></button>
+  <button class="nav-dot" onclick="goTo(3)"><span class="tooltip">Ready for Testing</span></button>
+  <button class="nav-dot" onclick="goTo(4)"><span class="tooltip">Incomplete Work</span></button>
+  <button class="nav-dot" onclick="goTo(5)"><span class="tooltip">Mid-Sprint Discovery</span></button>
+  <button class="nav-dot" onclick="goTo(6)"><span class="tooltip">Work Categories</span></button>
+  <button class="nav-dot" onclick="goTo(7)"><span class="tooltip">Team A Performance</span></button>
+  <button class="nav-dot" onclick="goTo(8)"><span class="tooltip">Team B Performance</span></button>
+  <button class="nav-dot" onclick="goTo(9)"><span class="tooltip">Shared Members</span></button>
+  <button class="nav-dot" onclick="goTo(10)"><span class="tooltip">Key Findings</span></button>
+</nav>
+
+<!-- ============================================================== -->
+<!-- SECTION 1: SPRINT HEADLINE -->
+<!-- ============================================================== -->
+<section class="slide title-slide" id="slide-0">
+  <div class="slide-number">01 / 11</div>
+  <div class="fade-in">
+    <div class="title-logo">MT</div>
+    <h1>Sprint 134 Recap</h1>
+    <div class="title-divider"></div>
+    <p class="subtitle">MTech Platform Team</p>
+    <p style="color:#787068; font-size:0.9rem; margin-bottom: 32px;">March 30&ndash;April 10, 2026 &nbsp;|&nbsp; Completed</p>
+
+    <div class="metric-row" style="max-width:900px; margin: 0 auto 24px;">
+      <div class="metric-card teal">
+        <div class="big-number">268</div>
+        <div class="label">Total Work Items</div>
+      </div>
+      <div class="metric-card amber">
+        <div class="big-number">205</div>
+        <div class="label">Completed (76.5%)</div>
+      </div>
+      <div class="metric-card green">
+        <div class="big-number" style="font-size:1.8rem;">785h / 119h</div>
+        <div class="label">Task Hours Est / Remaining (83.9% Burn)</div>
+      </div>
+      <div class="metric-card red">
+        <div class="big-number">8</div>
+        <div class="label">Needs Attention</div>
+      </div>
+    </div>
+
+    <div class="health-badge amber-health" style="margin: 0 auto;">
+      <div class="health-dot amber"></div>
+      SPRINT HEALTH: AMBER
+    </div>
+    <p style="color:#787068; font-size:0.78rem; margin-top:8px;">76.5% completion &nbsp;|&nbsp; <strong style="color:#D4A006;">83.9% task-hour burn</strong> &nbsp;|&nbsp; Volume down 11.3% from Sprint 133 &nbsp;|&nbsp; Legacy AX drag</p>
+
+    <div style="display:flex; gap:16px; max-width:900px; margin:24px auto 0; text-align:left; flex-wrap:wrap;">
+      <div class="insight-box green" style="flex:1; min-width:240px;">
+        <span class="insight-label">Strengths</span>
+        EventFlow Segmentation Phases 1&ndash;8 fully delivered (Thomas Holland &mdash; 45/45 perfect sprint). 6 team members hit 100% completion. Task-hour burn held steady at 83.9% (vs S133's 83.4%). Bug ratio improved from 69.2% to 52.1%. Joshua Hise breakout sprint &mdash; 32/34 across Tab Sets, Message Center, SSO.
+      </div>
+      <div class="insight-box amber" style="flex:1; min-width:240px;">
+        <span class="insight-label">Concerns</span>
+        Item completion dropped to 76.5% (from 84.1%). Legacy AX at 33.3% completion &mdash; dragging overall numbers. Justin Barreira at 44% item completion with 9 incomplete items. OneSource Tax initiative stalling for 3rd sprint. Mateusz Janiszewski load dropped to 1h.
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">Sprint 134 Recap &nbsp;|&nbsp; MTech Platform Team &nbsp;|&nbsp; Confidential</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- SECTION 2: SPRINT 133 -> 134 COMPARISON -->
+<!-- ============================================================== -->
+<section class="slide" id="slide-1">
+  <div class="slide-number">02 / 11</div>
+  <div class="section-header fade-in">
+    <h3>Sprint-over-Sprint</h3>
+    <h2>Sprint 133 &rarr; 134 Comparison</h2>
+    <p class="subtitle">Did we improve? Where did volume and efficiency shift?</p>
+  </div>
+
+  <div class="two-col fade-in">
+    <div>
+      <div class="chart-container" style="max-width:100%; height:340px;">
+        <canvas id="comparisonChart"></canvas>
+      </div>
+    </div>
+    <div>
+      <table class="data-table">
+        <thead>
+          <tr><th>Metric</th><th>Sprint 133</th><th>Sprint 134</th><th>Delta</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Total Items</strong></td><td>302</td><td>268</td>
+            <td style="color:#D4A006; font-weight:700;">&minus;11.3%</td>
+          </tr>
+          <tr>
+            <td><strong>Done</strong></td><td>254 (84.1%)</td><td>205 (76.5%)</td>
+            <td style="color:#FF6B6B; font-weight:700;">&minus;7.6pp</td>
+          </tr>
+          <tr>
+            <td><strong>Task Est Hours</strong></td><td>942h</td><td>785h</td>
+            <td style="color:#D4A006;">&minus;16.7%</td>
+          </tr>
+          <tr>
+            <td><strong>Task Done Hours</strong></td><td>786h</td><td>659h</td>
+            <td style="color:#D4A006;">&minus;16.2%</td>
+          </tr>
+          <tr>
+            <td><strong>Task Burn %</strong></td><td>83.4%</td><td style="color:#22c55e; font-weight:700;">83.9%</td>
+            <td style="color:#22c55e; font-weight:700;">+0.5pp</td>
+          </tr>
+          <tr style="border-top:2px solid #3B3B52;">
+            <td><strong>Bug Ratio</strong></td><td>69.2%</td><td>52.1%</td>
+            <td style="color:#22c55e; font-weight:700;">&minus;17.1pp</td>
+          </tr>
+          <tr>
+            <td><strong>Bugs + Bug Fixes</strong></td><td>~81</td><td>49</td>
+            <td style="color:#22c55e; font-weight:700;">&minus;39.5%</td>
+          </tr>
+          <tr>
+            <td><strong>PBIs</strong></td><td>~49</td><td>45</td>
+            <td style="color:#A09890;">&minus;8.2%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <span class="insight-label">Key Insight</span>
+    <strong>Volume dropped 11.3% and item completion fell from 84.1% to 76.5%, BUT task-hour burn held steady at 83.9%</strong> &mdash; nearly identical to S133's 83.4%. The team did less volume but maintained execution efficiency. Items that were in scope got done at the same hourly rate. Bug ratio improved significantly from 69.2% to 52.1% &mdash; less time on bugs, more on features. <strong>The completion gap is almost entirely explained by Legacy AX</strong>: 51 items at 33.3% completion dragged the headline number down.
+  </div>
+
+  <div class="slide-footer">Sprint 134 Recap &nbsp;|&nbsp; MTech Platform Team &nbsp;|&nbsp; Confidential</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- SECTION 3: WHAT SHIPPED -- KEY DELIVERABLES -->
+<!-- ============================================================== -->
+<section class="slide" id="slide-2">
+  <div class="slide-number">03 / 11</div>
+  <div class="section-header fade-in">
+    <h3>What Shipped</h3>
+    <h2>Key Deliverables &mdash; Sprint 134</h2>
+    <p class="subtitle">Completed initiatives grouped by area</p>
+  </div>
+
+  <div class="scroll-inner">
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(440px, 1fr)); gap:14px;" class="fade-in">
+
+      <!-- EventFlow Segmentation -->
+      <div class="initiative-card">
+        <h4>EventFlow Segmentation Phases 1&ndash;8 <span class="rag rag-green" style="margin-left:8px;">16/16 &mdash; 100%</span></h4>
+        <div class="init-meta">Thomas Holland &mdash; 45 items, 108h</div>
+        <ul>
+          <li>Phase 1: Core segmentation infrastructure</li>
+          <li>Phase 2: Segment routing logic</li>
+          <li>Phase 3: Configuration framework</li>
+          <li>Phase 4: Monitoring &amp; observability</li>
+          <li>Phase 5: Edge case handling</li>
+          <li>Phase 6: Performance tuning</li>
+          <li>Phase 7: Integration testing</li>
+          <li>Phase 8: Deployment preparation + archive plans</li>
+          <li>4 critical EventFlow bugs fixed</li>
+        </ul>
+      </div>
+
+      <!-- M365 Forms -->
+      <div class="initiative-card">
+        <h4>M365 Forms: Tab Sets + Message Center + SSO <span class="rag rag-green" style="margin-left:8px;">32/34 &mdash; 94%</span></h4>
+        <div class="init-meta">Joshua Hise &mdash; 64h burned</div>
+        <ul>
+          <li>Tab Sets &mdash; BFF, FE, MCore layers</li>
+          <li>Product Detail Message Center &mdash; BFF, FE, MCore</li>
+          <li>SSO Maintenance &mdash; BFF, MCore</li>
+          <li>6 bugs fixed across forms components</li>
+        </ul>
+      </div>
+
+      <!-- Dapr Replacement -->
+      <div class="initiative-card">
+        <h4>Dapr Service-Invocation Replacement <span class="rag rag-green" style="margin-left:8px;">COMPLETE</span></h4>
+        <div class="init-meta">Dariusz Uchman &mdash; 76h</div>
+        <ul>
+          <li>Full Dapr service-invocation replacement</li>
+          <li>Global Change Request History implementation</li>
+          <li>ADO cleanup and configuration</li>
+        </ul>
+      </div>
+
+      <!-- .NET 10 SDK -->
+      <div class="initiative-card">
+        <h4>.NET 10 SDK Upgrade <span class="rag rag-green" style="margin-left:8px;">SHIPPED</span></h4>
+        <div class="init-meta">Marcin Miazga &mdash; 67h</div>
+        <ul>
+          <li>.NET 10 SDK upgrade across target services</li>
+          <li>Entity Change Request Scope Set FE</li>
+          <li>Dynamic Lookup bug fix</li>
+          <li>2 Landing Page Builder bugs fixed</li>
+        </ul>
+      </div>
+
+      <!-- Preview Environments -->
+      <div class="initiative-card">
+        <h4>Preview Environment Activation &amp; Entity Work <span class="rag rag-green" style="margin-left:8px;">12/13 &mdash; 92%</span></h4>
+        <div class="init-meta">Kamil Trescinski &mdash; 36h</div>
+        <ul>
+          <li>Preview Environment Activation Redirect</li>
+          <li>Right-side Panel implementation</li>
+          <li>4 entity-related bugs fixed</li>
+        </ul>
+      </div>
+
+      <!-- Scope Sync / DevOps -->
+      <div class="initiative-card">
+        <h4>Scope Sync &amp; DevOps Fixes <span class="rag rag-green" style="margin-left:8px;">6/6 &mdash; 100%</span></h4>
+        <div class="init-meta">Adam Wojciechowski &mdash; 37h</div>
+        <ul>
+          <li>Scope Sync pipeline fix</li>
+          <li>JSON converters implementation</li>
+          <li>SmallDateTime handling fix</li>
+        </ul>
+      </div>
+
+      <!-- Landing Page Builder Bugs -->
+      <div class="initiative-card">
+        <h4>Landing Page Builder Stabilization <span class="rag rag-green" style="margin-left:8px;">12 BUGS FIXED</span></h4>
+        <div class="init-meta">Tymoteusz Tracz (12 bugs), Marcin Miazga (2 bugs)</div>
+        <ul>
+          <li>12 Landing Page Builder bugs fixed by Tymoteusz</li>
+          <li>EventFlow BatchJobs UI &mdash; Run History drawer</li>
+          <li>EventFlow BatchJobs UI &mdash; tab rename</li>
+          <li>2 additional LPB bugs fixed by Marcin</li>
+        </ul>
+      </div>
+
+      <!-- Scheduled Cleanup -->
+      <div class="initiative-card">
+        <h4>Scheduled Cleanup &amp; Infra <span class="rag rag-green" style="margin-left:8px;">COMPLETE</span></h4>
+        <div class="init-meta">Grzegorz Giera (4/4), Mateusz Janiszewski (2/2)</div>
+        <ul>
+          <li>Scheduled Cleanup Job Plan with Quartz.NET</li>
+          <li>Cleanup Service API implementation</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <div class="slide-footer">Sprint 134 Recap &nbsp;|&nbsp; MTech Platform Team &nbsp;|&nbsp; Confidential</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- SECTION 4: READY FOR TESTING / DEV COMPLETE -->
+<!-- ============================================================== -->
+<section class="slide" id="slide-3">
+  <div class="slide-number">04 / 11</div>
+  <div class="section-header fade-in">
+    <h3>Ready for Testing</h3>
+    <h2>Dev Complete / In QA at Sprint End</h2>
+    <p class="subtitle">5 items ended the sprint in review/testing states</p>
+  </div>
+
+  <div class="fade-in" style="max-width:800px;">
+    <div class="metric-row" style="margin-bottom:24px;">
+      <div class="metric-card amber" style="text-align:center;">
+        <div class="big-number">5</div>
+        <div class="label">Items in Testing / PR Review</div>
+      </div>
+      <div class="metric-card amber" style="text-align:center;">
+        <div class="big-number" style="font-size:1.6rem; color:#D4A006;">Moderate</div>
+        <div class="label">Testing Backlog at Sprint End</div>
+      </div>
+    </div>
+
+    <div class="impact-item" style="margin-bottom:12px; border-left: 3px solid #60a5fa;">
+      <strong>[PR Waiting Approval] PBI #87751:</strong> Implement DeliveryConfirmation generator
+      <br><span style="font-size:0.75rem; color:#787068; margin-top:4px; display:inline-block;">Clint Wilkes &mdash; Notification System</span>
+      <span class="status-tag status-pr-waiting">PR WAITING</span>
+    </div>
+
+    <div class="impact-item" style="margin-bottom:12px; border-left: 3px solid #a78bfa;">
+      <strong>[AXDev Testing] AX Dev Item #92466:</strong> M365-parameters Max Qty job
+      <br><span style="font-size:0.75rem; color:#787068; margin-top:4px; display:inline-block;">Lindsay O'Connell-Pullia &mdash; AX 2009</span>
+      <span class="status-tag status-testing">AXDEV TESTING</span>
+    </div>
+
+    <div class="impact-item" style="margin-bottom:12px; border-left: 3px solid #a78bfa;">
+      <strong>[Testing Approved] AX Dev Item #91712:</strong> Item Details streamline ordering
+      <br><span style="font-size:0.75rem; color:#787068; margin-top:4px; display:inline-block;">Sandra Brodowski &mdash; AX 2009</span>
+      <span class="status-tag status-testing">TESTING APPROVED</span>
+    </div>
+
+    <div class="impact-item" style="margin-bottom:12px; border-left: 3px solid #a78bfa;">
+      <strong>[AXDev Testing] AX Dev Item #91668:</strong> AutoTOs Full Carton Quantities
+      <br><span style="font-size:0.75rem; color:#787068; margin-top:4px; display:inline-block;">Sandra Brodowski &mdash; AX 2009</span>
+      <span class="status-tag status-testing">AXDEV TESTING</span>
+    </div>
+
+    <div class="impact-item" style="margin-bottom:12px; border-left: 3px solid #a78bfa;">
+      <strong>[Testing Approved] AX Dev Item #93132:</strong> Add OriginalEventTimestamp
+      <br><span style="font-size:0.75rem; color:#787068; margin-top:4px; display:inline-block;">Thomas Holland &mdash; EventFlow</span>
+      <span class="status-tag status-testing">TESTING APPROVED</span>
+    </div>
+
+    <div class="insight-box amber" style="margin-top:24px;">
+      <span class="insight-label">Testing Queue</span>
+      <strong>5 items in testing/review at sprint end</strong> &mdash; up from just 1 in Sprint 133. Three are Legacy AX items with specialized QA requirements. The DeliveryConfirmation PR (Clint Wilkes) has been waiting for approval and needs to be prioritized in Sprint 135. Thomas Holland's OriginalEventTimestamp is Testing Approved and should clear quickly.
+    </div>
+
+    <div style="margin-top:30px;">
+      <h4 style="margin-bottom:12px;">Sprint Flow Summary</h4>
+      <div class="chart-container" style="max-width:500px; height:250px; margin:0;">
+        <canvas id="flowChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">Sprint 134 Recap &nbsp;|&nbsp; MTech Platform Team &nbsp;|&nbsp; Confidential</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- SECTION 5: INCOMPLETE WORK & IMPACT -->
+<!-- ============================================================== -->
+<section class="slide" id="slide-4">
+  <div class="slide-number">05 / 11</div>
+  <div class="section-header fade-in">
+    <h3>Incomplete Work</h3>
+    <h2>What Didn't Finish &mdash; Impact Assessment</h2>
+    <p class="subtitle">63 items didn't complete &mdash; grouped by impact to Sprint 135</p>
+  </div>
+
+  <div class="scroll-inner">
+    <div class="two-col fade-in">
+      <div>
+        <!-- High Impact -->
+        <div class="impact-group">
+          <h4 style="color:#FF6B6B;">High Impact &mdash; Carries Into Sprint 135</h4>
+          <div class="impact-item">
+            <strong>OneSource Tax Middleware API</strong> <span class="status-tag status-new">NEW</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Justin Barreira &mdash; 3rd sprint flagged, not started</span>
+          </div>
+          <div class="impact-item">
+            <strong>.NET 10 Upgrade (Remaining Services)</strong> <span class="status-tag status-in-progress">IN PROGRESS</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Jacek Smigiel &mdash; Partially complete, needs continuation</span>
+          </div>
+          <div class="impact-item">
+            <strong>Dapr API Replacement (Remaining)</strong> <span class="status-tag status-in-progress">IN PROGRESS</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Jacek Smigiel &mdash; Follow-on from Dariusz's completed work</span>
+          </div>
+          <div class="impact-item">
+            <strong>DeliveryConfirmation Generator</strong> <span class="status-tag status-pr-waiting">PR WAITING</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Clint Wilkes &mdash; Code complete, blocked on PR review</span>
+          </div>
+          <div class="impact-item">
+            <strong>Product Detail tabs save button bug</strong> <span class="status-tag status-needs-attention">NEEDS ATTENTION</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Sandra Brodowski &mdash; Bug #89850</span>
+          </div>
+        </div>
+
+        <!-- Medium Impact -->
+        <div class="impact-group">
+          <h4 style="color:#D4A006;">Medium Impact</h4>
+          <div class="impact-item">
+            <strong>5 AX Dev Items (Justin Barreira)</strong> <span class="status-tag status-new">NEW</span>
+            <br><span style="font-size:0.75rem; color:#787068;">All still in New state &mdash; not started</span>
+          </div>
+          <div class="impact-item">
+            <strong>DeliveryConfirmation end-to-end</strong> <span class="status-tag status-new">NEW</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Clint Wilkes &mdash; AX2009 triggers, tests feature</span>
+          </div>
+          <div class="impact-item">
+            <strong>ReasonCodeID cannot be blank bug</strong> <span class="status-tag status-needs-attention">NEEDS ATTENTION</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Sandra Brodowski &mdash; Bug #71294</span>
+          </div>
+          <div class="impact-item">
+            <strong>Jacek Smigiel &mdash; 2 additional items</strong> <span class="status-tag status-in-progress">IN PROGRESS</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Preview Feature Registry + Pipeline Terraform</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <!-- Low Impact -->
+        <div class="impact-group">
+          <h4 style="color:#787068;">Low Impact / Descoped</h4>
+          <div class="impact-item">
+            <strong>33 items in New state</strong> <span class="status-tag status-new">NOT STARTED</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Mix of backlog items not pulled into active work</span>
+          </div>
+          <div class="impact-item">
+            <strong>1 item Removed</strong> <span class="status-tag status-removed">DESCOPED</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Removed from sprint scope during execution</span>
+          </div>
+          <div class="impact-item">
+            <strong>1 item in BSM Review</strong> <span class="status-tag status-testing">BSM REVIEW</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Awaiting business stakeholder review</span>
+          </div>
+          <div class="impact-item">
+            <strong>1 item Ready</strong> <span class="status-tag status-new">READY</span>
+            <br><span style="font-size:0.75rem; color:#787068;">Groomed but not pulled</span>
+          </div>
+        </div>
+
+        <!-- Impact Chart -->
+        <div style="margin-top:20px;">
+          <h4 style="color:#BE2024; margin-bottom:12px;">Incomplete Items by Impact</h4>
+          <div class="chart-container" style="max-width:100%; height:220px; margin:0;">
+            <canvas id="incompleteChart"></canvas>
+          </div>
+        </div>
+
+        <div class="insight-box red" style="margin-top:16px;">
+          <span class="insight-label">Carry-over Risk</span>
+          The biggest risk is <strong>Legacy AX incomplete work</strong> &mdash; 34 of 51 AX items didn't finish (66.7%). Justin Barreira's OneSource/AX backlog (9 items) has been growing for 3 sprints. The DeliveryConfirmation PR is code-complete and should clear quickly with review prioritization. Sandra Brodowski has 2 items flagged Needs Attention that need immediate triage.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">Sprint 134 Recap &nbsp;|&nbsp; MTech Platform Team &nbsp;|&nbsp; Confidential</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- SECTION 6: MID-SPRINT DISCOVERY -->
+<!-- ============================================================== -->
+<section class="slide" id="slide-5">
+  <div class="slide-number">06 / 11</div>
+  <div class="section-header fade-in">
+    <h3>Mid-Sprint Discovery</h3>
+    <h2>What Was Added After Sprint Start?</h2>
+    <p class="subtitle">Adjusted scope creep: 13.8% &mdash; 37 items added mid-sprint out of 268</p>
+  </div>
+
+  <div class="two-col fade-in">
+    <div>
+      <div class="metric-row" style="margin-bottom:16px;">
+        <div class="metric-card amber" style="text-align:center;">
+          <div class="big-number">13.8%</div>
+          <div class="label">Adjusted Scope Creep</div>
+        </div>
+        <div class="metric-card red" style="text-align:center;">
+          <div class="big-number">18</div>
+          <div class="label">Bugs Discovered Mid-Sprint</div>
+        </div>
+      </div>
+
+      <div class="chart-container" style="max-width:100%; height:280px; margin:0;">
+        <canvas id="discoveryTimelineChart"></canvas>
+      </div>
+    </div>
+    <div>
+      <h4 style="margin-bottom:10px;">Mid-Sprint Additions by Person</h4>
+      <table class="data-table">
+        <thead>
+          <tr><th>Person</th><th>Items Added</th><th>Area</th><th>Context</th></tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(212,160,6,0.06);">
+            <td><strong>Thomas Holland</strong></td><td style="color:#D4A006; font-weight:700;">16</td>
+            <td>EventFlow Segmentation</td><td style="font-size:0.75rem;">Planned work decomposition (PBIs)</td>
+          </tr>
+          <tr>
+            <td><strong>Tymoteusz Tracz</strong></td><td>8</td>
+            <td>LPB + EventFlow UI</td><td style="font-size:0.75rem;">Bug discovery during development</td>
+          </tr>
+          <tr>
+            <td><strong>Marcin Miazga</strong></td><td>4</td>
+            <td>LPB + Dynamic Lookup</td><td style="font-size:0.75rem;">Bug fixes during feature work</td>
+          </tr>
+          <tr>
+            <td><strong>Others</strong></td><td>9</td>
+            <td>Various</td><td style="font-size:0.75rem;">Mixed areas</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:10px;">
+        <h4 style="margin-bottom:10px;">Scope Additions Breakdown</h4>
+        <div class="chart-container" style="max-width:100%; height:180px; margin:0;">
+          <canvas id="scopeBreakdownChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <span class="insight-label">Key Insight</span>
+    <strong>Thomas Holland's 16 EventFlow Segmentation PBIs were planned work decomposition, not scope creep.</strong> He broke down the Segmentation initiative into 16 granular PBIs (Phases 1&ndash;8) and completed all of them within the sprint. The true unplanned additions were ~8 Landing Page Builder bugs discovered by Tymoteusz/Marcin during active development. Scope creep at 13.8% is slightly above S133's 12.4% but the composition is healthier &mdash; more planned PBIs, fewer surprise bugs.
+  </div>
+
+  <div class="slide-footer">Sprint 134 Recap &nbsp;|&nbsp; MTech Platform Team &nbsp;|&nbsp; Confidential</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- SECTION 7: WORK CATEGORY ANALYSIS -->
+<!-- ============================================================== -->
+<section class="slide" id="slide-6">
+  <div class="slide-number">07 / 11</div>
+  <div class="section-header fade-in">
+    <h3>Work Category Analysis</h3>
+    <h2>Platform vs. Business vs. Legacy AX 2009</h2>
+    <p class="subtitle">Sprint 134 effort allocation by work category</p>
+  </div>
+
+  <div class="scroll-inner">
+    <!-- Dual donuts -->
+    <div class="two-col fade-in">
+      <div style="text-align:center;">
+        <h4 style="margin-bottom:4px; color:#A09890; font-size:0.8rem; letter-spacing:1px;">BY ITEM COUNT</h4>
+        <div class="chart-container" style="max-width:100%; height:200px;">
+          <canvas id="categoryDonutChart"></canvas>
+        </div>
+      </div>
+      <div style="text-align:center;">
+        <h4 style="margin-bottom:4px; color:#A09890; font-size:0.8rem; letter-spacing:1px;">BY TASK HOURS</h4>
+        <div class="chart-container" style="max-width:100%; height:200px;">
+          <canvas id="categoryHoursDonutChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Combined table -->
+    <table class="data-table fade-in" style="margin-top:12px;">
+      <thead>
+        <tr>
+          <th rowspan="2" style="vertical-align:bottom;">Category</th>
+          <th colspan="3" style="text-align:center; border-bottom:1px solid #3B3B52;">By Items</th>
+          <th colspan="4" style="text-align:center; border-left:2px solid #52526A; border-bottom:1px solid #3B3B52;">By Task Hours</th>
+        </tr>
+        <tr>
+          <th>Items</th><th>%</th><th>Done %</th>
+          <th style="border-left:2px solid #52526A;">Est Hours</th><th>%</th><th>Done Hours</th><th>Burn %</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color:#BE2024;">Platform</strong></td>
+          <td>163</td><td>60.8%</td>
+          <td style="color:#22c55e; font-weight:700;">89.6%</td>
+          <td style="border-left:2px solid #52526A; font-weight:700;">535h</td>
+          <td style="font-weight:700; color:#BE2024;">68.2%</td>
+          <td>505h</td>
+          <td style="color:#22c55e; font-weight:700;">94.4%</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#D4A006;">Business</strong></td>
+          <td>54</td><td>20.1%</td>
+          <td style="color:#22c55e; font-weight:700;">77.8%</td>
+          <td style="border-left:2px solid #52526A; font-weight:700;">93h</td>
+          <td style="font-weight:700; color:#D4A006;">11.8%</td>
+          <td>85h</td>
+          <td style="color:#22c55e; font-weight:700;">91.4%</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#A09890;">Legacy AX 2009</strong></td>
+          <td>51</td><td>19.0%</td>
+          <td style="color:#FF6B6B; font-weight:700;">33.3%</td>
+          <td style="border-left:2px solid #52526A; font-weight:700;">157h</td>
+          <td style="font-weight:700; color:#A09890;">20.0%</td>
+          <td>69h</td>
+          <td style="color:#FF6B6B; font-weight:700;">43.9%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Side-by-side metric cards -->
+    <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
+      <div class="metric-card" style="text-align:center; padding:10px; flex:1; min-width:100px;">
+        <div style="font-size:0.6rem; color:#787068; text-transform:uppercase; letter-spacing:1px;">Items</div>
+        <div class="big-number" style="font-size:1.4rem; color:#BE2024;">60.8%</div>
+        <div class="label">Platform</div>
+      </div>
+      <div class="metric-card" style="text-align:center; padding:10px; flex:1; min-width:100px;">
+        <div style="font-size:0.6rem; color:#787068; text-transform:uppercase; letter-spacing:1px;">Hours</div>
+        <div class="big-number" style="font-size:1.4rem; color:#BE2024;">68.2%</div>
+        <div class="label">Platform</div>
+      </div>
+      <div class="metric-card" style="text-align:center; padding:10px; flex:1; min-width:100px;">
+        <div style="font-size:0.6rem; color:#787068; text-transform:uppercase; letter-spacing:1px;">Items</div>
+        <div class="big-number" style="font-size:1.4rem; color:#D4A006;">20.1%</div>
+        <div class="label">Business</div>
+      </div>
+      <div class="metric-card" style="text-align:center; padding:10px; flex:1; min-width:100px;">
+        <div style="font-size:0.6rem; color:#787068; text-transform:uppercase; letter-spacing:1px;">Hours</div>
+        <div class="big-number" style="font-size:1.4rem; color:#D4A006;">11.8%</div>
+        <div class="label">Business</div>
+      </div>
+      <div class="metric-card" style="text-align:center; padding:10px; flex:1; min-width:100px;">
+        <div style="font-size:0.6rem; color:#787068; text-transform:uppercase; letter-spacing:1px;">Total Hours</div>
+        <div class="big-number" style="font-size:1.4rem; color:#22c55e;">785h</div>
+        <div class="label">All Categories</div>
+      </div>
+    </div>
+
+    <div class="insight-box red fade-in" style="margin-top:14px;">
+      <span class="insight-label">Legacy AX Is the Drag</span>
+      <strong>Legacy AX surged to 19% of items (up from 4% in S133) with only 33.3% completion and 43.9% burn.</strong> This single category accounts for nearly all of the completion gap vs S133. Platform work maintained excellent execution at 94.4% burn rate, and Business held strong at 91.4%. If Legacy AX were excluded, the sprint would have hit ~87% completion.
+    </div>
+
+    <div class="insight-box green fade-in">
+      <span class="insight-label">Platform Highlights This Sprint</span>
+      <strong>Platform burned 505h of 535h estimated (94.4%).</strong> Key completions: EventFlow Segmentation Phases 1&ndash;8 (Thomas, 108h), Dapr service-invocation replacement (Dariusz, 76h), .NET 10 SDK upgrade (Marcin, 67h), Tab Sets + Message Center + SSO (Joshua, 64h), Scope Sync pipeline (Adam, 37h), Preview Environment Activation (Kamil, 36h).
+    </div>
+  </div>
+  <div class="slide-footer">Sprint 134 Recap &nbsp;|&nbsp; MTech Platform Team &nbsp;|&nbsp; Confidential</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- SECTION 8: TEAM A PERFORMANCE -->
+<!-- ============================================================== -->
+<section class="slide" id="slide-7">
+  <div class="slide-number">08 / 11</div>
+  <div class="section-header fade-in">
+    <h3>Delivery Team A</h3>
+    <h2>Individual Performance &mdash; Team A</h2>
+    <p class="subtitle">Sprint 134 results with 2-sprint trend sparklines</p>
+  </div>
+
+  <div class="scroll-inner">
+    <div class="person-grid fade-in">
+
+      <!-- Thomas Holland -->
+      <div class="person-card" style="border-top: 3px solid #D4A006;">
+        <div class="person-header">
+          <div class="avatar amber">TH</div>
+          <div>
+            <div class="person-name">Thomas Holland <span class="person-tag tag-perfect">PERFECT SPRINT</span> <span class="person-tag tag-star">TOP PERFORMER</span></div>
+            <div class="person-role">EventFlow Platform Owner &mdash; Team A</div>
+          </div>
+        </div>
+        <div class="person-stats">
+          <div class="person-stat"><div class="val">45/45</div><div class="lbl">Done</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">100%</div><div class="lbl">Completion</div></div>
+          <div class="person-stat"><div class="val">108h</div><div class="lbl">Estimated</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">108h</div><div class="lbl">Hours Burned (100%)</div></div>
+        </div>
+        <div class="mini-chart-container"><canvas id="miniTH"></canvas></div>
+        <div class="person-narrative">
+          <strong style="color:#22c55e;">EXTRAORDINARY SPRINT.</strong> Delivered all 8 phases (16 PBIs) of EventFlow Segmentation in a single sprint. Archive plans complete. 4 critical bugs fixed. 45/45 items, 108/108h &mdash; perfect execution at the highest individual volume this sprint.<br>
+          <strong>S133:</strong> 39/43, 80/80h
+        </div>
+      </div>
+
+      <!-- Joshua Hise -->
+      <div class="person-card" style="border-top: 3px solid #22c55e;">
+        <div class="person-header">
+          <div class="avatar green">JH</div>
+          <div>
+            <div class="person-name">Joshua Hise <span class="person-tag tag-star">BREAKOUT SPRINT</span></div>
+            <div class="person-role">Forms Implementation Specialist &mdash; Team A</div>
+          </div>
+        </div>
+        <div class="person-stats">
+          <div class="person-stat"><div class="val">32/34</div><div class="lbl">Done</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">94%</div><div class="lbl">Completion</div></div>
+          <div class="person-stat"><div class="val">68h</div><div class="lbl">Estimated</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">64h</div><div class="lbl">Hours Burned (94%)</div></div>
+        </div>
+        <div class="mini-chart-container"><canvas id="miniJH"></canvas></div>
+        <div class="person-narrative">
+          <strong style="color:#22c55e;">BREAKOUT SPRINT.</strong> Tab Sets (BFF/FE/MCore), Product Detail Message Center (BFF/FE/MCore), SSO Maintenance (BFF/MCore). 6 bugs fixed. Volume jumped from 20 to 32 items. Major Forms velocity across full stack.<br>
+          <strong>S133:</strong> 20/20, 54/54h
+        </div>
+      </div>
+
+      <!-- Clint Wilkes -->
+      <div class="person-card">
+        <div class="person-header">
+          <div class="avatar slate">CW</div>
+          <div>
+            <div class="person-name">Clint Wilkes</div>
+            <div class="person-role">Notifications &amp; AX Integration &mdash; Team A</div>
+          </div>
+        </div>
+        <div class="person-stats">
+          <div class="person-stat"><div class="val">10/15</div><div class="lbl">Done</div></div>
+          <div class="person-stat"><div class="val">67%</div><div class="lbl">Completion</div></div>
+          <div class="person-stat"><div class="val">28h</div><div class="lbl">Estimated</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">26h</div><div class="lbl">Hours Burned (93%)</div></div>
+        </div>
+        <div class="mini-chart-container"><canvas id="miniCW"></canvas></div>
+        <div class="person-narrative">
+          <strong>Key:</strong> Create API for report generation, AP Persist Attributes bug fix. Hour burn strong at 93%.<br>
+          <strong style="color:#D4A006;">Not Done:</strong> DeliveryConfirmation (1 PR waiting), AX2009 triggers, tests feature &mdash; 5 items incomplete.<br>
+          <strong>S133:</strong> 6/7, 46/50h
+        </div>
+      </div>
+
+      <!-- Justin Barreira -->
+      <div class="person-card" style="border-top: 3px solid #FF6B6B;">
+        <div class="person-header">
+          <div class="avatar slate">JB</div>
+          <div>
+            <div class="person-name">Justin Barreira <span class="person-tag tag-down">LOWEST ON TEAM</span></div>
+            <div class="person-role">AX Development &amp; Forms &mdash; Team A</div>
+          </div>
+        </div>
+        <div class="person-stats">
+          <div class="person-stat"><div class="val">7/16</div><div class="lbl">Done</div></div>
+          <div class="person-stat"><div class="val" style="color:#FF6B6B;">44%</div><div class="lbl">Completion</div></div>
+          <div class="person-stat"><div class="val">59h</div><div class="lbl">Estimated</div></div>
+          <div class="person-stat"><div class="val" style="color:#D4A006;">43h</div><div class="lbl">Hours Burned (73%)</div></div>
+        </div>
+        <div class="mini-chart-container"><canvas id="miniJB"></canvas></div>
+        <div class="person-narrative">
+          <strong>Key:</strong> OneSource AX scaffolding, CyberSource work. Significant drop from S133's 78.3%.<br>
+          <strong style="color:#FF6B6B;">Not Done:</strong> 9 items &mdash; OneSource Tax Middleware API (New), 5 AX Dev Items (New), 1 Feature. OneSource has been flagged for 3 consecutive sprints.<br>
+          <strong>S133:</strong> 19/23, 36/48h
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="slide-footer">Sprint 134 Recap &nbsp;|&nbsp; MTech Platform Team &nbsp;|&nbsp; Confidential</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- SECTION 9: TEAM B PERFORMANCE -->
+<!-- ============================================================== -->
+<section class="slide" id="slide-8">
+  <div class="slide-number">09 / 11</div>
+  <div class="section-header fade-in">
+    <h3>Delivery Team B</h3>
+    <h2>Individual Performance &mdash; Team B</h2>
+    <p class="subtitle">Infrastructure, platform, and DevOps-heavy contributors</p>
+  </div>
+
+  <div class="scroll-inner">
+    <div class="person-grid fade-in">
+
+      <!-- Adam Wojciechowski -->
+      <div class="person-card" style="border-top: 3px solid #22c55e;">
+        <div class="person-header">
+          <div class="avatar green">AW</div>
+          <div>
+            <div class="person-name">Adam Wojciechowski <span class="person-tag tag-perfect">PERFECT SPRINT</span></div>
+            <div class="person-role">Build Agent &amp; Sync Services &mdash; Team B</div>
+          </div>
+        </div>
+        <div class="person-stats">
+          <div class="person-stat"><div class="val">6/6</div><div class="lbl">Done</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">100%</div><div class="lbl">Completion</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">37h</div><div class="lbl">Hours Burned (100%)</div></div>
+        </div>
+        <div class="mini-chart-container"><canvas id="miniAW"></canvas></div>
+        <div class="person-narrative">
+          <strong style="color:#22c55e;">PERFECT SPRINT.</strong> Scope Sync pipeline fix, JSON converters, SmallDateTime handling. Consistent 100% execution across S133 and S134.<br>
+          <strong>S133:</strong> 8/8, 60/60h
+        </div>
+      </div>
+
+      <!-- Dariusz Uchman -->
+      <div class="person-card" style="border-top: 3px solid #22c55e;">
+        <div class="person-header">
+          <div class="avatar green">DU</div>
+          <div>
+            <div class="person-name">Dariusz Uchman <span class="person-tag tag-perfect">PERFECT SPRINT</span></div>
+            <div class="person-role">DevOps / Infrastructure &mdash; Team B</div>
+          </div>
+        </div>
+        <div class="person-stats">
+          <div class="person-stat"><div class="val">8/8</div><div class="lbl">Done</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">100%</div><div class="lbl">Completion</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">76h</div><div class="lbl">Hours Burned (100%)</div></div>
+        </div>
+        <div class="mini-chart-container"><canvas id="miniDU"></canvas></div>
+        <div class="person-narrative">
+          <strong style="color:#22c55e;">PERFECT SPRINT.</strong> Dapr service-invocation replacement (major initiative), Global Change Request History, ADO cleanup. Back-to-back 100% sprints.<br>
+          <strong>S133:</strong> 38/38, 80/80h
+        </div>
+      </div>
+
+      <!-- Grzegorz Giera -->
+      <div class="person-card" style="border-top: 3px solid #22c55e;">
+        <div class="person-header">
+          <div class="avatar green">GG</div>
+          <div>
+            <div class="person-name">Grzegorz Giera <span class="person-tag tag-perfect">PERFECT SPRINT</span></div>
+            <div class="person-role">Testing &amp; Platform &mdash; Team B</div>
+          </div>
+        </div>
+        <div class="person-stats">
+          <div class="person-stat"><div class="val">4/4</div><div class="lbl">Done</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">100%</div><div class="lbl">Completion</div></div>
+          <div class="person-stat"><div class="val">5h</div><div class="lbl">Estimated</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">5h</div><div class="lbl">Hours Burned (100%)</div></div>
+        </div>
+        <div class="mini-chart-container"><canvas id="miniGG"></canvas></div>
+        <div class="person-narrative">
+          <strong style="color:#22c55e;">PERFECT SPRINT (light load).</strong> Scheduled Cleanup Job Plan with Quartz.NET. Only 5h estimated &mdash; significant reduction from S133's 52h. Perfect but minimal volume.<br>
+          <strong>S133:</strong> 8/10, 52/68h
+        </div>
+      </div>
+
+      <!-- Jacek Smigiel -->
+      <div class="person-card">
+        <div class="person-header">
+          <div class="avatar teal">JS</div>
+          <div>
+            <div class="person-name">Jacek Smigiel <span class="person-tag tag-stable">TEAM LEAD</span></div>
+            <div class="person-role">Team Lead / Admin &mdash; Team B</div>
+          </div>
+        </div>
+        <div class="person-stats">
+          <div class="person-stat"><div class="val">15/19</div><div class="lbl">Done</div></div>
+          <div class="person-stat"><div class="val">79%</div><div class="lbl">Completion</div></div>
+          <div class="person-stat"><div class="val">69h</div><div class="lbl">Estimated</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">61h</div><div class="lbl">Hours Burned (88%)</div></div>
+        </div>
+        <div class="mini-chart-container"><canvas id="miniJS"></canvas></div>
+        <div class="person-narrative">
+          <strong>Key:</strong> Preview Feature Registry AppName, Scope Check via M365OrgMgmt, Pipeline Terraform fix.<br>
+          <strong style="color:#D4A006;">Not Done:</strong> .NET 10 upgrade (In Progress), Dapr API replacement (In Progress), 2 additional items.<br>
+          <strong>S133:</strong> 14/18, 58/58h
+        </div>
+      </div>
+
+      <!-- Marcin Miazga -->
+      <div class="person-card" style="border-top: 3px solid #22c55e;">
+        <div class="person-header">
+          <div class="avatar green">MM</div>
+          <div>
+            <div class="person-name">Marcin Miazga <span class="person-tag tag-perfect">PERFECT SPRINT</span></div>
+            <div class="person-role">Landing Page Builder Lead &mdash; Team B</div>
+          </div>
+        </div>
+        <div class="person-stats">
+          <div class="person-stat"><div class="val">10/10</div><div class="lbl">Done</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">100%</div><div class="lbl">Completion</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">67h</div><div class="lbl">Hours Burned (100%)</div></div>
+        </div>
+        <div class="mini-chart-container"><canvas id="miniMM"></canvas></div>
+        <div class="person-narrative">
+          <strong style="color:#22c55e;">PERFECT SPRINT.</strong> .NET 10 SDK upgrade, Entity Change Request Scope Set FE, Dynamic Lookup bug fix, 2 Landing Page Builder bugs. Back-to-back 100% sprints &mdash; consistently elite execution.<br>
+          <strong>S133:</strong> 32/32, 73/73h
+        </div>
+      </div>
+
+      <!-- Mateusz Janiszewski -->
+      <div class="person-card">
+        <div class="person-header">
+          <div class="avatar slate">MJ</div>
+          <div>
+            <div class="person-name">Mateusz Janiszewski <span class="person-tag tag-down">LIGHT SPRINT</span></div>
+            <div class="person-role">Infrastructure / Environments &mdash; Team B</div>
+          </div>
+        </div>
+        <div class="person-stats">
+          <div class="person-stat"><div class="val">2/2</div><div class="lbl">Done</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">100%</div><div class="lbl">Completion</div></div>
+          <div class="person-stat"><div class="val">1h</div><div class="lbl">Estimated</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">1h</div><div class="lbl">Hours Burned (100%)</div></div>
+        </div>
+        <div class="mini-chart-container"><canvas id="miniMJ"></canvas></div>
+        <div class="person-narrative">
+          <strong>Key:</strong> Cleanup Service API. Very light sprint &mdash; only 1h estimated vs S133's 40h. Dramatic load drop needs explanation: intentional reallocation or capacity issue?<br>
+          <strong>S133:</strong> 7/8, 32/40h
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="slide-footer">Sprint 134 Recap &nbsp;|&nbsp; MTech Platform Team &nbsp;|&nbsp; Confidential</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- SECTION 10: SHARED MEMBERS -->
+<!-- ============================================================== -->
+<section class="slide" id="slide-9">
+  <div class="slide-number">10 / 11</div>
+  <div class="section-header fade-in">
+    <h3>Shared Members</h3>
+    <h2>Cross-Team Contributors</h2>
+    <p class="subtitle">Team members operating across both delivery teams</p>
+  </div>
+
+  <div class="scroll-inner">
+    <div class="person-grid fade-in">
+
+      <!-- Kamil Trescinski -->
+      <div class="person-card">
+        <div class="person-header">
+          <div class="avatar amber">KT</div>
+          <div>
+            <div class="person-name">Kamil Trescinski</div>
+            <div class="person-role">Cross-cutting: Entities, Forms, CRUD &mdash; Shared</div>
+          </div>
+        </div>
+        <div class="person-stats">
+          <div class="person-stat"><div class="val">12/13</div><div class="lbl">Done</div></div>
+          <div class="person-stat"><div class="val">92%</div><div class="lbl">Completion</div></div>
+          <div class="person-stat"><div class="val">40h</div><div class="lbl">Estimated</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">36h</div><div class="lbl">Hours Burned (90%)</div></div>
+        </div>
+        <div class="mini-chart-container"><canvas id="miniKT"></canvas></div>
+        <div class="person-narrative">
+          <strong>Key:</strong> Preview Environment Activation Redirect, Right-side Panel. 4 bugs fixed. Consistent high performer across both sprints.<br>
+          <strong>S133:</strong> 14/15, 55/59h
+        </div>
+      </div>
+
+      <!-- Tymoteusz Tracz -->
+      <div class="person-card" style="border-top: 3px solid #BE2024;">
+        <div class="person-header">
+          <div class="avatar teal">TT</div>
+          <div>
+            <div class="person-name">Tymoteusz Tracz <span class="person-tag tag-star">STRONG PERFORMER</span></div>
+            <div class="person-role">Frontend: EventFlow, Landing Page, Forms &mdash; Shared</div>
+          </div>
+        </div>
+        <div class="person-stats">
+          <div class="person-stat"><div class="val">34/36</div><div class="lbl">Done</div></div>
+          <div class="person-stat"><div class="val">94%</div><div class="lbl">Completion</div></div>
+          <div class="person-stat"><div class="val">84h</div><div class="lbl">Estimated</div></div>
+          <div class="person-stat"><div class="val" style="color:#22c55e;">76h</div><div class="lbl">Hours Burned (90%)</div></div>
+        </div>
+        <div class="mini-chart-container"><canvas id="miniTT"></canvas></div>
+        <div class="person-narrative">
+          <strong>Key:</strong> 12 Landing Page Builder bugs fixed. EventFlow BatchJobs UI &mdash; Run History drawer, tab rename. Maintained high volume from S133.<br>
+          <strong style="color:#D4A006;">Not Done:</strong> 2 items carried.<br>
+          <strong>S133:</strong> 30/31, 88/92h
+        </div>
+      </div>
+
+      <!-- Alec Schidlovsky -->
+      <div class="person-card">
+        <div class="person-header">
+          <div class="avatar slate">AS</div>
+          <div>
+            <div class="person-name">Alec Schidlovsky <span class="person-tag tag-stable">ADMIN</span></div>
+            <div class="person-role">Management / Oversight &mdash; Shared</div>
+          </div>
+        </div>
+        <div class="person-stats">
+          <div class="person-stat"><div class="val">0/0</div><div class="lbl">Done</div></div>
+          <div class="person-stat"><div class="val">&mdash;</div><div class="lbl">Completion</div></div>
+        </div>
+        <div class="mini-chart-container"><canvas id="miniAS"></canvas></div>
+        <div class="person-narrative">
+          No items assigned this sprint. Management/oversight role. Coordination and review responsibilities.<br>
+          <strong>S133:</strong> 1/2
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="slide-footer">Sprint 134 Recap &nbsp;|&nbsp; MTech Platform Team &nbsp;|&nbsp; Confidential</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- SECTION 11: KEY FINDINGS & NEXT SPRINT -->
+<!-- ============================================================== -->
+<section class="slide" id="slide-10">
+  <div class="slide-number">11 / 11</div>
+  <div class="section-header fade-in">
+    <h3>Key Findings &amp; Next Sprint</h3>
+    <h2>What Matters Most &mdash; Sprint 135 Outlook</h2>
+    <p class="subtitle">8 findings from Sprint 134 + priorities for Sprint 135</p>
+  </div>
+
+  <div class="scroll-inner">
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(440px, 1fr)); gap:14px;" class="fade-in">
+
+      <div class="finding-card success">
+        <div class="finding-number">01</div>
+        <h4>EventFlow Segmentation Is COMPLETE</h4>
+        <p>Thomas Holland delivered all 8 phases (16 PBIs) in a single sprint plus 4 critical bugs. 45/45 items, 108/108h. This is an extraordinary individual sprint &mdash; the entire Segmentation initiative was designed, decomposed, and executed within one cycle.</p>
+        <div class="rec">Deploy to all environments in Sprint 135. Begin cross-training on Segmentation architecture.</div>
+      </div>
+
+      <div class="finding-card success">
+        <div class="finding-number">02</div>
+        <h4>Hour Burn Rate Held Steady Despite Volume Drop</h4>
+        <p>83.9% task burn vs S133's 83.4%. The team delivered fewer items but maintained execution quality. Items that were in scope got done at the same hourly rate. This indicates consistent work discipline even with a leaner sprint.</p>
+        <div class="rec">Execution efficiency is stable. Focus on improving item scoping and AX completion rates.</div>
+      </div>
+
+      <div class="finding-card success">
+        <div class="finding-number">03</div>
+        <h4>6 Team Members Hit 100% Completion</h4>
+        <p>Thomas Holland, Adam Wojciechowski, Dariusz Uchman, Grzegorz Giera, Marcin Miazga, and Mateusz Janiszewski all completed every assigned item. Strong execution across both teams, with Dariusz and Marcin hitting back-to-back perfect sprints.</p>
+        <div class="rec">Recognize and maintain this consistency. These are the reliability pillars of the team.</div>
+      </div>
+
+      <div class="finding-card critical">
+        <div class="finding-number">04</div>
+        <h4>Legacy AX Dragging Overall Numbers</h4>
+        <p>51 items (19% of sprint) with only 33.3% completion and 43.9% hour burn. This alone accounts for most of the completion gap vs S133. Legacy AX went from 4% of items in S133 to 19% in S134 &mdash; the team took on significantly more AX work and couldn't deliver it.</p>
+        <div class="rec">Either reduce AX scope per sprint or dedicate more focused capacity. Current approach is not working.</div>
+      </div>
+
+      <div class="finding-card success">
+        <div class="finding-number">05</div>
+        <h4>Bug Ratio Improved Significantly</h4>
+        <p>Down from 69.2% to 52.1%. Less time spent on bugs, more on features. The Landing Page Builder stabilization efforts from S133 are paying off &mdash; fewer new bugs discovered this sprint.</p>
+        <div class="rec">Positive trend. Continue quality practices from S133's intensive testing push.</div>
+      </div>
+
+      <div class="finding-card critical">
+        <div class="finding-number">06</div>
+        <h4>Justin Barreira's OneSource Work Stalling</h4>
+        <p>9 incomplete items including the full OneSource Tax Middleware API (New) and 5 AX Dev Items still in New state. Only 44% item completion, 73% hour burn. This initiative has been flagged for 3 consecutive sprints with no forward progress on the core API.</p>
+        <div class="rec">Needs intervention. Pair with senior dev or reduce concurrent scope to unblock OneSource.</div>
+      </div>
+
+      <div class="finding-card success">
+        <div class="finding-number">07</div>
+        <h4>Joshua Hise Had a Breakout Sprint</h4>
+        <p>32/34 done (94%), shipping Tab Sets, Message Center, and SSO Maintenance across BFF/FE/MCore layers. Volume jumped from 20 items in S133 to 32 in S134. Major Forms velocity &mdash; delivering full-stack features consistently.</p>
+        <div class="rec">Exceptional ramp-up. Leverage this velocity for Sprint 135 Forms roadmap.</div>
+      </div>
+
+      <div class="finding-card observation">
+        <div class="finding-number">08</div>
+        <h4>Mateusz Janiszewski's Load Dropped Dramatically</h4>
+        <p>2 items, 1h estimated (vs S133: 8 items, 40h). This is a 97.5% drop in estimated hours. Need to understand if this is intentional reallocation, vacation/PTO, or a capacity management gap.</p>
+        <div class="rec">Clarify with team lead. If intentional, document. If not, address in Sprint 135 planning.</div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:30px;" class="fade-in">
+      <h3 style="margin-bottom:16px;">Sprint 135 Priorities</h3>
+      <ol class="priority-list">
+        <li class="priority-item">
+          <div class="pri-text">
+            <strong>Complete DeliveryConfirmation End-to-End</strong> <span class="rag rag-amber" style="margin-left:8px;">PR WAITING</span>
+            <p>Clint Wilkes &mdash; PR is waiting for approval. Merge, test, and ship in Sprint 135.</p>
+          </div>
+        </li>
+        <li class="priority-item">
+          <div class="pri-text">
+            <strong>Push OneSource/Tax Integration Forward</strong> <span class="rag rag-red" style="margin-left:8px;">3 SPRINTS STALLED</span>
+            <p>Justin Barreira &mdash; needs dedicated focus. Consider pairing or scope reduction to unblock.</p>
+          </div>
+        </li>
+        <li class="priority-item">
+          <div class="pri-text">
+            <strong>Clear Legacy AX Testing Backlog</strong> <span class="rag rag-amber" style="margin-left:8px;">3 ITEMS IN TESTING</span>
+            <p>Sandra Brodowski &mdash; 3 items in AXDev Testing + 2 Needs Attention bugs to triage.</p>
+          </div>
+        </li>
+        <li class="priority-item">
+          <div class="pri-text">
+            <strong>Continue Landing Page Builder Stabilization</strong> <span class="rag rag-green" style="margin-left:8px;">IMPROVING</span>
+            <p>Tymoteusz + Marcin &mdash; bug ratio improving, maintain momentum.</p>
+          </div>
+        </li>
+        <li class="priority-item">
+          <div class="pri-text">
+            <strong>Deploy EventFlow Segmentation to All Environments</strong> <span class="rag rag-green" style="margin-left:8px;">CODE COMPLETE</span>
+            <p>Thomas Holland &mdash; all 8 phases built. Roll out across DEV/STG/PROD.</p>
+          </div>
+        </li>
+        <li class="priority-item">
+          <div class="pri-text">
+            <strong>Start .NET 10 SDK Upgrade Across Remaining Services</strong> <span class="rag rag-amber" style="margin-left:8px;">IN PROGRESS</span>
+            <p>Jacek Smigiel &mdash; continue from Marcin's initial upgrade. Phased rollout.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div style="text-align:center; margin-top:30px; padding: 30px 0;" class="fade-in">
+      <div style="width:80px; height:3px; background:linear-gradient(90deg,#BE2024,#D4A006); margin:0 auto 16px; border-radius:2px;"></div>
+      <p style="color:#787068; font-size:0.85rem;">Prepared for WB Mason &mdash; MTech Platform Team Leadership</p>
+      <p style="color:#52526A; font-size:0.75rem; margin-top:4px;">Sprint 134 &nbsp;|&nbsp; March 30&ndash;April 10, 2026 &nbsp;|&nbsp; Completed</p>
+    </div>
+  </div>
+  <div class="slide-footer">Sprint 134 Recap &nbsp;|&nbsp; MTech Platform Team &nbsp;|&nbsp; Confidential</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- SCRIPTS -->
+<!-- ============================================================== -->
+<script>
+// ===== NAV & SCROLL =====
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.nav-dot');
+
+function goTo(i) {
+  slides[i].scrollIntoView({ behavior: 'smooth' });
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const idx = Array.from(slides).indexOf(e.target);
+      dots.forEach((d,i) => d.classList.toggle('active', i === idx));
+      e.target.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+    }
+  });
+}, { threshold: 0.3 });
+
+slides.forEach(s => observer.observe(s));
+
+// Trigger first slide animations immediately
+document.querySelectorAll('#slide-0 .fade-in').forEach(el => el.classList.add('visible'));
+
+// ===== CHART DEFAULTS =====
+Chart.defaults.color = '#A09890';
+Chart.defaults.font.family = "'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.plugins.legend.labels.usePointStyle = true;
+Chart.defaults.plugins.legend.labels.pointStyleWidth = 10;
+
+const gridColor = 'rgba(59,59,82,0.5)';
+
+// ===== COMPARISON CHART (S133 vs S134) =====
+new Chart(document.getElementById('comparisonChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Total Items', 'Done', 'Task Est Hours', 'Task Done Hours', 'Bugs+BugFixes', 'PBIs'],
+    datasets: [
+      {
+        label: 'Sprint 133',
+        data: [302, 254, 942, 786, 81, 49],
+        backgroundColor: 'rgba(100,116,139,0.4)',
+        borderColor: '#787068',
+        borderWidth: 1,
+        borderRadius: 4
+      },
+      {
+        label: 'Sprint 134',
+        data: [268, 205, 785, 659, 49, 45],
+        backgroundColor: 'rgba(190,32,36,0.5)',
+        borderColor: '#BE2024',
+        borderWidth: 1,
+        borderRadius: 4
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      title: { display: true, text: 'Sprint 133 vs 134 — Side by Side', color: '#E8E4E0', font: { size: 14, weight: '600' } },
+      legend: { position: 'bottom' }
+    },
+    scales: {
+      x: { grid: { color: gridColor } },
+      y: { grid: { color: gridColor }, beginAtZero: true }
+    }
+  }
+});
+
+// ===== FLOW CHART (Section 4) =====
+new Chart(document.getElementById('flowChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Done (203)', 'New (33)', 'In Progress (12)', 'Needs Attention (8)', 'PR Waiting (3)', 'AXDev Testing (2)', 'Coding (2)', 'Testing Approved (2)', 'Other (3)'],
+    datasets: [{
+      data: [203, 33, 12, 8, 3, 2, 2, 2, 3],
+      backgroundColor: [
+        'rgba(34,197,94,0.7)',
+        'rgba(100,116,139,0.5)',
+        'rgba(190,32,36,0.7)',
+        'rgba(255,107,107,0.7)',
+        'rgba(96,165,250,0.7)',
+        'rgba(167,139,250,0.7)',
+        'rgba(212,160,6,0.7)',
+        'rgba(139,92,246,0.5)',
+        'rgba(51,65,85,0.5)'
+      ],
+      borderColor: '#1A1A2E',
+      borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'right', labels: { font: { size: 11 }, padding: 12 } }
+    }
+  }
+});
+
+// ===== INCOMPLETE IMPACT CHART (Section 5) =====
+new Chart(document.getElementById('incompleteChart'), {
+  type: 'bar',
+  data: {
+    labels: ['High Impact', 'Medium Impact', 'Low Impact / Descoped'],
+    datasets: [{
+      label: 'Items',
+      data: [5, 9, 36],
+      backgroundColor: [
+        'rgba(255,107,107,0.6)',
+        'rgba(212,160,6,0.6)',
+        'rgba(100,116,139,0.4)'
+      ],
+      borderColor: ['#FF6B6B', '#D4A006', '#787068'],
+      borderWidth: 1,
+      borderRadius: 6
+    }]
+  },
+  options: {
+    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { color: gridColor }, beginAtZero: true, title: { display: true, text: 'Items' } },
+      y: { grid: { display: false } }
+    }
+  }
+});
+
+// ===== DISCOVERY TIMELINE CHART (Section 6) =====
+new Chart(document.getElementById('discoveryTimelineChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10'],
+    datasets: [
+      {
+        label: 'Thomas Holland',
+        data: [0, 2, 3, 2, 2, 0, 1, 2, 1, 1, 1, 1],
+        backgroundColor: 'rgba(212,160,6,0.7)',
+        borderColor: '#D4A006',
+        borderWidth: 1,
+        borderRadius: 2
+      },
+      {
+        label: 'Tymoteusz Tracz',
+        data: [1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0],
+        backgroundColor: 'rgba(190,32,36,0.7)',
+        borderColor: '#BE2024',
+        borderWidth: 1,
+        borderRadius: 2
+      },
+      {
+        label: 'Marcin Miazga',
+        data: [0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0],
+        backgroundColor: 'rgba(34,197,94,0.7)',
+        borderColor: '#22c55e',
+        borderWidth: 1,
+        borderRadius: 2
+      },
+      {
+        label: 'Others',
+        data: [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0],
+        backgroundColor: 'rgba(100,116,139,0.5)',
+        borderColor: '#787068',
+        borderWidth: 1,
+        borderRadius: 2
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      title: { display: true, text: 'Items Discovered by Day (Mar 30 - Apr 10)', color: '#E8E4E0', font: { size: 13, weight: '600' } },
+      legend: { position: 'bottom', labels: { font: { size: 10 } } }
+    },
+    scales: {
+      x: { stacked: true, grid: { color: gridColor }, ticks: { font: { size: 9 } } },
+      y: { stacked: true, grid: { color: gridColor }, beginAtZero: true, title: { display: true, text: 'Items Added' } }
+    }
+  }
+});
+
+// ===== SCOPE BREAKDOWN CHART (Section 6) =====
+new Chart(document.getElementById('scopeBreakdownChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Bugs (18)', 'PBIs (19)'],
+    datasets: [{
+      data: [18, 19],
+      backgroundColor: ['rgba(255,107,107,0.7)', 'rgba(190,32,36,0.7)'],
+      borderColor: '#1A1A2E',
+      borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'right', labels: { font: { size: 11 }, padding: 12 } },
+      title: { display: false }
+    }
+  }
+});
+
+// ===== WORK CATEGORY DONUT - Items (Section 7) =====
+new Chart(document.getElementById('categoryDonutChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Platform 60.8%', 'Business 20.1%', 'Legacy AX 19.0%'],
+    datasets: [{
+      data: [163, 54, 51],
+      backgroundColor: ['#BE2024', '#D4A006', '#787068'],
+      borderColor: '#1A1A2E', borderWidth: 3, hoverOffset: 8
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false, cutout: '55%',
+    plugins: {
+      legend: { position: 'bottom', labels: { color: '#A09890', padding: 10, font: { size: 10 } } },
+      title: { display: true, text: '268 Items', color: '#787068', font: { size: 11 } }
+    }
+  }
+});
+
+// ===== WORK CATEGORY DONUT - Hours (Section 7) =====
+new Chart(document.getElementById('categoryHoursDonutChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Platform 68.2%', 'Business 11.8%', 'Legacy AX 20.0%'],
+    datasets: [{
+      data: [535, 93, 157],
+      backgroundColor: ['#BE2024', '#D4A006', '#787068'],
+      borderColor: '#1A1A2E', borderWidth: 3, hoverOffset: 8
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false, cutout: '55%',
+    plugins: {
+      legend: { position: 'bottom', labels: { color: '#A09890', padding: 10, font: { size: 10 } } },
+      title: { display: true, text: '785 Task Hours', color: '#787068', font: { size: 11 } }
+    }
+  }
+});
+
+// ===== MINI CHARTS (Person sparklines — S133, S134) =====
+function miniLine(id, data, color) {
+  new Chart(document.getElementById(id), {
+    type: 'line',
+    data: {
+      labels: ['S133', 'S134'],
+      datasets: [{
+        data: data, borderColor: color, backgroundColor: color + '22',
+        pointBackgroundColor: color, pointRadius: 6, tension: 0.3, fill: true, borderWidth: 2.5
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { display: true, grid: { display: false }, ticks: { font: { size: 10 }, color: '#52526A' } },
+        y: { display: false, beginAtZero: true }
+      }
+    }
+  });
+}
+
+// Team A
+miniLine('miniTH', [39, 45], '#D4A006');
+miniLine('miniJH', [20, 32], '#22c55e');
+miniLine('miniCW', [6, 10], '#787068');
+miniLine('miniJB', [19, 7], '#FF6B6B');
+
+// Team B
+miniLine('miniAW', [8, 6], '#22c55e');
+miniLine('miniDU', [38, 8], '#22c55e');
+miniLine('miniGG', [8, 4], '#22c55e');
+miniLine('miniJS', [14, 15], '#BE2024');
+miniLine('miniMM', [32, 10], '#22c55e');
+miniLine('miniMJ', [7, 2], '#787068');
+
+// Shared
+miniLine('miniKT', [14, 12], '#D4A006');
+miniLine('miniTT', [30, 34], '#BE2024');
+miniLine('miniAS', [1, 0], '#787068');
+
+// ===== KEYBOARD NAV =====
+document.addEventListener('keydown', (e) => {
+  const current = Array.from(slides).findIndex(s => {
+    const r = s.getBoundingClientRect();
+    return r.top >= -100 && r.top < window.innerHeight / 2;
+  });
+  if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+    e.preventDefault();
+    if (current < slides.length - 1) goTo(current + 1);
+  } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+    e.preventDefault();
+    if (current > 0) goTo(current - 1);
+  }
+});
+</script>
+
+</body>
+</html>
